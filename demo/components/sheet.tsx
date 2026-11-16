@@ -1,11 +1,15 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
 /** Feuille glissante, contenue dans le cadre du téléphone. */
 export function Sheet({ open, onClose, children, full = false, dark = false, title }: { open: boolean; onClose: () => void; children: React.ReactNode; full?: boolean; dark?: boolean; title?: string }) {
-  return (
+  // rendu dans le cadre du téléphone, au-dessus de l'écran défilant
+  const host = typeof document !== "undefined" ? document.getElementById("phone") : null;
+  if (!host) return null;
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div className="absolute inset-0 z-[80] flex items-end bg-black/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose}>
@@ -21,6 +25,7 @@ export function Sheet({ open, onClose, children, full = false, dark = false, tit
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    host,
   );
 }

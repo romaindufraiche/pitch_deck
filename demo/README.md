@@ -44,6 +44,7 @@ npm run build && npm start
 
 ## Mode présentation
 
+- **Bouton « Redémarrer la démo »** en haut à gauche, hors du téléphone (grand écran) : remet tout à zéro et revient au splash.
 - **`Shift + D`** (ou **appui long sur le logo « Dressr. »**) ouvre le menu caché : préremplir le compte de Thomas, réinitialiser la démo, sauter à n'importe quelle étape, effacer la conversation, préparer le mode hors ligne.
 - **Hors ligne** : en production, un service worker met l'app en cache. Avant la présentation, ouvrez le menu puis cliquez sur **« Préparer le mode hors ligne »** : toutes les pages, photos et la vidéo sont téléchargées. L'assistant bascule alors automatiquement en mode secours.
 - Sur un ordinateur, l'app s'affiche dans un cadre de téléphone ; sur un vrai téléphone, elle occupe tout l'écran. Pour l'installer comme une app : *Partager → Sur l'écran d'accueil*.
@@ -66,7 +67,9 @@ npm run build && npm start
 | **2:25** | `Shift + D` → *Espace marque (B2B)* | « Côté marque, c'est là qu'est notre modèle : 12 400 clients connectés, un taux de retour de **9,4 % au lieu de 27,4 %**, et des insights que personne d'autre n'a : 38 % de leurs clients n'ont pas de pantalon habillé gris. L'abonnement est rentabilisé environ 3,7 fois. » |
 | **2:50** | Retour à l'app | « Moins d'achats inutiles pour lui, moins de retours pour les marques. » |
 
-**Variantes si l'on a plus de temps** : la question « Quel pantalon je mets avec ma chemise oxford bleue ? » (alerte « chino au linge » remplacé par le gris anthracite), la valise pour Lyon (liste cochable), la fiche de la **Chelsea Marcel** (vue 360° à faire tourner), l'ajout d'une pièce par photo, ou le tableau « Mes tailles par marque » dans le Profil.
+**Variante budget (30 s)** : dans l'assistant, « J'ai 80 € de budget, fais-moi une tenue. » → trois tenues, avec les pièces à acheter tirées des catalogues (en stock à sa taille) et le reste pris dans son dressing. *Tout ajouter au panier* → *Commander* → *Payer*, ou *Voir sur le site* pour ouvrir la fiche sur la boutique de la marque.
+
+**Variantes si l'on a plus de temps** : l'onglet **Catalogue** (articles des marques connectées, taille recommandée affichée sur chaque photo, filtre « dans mon budget »), la question « Quel pantalon je mets avec ma chemise oxford bleue ? » (alerte « chino au linge » remplacé par le gris anthracite), la valise pour Lyon (liste cochable), la fiche de la **Chelsea Marcel** (vue 360° à faire tourner), l'ajout d'une pièce par photo, ou le tableau « Mes tailles par marque » dans le Profil.
 
 **En cas de pépin** : `Shift + D` → *Préremplir le compte de Thomas* remet un compte complet (4 marques, scan fait, 61 fiches) et permet de sauter directement à n'importe quelle étape.
 
@@ -81,7 +84,8 @@ npm run build && npm start
 3. **Scan vidéo** (`/scan`) : vraie vidéo de dressing, cadres de détection animés, compteur, quantités modifiables et dédoublonnage avec les achats importés (vignettes extraites de la vidéo).
 4. **Mon dressing** (`/dressing`) : grille filtrable (catégorie, couleur, marque, statut), recherche, statistiques, enrichissement progressif en 2 taps ; fiche article avec historique de port, statut linge, *Marquer comme lavé*, **vue 360°** pour deux articles ; **ajout par photo** (prise de vue, détourage, formulaire pré-rempli et reconnaissance du produit).
 5. **Assistant** (`/assistant`) : chat en streaming avec cartes riches (tenue en flat lay, alerte linge, achat avec taille recommandée et indice de confiance, valise cochable), panier et confirmation de commande simulés.
-6. **Espace marque** (`/marque`) : tableau de bord de Maison Vérac (Recharts).
+6. **Catalogue** (`/catalogue`) : articles des marques connectées, filtrables par marque, catégorie et budget, avec la taille recommandée sur chaque produit ; fiche produit avec choix de taille, ajout au panier et commande dans l'app, ou **« Voir sur le site »** (`/site/[id]`, boutique de la marque dans le navigateur intégré, taille présélectionnée).
+7. **Espace marque** (`/marque`) : tableau de bord de Maison Vérac (Recharts).
 
 ### L'assistant IA
 

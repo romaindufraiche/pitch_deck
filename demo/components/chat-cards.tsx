@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, CheckCircle2, Luggage, Package, Ruler, ShoppingBag, WashingMachine } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Check, CheckCircle2, ExternalLink, Luggage, Ruler, ShoppingBag, WashingMachine } from "lucide-react";
 import type { Card, LaundryCard, OutfitCard, PackingCard, PurchaseCard } from "@/lib/cards";
 import type { DerivedItem } from "@/lib/wardrobe";
 import { brandById, formatPrice, formatSize, productById } from "@/lib/data";
 import { BrandLogo } from "./brand-logo";
-import { Sheet } from "./sheet";
+import { Checkout } from "./checkout";
 import { useStore } from "@/lib/store";
+import { useToolContext } from "@/lib/hooks";
+import { recommendSizeFor } from "@/lib/assistant-tools";
 import { cn } from "@/lib/utils";
 
 type Resolved = { key: string; role: string; name: string; brand: string; image: string; href?: string; buy?: { price: number; productId: string } };
@@ -47,11 +49,25 @@ function FlatLay({ pieces }: { pieces: Resolved[] }) {
 
 export function OutfitView({ card, items }: { card: OutfitCard; items: DerivedItem[] }) {
   const pieces = resolve(card.pieces, items);
+  const ctx = useToolContext();
+  const cart = useStore((s) => s.cart);
+  const addToCart = useStore((s) => s.addToCart);
+  const [checkout, setCheckout] = useState(false);
+  const buys = pieces.filter((p) => p.buy);
+  const total = buys.reduce((s, p) => s + p.buy!.price, 0);
+  const allIn = buys.length > 0 && buys.every((b) => cart.some((c) => c.productId === b.buy!.productId));
+  const addAll = () => buys.forEach((b) => {
+    const rec = recommendSizeFor(ctx, b.buy!.productId);
+    addToCart({ productId: b.buy!.productId, size: "erreur" in rec ? productById[b.buy!.productId].sizes[0].size : rec.size });
+  });
   return (
     <div className="overflow-hidden rounded-[22px] bg-white">
-      <div className="px-4 pb-3 pt-3.5">
-        <p className="font-display text-[22px] leading-tight">{card.title}</p>
-        {card.subtitle && <p className="mt-0.5 text-[11.5px] text-mute">{card.subtitle}</p>}
+      <div className="flex items-start gap-3 px-4 pb-3 pt-3.5">
+        <div className="min-w-0 flex-1">
+          <p className="font-display text-[22px] leading-tight">{card.title}</p>
+          {card.subtitle && <p className="mt-0.5 text-[11.5px] text-mute">{card.subtitle}</p>}
+        </div>
+        {buys.length > 0 && <span className="shrink-0 rounded-full bg-rust-soft px-2.5 py-1 text-[12px] font-semibold text-rust">{formatPrice(total)}</span>}
       </div>
       <FlatLay pieces={pieces} />
       <ul className="divide-y divide-line px-4">
@@ -59,14 +75,34 @@ export function OutfitView({ card, items }: { card: OutfitCard; items: DerivedIt
           const body = (
             <>
               <span className="w-[74px] shrink-0 text-[10.5px] uppercase tracking-wider text-mute">{p.role}</span>
-              <span className="min-w-0 flex-1"><span className="block truncate text-[13px] font-medium">{p.name}</span><span className="block truncate text-[11px] text-mute">{p.brand}</span></span>
+              <span className="min-w-0 flex-1"><span className="block truncate text-[13px] font-medium">{p.name}</span><span className="block truncate text-[11px] text-mute">{p.buy ? `${p.brand} · à acheter` : `${p.brand} · dans votre dressing`}</span></span>
               {p.buy ? <span className="text-[12px] font-medium text-rust">{formatPrice(p.buy.price)}</span> : <ArrowRight className="size-3.5 text-mute" />}
             </>
           );
-          return <li key={p.key}>{p.href ? <Link href={p.href} className="flex items-center gap-2 py-2.5">{body}</Link> : <div className="flex items-center gap-2 py-2.5">{body}</div>}</li>;
+          return (
+            <li key={p.key}>
+              {p.href ? <Link href={p.href} className="flex items-center gap-2 py-2.5">{body}</Link> : (
+                <div className="py-2.5">
+                  <div className="flex items-center gap-2">{body}</div>
+                  <Link href={`/site/${p.buy!.productId}`} className="ml-[82px] mt-1 inline-flex items-center gap-1 text-[11.5px] font-medium underline underline-offset-2">Voir sur le site <ExternalLink className="size-3" /></Link>
+                </div>
+              )}
+            </li>
+          );
         })}
       </ul>
       <p className="border-t border-line px-4 py-3 text-[12.5px] leading-relaxed text-ink/80">{card.explanation}</p>
+      {buys.length > 0 && (
+        <div className="border-t border-line p-3.5">
+          {card.budget ? <p className="mb-2.5 flex justify-between px-1 text-[12px] text-mute"><span>À acheter : {buys.length} pièce{buys.length > 1 ? "s" : ""}, à votre taille</span><span>{formatPrice(total)} / {formatPrice(card.budget)}</span></p> : null}
+          {allIn ? (
+            <button onClick={() => setCheckout(true)} className="tap flex h-11 w-full items-center justify-center gap-2 rounded-full bg-ok text-[13.5px] font-medium text-paper"><CheckCircle2 className="size-4" /> Dans le panier · Commander</button>
+          ) : (
+            <button onClick={addAll} className="tap flex h-11 w-full items-center justify-center gap-2 rounded-full bg-ink text-[13.5px] font-medium text-paper"><ShoppingBag className="size-4" /> {buys.length > 1 ? "Tout ajouter au panier" : "Ajouter au panier"} · {formatPrice(total)}</button>
+          )}
+        </div>
+      )}
+      <Checkout open={checkout} onClose={() => setCheckout(false)} />
     </div>
   );
 }
@@ -106,6 +142,7 @@ export function PurchaseView({ card }: { card: PurchaseCard }) {
           <p className="mt-0.5 text-[11.5px] text-mute">{p.color.name} · {p.material.split(",")[0]}</p>
           <p className="mt-2 font-display text-[24px] leading-none">{formatPrice(p.price)}</p>
           <p className="mt-1 text-[11px] text-mute">{p.rating.toString().replace(".", ",")}/5 · {p.reviews} avis</p>
+          <Link href={`/site/${p.id}`} className="mt-1.5 inline-flex items-center gap-1 text-[11.5px] font-medium underline underline-offset-2">Voir sur le site <ExternalLink className="size-3" /></Link>
         </div>
       </div>
       <p className="px-4 text-[12.5px] leading-relaxed text-ink/80">{card.reason}</p>
@@ -134,65 +171,6 @@ export function PurchaseView({ card }: { card: PurchaseCard }) {
       </div>
       <Checkout open={checkout} onClose={() => setCheckout(false)} />
     </div>
-  );
-}
-
-function Checkout({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const cart = useStore((s) => s.cart);
-  const placeOrder = useStore((s) => s.placeOrder);
-  const [done, setDone] = useState<{ id: string; total: number; brands: string[] } | null>(null);
-  const [paying, setPaying] = useState(false);
-  const lines = cart.map((c) => ({ ...c, p: productById[c.productId] })).filter((l) => l.p);
-  const total = lines.reduce((s, l) => s + l.p.price, 0);
-  const pay = () => {
-    setPaying(true);
-    setTimeout(() => {
-      const id = `MV-26-${String(51000 + Math.floor(Math.random() * 8999)).padStart(6, "0")}`;
-      placeOrder({ id, date: new Date().toISOString().slice(0, 10), lines: cart, total });
-      setDone({ id, total, brands: [...new Set(lines.map((l) => brandById[l.p.brandId].name))] });
-      setPaying(false);
-    }, 1200);
-  };
-  return (
-    <Sheet open={open} onClose={() => { onClose(); setTimeout(() => setDone(null), 300); }} title={done ? undefined : "Votre panier"}>
-      <AnimatePresence mode="wait">
-        {done ? (
-          <motion.div key="ok" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="px-6 pb-4 pt-8 text-center">
-            <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }} className="mx-auto flex size-16 items-center justify-center rounded-full bg-ok text-paper"><Check className="size-8" /></motion.span>
-            <p className="mt-5 font-display text-[30px] leading-tight">Commande confirmée</p>
-            <p className="mt-2 text-[13px] text-mute">N° {done.id} · {formatPrice(done.total)}</p>
-            <div className="mt-6 space-y-2 rounded-3xl bg-white p-4 text-left text-[12.5px]">
-              <p className="flex items-center gap-2"><Package className="size-4 text-mute" /> Livraison prévue sous 2 à 3 jours ouvrés, à domicile.</p>
-              <p className="flex items-center gap-2"><Ruler className="size-4 text-mute" /> Tailles transmises à {done.brands.join(", ")}.</p>
-              <p className="flex items-center gap-2"><CheckCircle2 className="size-4 text-mute" /> Les pièces apparaîtront dans votre dressing à la livraison.</p>
-            </div>
-            <button onClick={() => { onClose(); setTimeout(() => setDone(null), 300); }} className="tap mt-6 h-12 w-full rounded-full bg-ink text-[14px] font-medium text-paper">Revenir au styliste</button>
-          </motion.div>
-        ) : (
-          <motion.div key="cart" className="px-5 pt-4">
-            <ul className="space-y-2">
-              {lines.map((l) => (
-                <li key={l.productId} className="flex items-center gap-3 rounded-2xl bg-white p-2 pr-4">
-                  <img src={l.p.image} alt="" className="size-14 rounded-xl object-cover" />
-                  <div className="flex-1"><p className="text-[13px] font-medium">{l.p.name}</p><p className="text-[11.5px] text-mute">{brandById[l.p.brandId].name} · taille {formatSize(l.size)}</p></div>
-                  <span className="text-[13px] tabular-nums">{formatPrice(l.p.price)}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4 space-y-1.5 rounded-2xl bg-white p-4 text-[13px]">
-              <div className="flex justify-between"><span className="text-mute">Sous-total</span><span>{formatPrice(total)}</span></div>
-              <div className="flex justify-between"><span className="text-mute">Livraison</span><span>Offerte</span></div>
-              <div className="flex justify-between border-t border-line pt-2 font-semibold"><span>Total</span><span>{formatPrice(total)}</span></div>
-            </div>
-            <p className="mt-3 text-[11.5px] text-mute">Paiement avec la carte enregistrée •••• 4421 · Livraison : 18 rue Oberkampf, 75011 Paris</p>
-            <button disabled={paying || !lines.length} onClick={pay} className="tap mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-ink text-[14px] font-medium text-paper disabled:opacity-60">
-              {paying ? <span className="size-4 animate-spin rounded-full border-2 border-paper border-t-transparent" /> : null}
-              {paying ? "Paiement…" : `Payer ${formatPrice(total)}`}
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </Sheet>
   );
 }
 

@@ -13,6 +13,7 @@ export const OutfitCardSchema = z.object({
   subtitle: z.string().optional(),
   pieces: z.array(PieceSchema).min(2).max(7),
   explanation: z.string().describe("explication courte (2 phrases maximum)"),
+  budget: z.number().optional().describe("budget de l'utilisateur en euros, si la tenue répond à une demande avec budget"),
 });
 
 export const LaundryCardSchema = z.object({

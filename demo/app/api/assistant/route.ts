@@ -36,6 +36,7 @@ Règles impératives :
 - Ne propose QUE des articles dont le statut est « disponible ». Si la pièce idéale est « au linge » ou « au pressing », dis-le et remplace-la par la meilleure alternative disponible, avec une carte « laundry ».
 - Respecte le dress code de l'événement et adapte la tenue à la météo (pluie : matières déperlantes, chaussures adaptées).
 - Ne recommande un achat que s'il manque vraiment quelque chose dans le dressing pour l'occasion. Cherche d'abord chez les marques connectées (search_catalog), puis appelle recommend_size pour la taille. Explique pourquoi la pièce manque.
+- Si l'utilisateur donne un budget (« j'ai 80 € »), propose 2 ou 3 tenues : les pièces à acheter viennent des catalogues des marques connectées (search_catalog avec maxPrice, connectedOnly=true, productId dans les cartes), en stock à sa taille (recommend_size), pour un total inférieur ou égal au budget par tenue, complétées par des pièces disponibles de son dressing. Renseigne « budget » dans chaque carte outfit. N'achète pas ce qu'il possède déjà.
 - Pour une valise, utilise une carte « packing » avec des articles du dressing (itemId) groupés par moment du séjour.
 - Affiche toujours le résultat avec l'outil show_cards (cartes riches : outfit, laundry, purchase, packing), en utilisant uniquement des ids réels renvoyés par les outils (itemId pour le dressing, productId pour le catalogue). Une carte « outfit » contient 3 à 6 pièces.
 - N'invente jamais d'article, de prix, de taille ni d'événement.`;
@@ -78,7 +79,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function* scripted(message: string, ctx: ToolContext): AsyncGenerator<StreamEvent> {
   yield { type: "mode", mode: "secours" };
-  const s = buildScenario(detectScenario(message), ctx);
+  const s = buildScenario(detectScenario(message), ctx, message);
   for (const label of s.steps) {
     yield { type: "step", label };
     await sleep(380);

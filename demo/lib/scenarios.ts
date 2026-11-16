@@ -10,15 +10,22 @@ import type { DerivedItem } from "./wardrobe";
 import { calendar, longDate, relativeDay, addDays, WEEKDAYS, daysSinceLastWeekday } from "./time";
 import { productById, weather, formatPrice } from "./data";
 
-export type ScenarioId = "rdv" | "oxford" | "lyon" | "mariage" | "today" | "aide";
+export type ScenarioId = "rdv" | "oxford" | "lyon" | "mariage" | "budget" | "today" | "aide";
 export type Part = { text: string } | { card: Card };
 export type Scripted = { steps: string[]; parts: Part[] };
 
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
+/** « j'ai 80 € », « 80 euros », « budget de 150 » → 80, 150 */
+export function parseBudget(message: string): number | null {
+  const m = norm(message).match(/(\d{2,4})\s*(?:€|e\b|eur|euros?)/) ?? norm(message).match(/budget\D{0,12}(\d{2,4})/);
+  return m ? Number(m[1]) : null;
+}
+
 export function detectScenario(message: string): ScenarioId {
   const m = norm(message);
+  if (parseBudget(message) !== null || /budget/.test(m)) return "budget";
   if (/mariage|ceremonie|temoin|juin/.test(m)) return "mariage";
   if (/lyon|valise|seminaire|voyage|bagage|partir/.test(m)) return "lyon";
   if (/oxford|quel pantalon|avec ma chemise/.test(m)) return "oxford";
@@ -39,7 +46,7 @@ function finder(items: DerivedItem[]) {
 
 const piece = (i: DerivedItem | undefined, role: string) => (i ? [{ itemId: i.id, role }] : []);
 
-export function buildScenario(id: ScenarioId, ctx: ToolContext): Scripted {
+export function buildScenario(id: ScenarioId, ctx: ToolContext, message = ""): Scripted {
   const f = finder(ctx.items);
   const events = calendar(ctx.today);
   const tue = daysSinceLastWeekday(ctx.today, 2);
@@ -159,6 +166,8 @@ export function buildScenario(id: ScenarioId, ctx: ToolContext): Scripted {
     };
   }
 
+  if (id === "budget") return budgetScenario(ctx, parseBudget(message) ?? ctx.budget, f);
+
   if (id === "today") {
     const w = weather.days[0];
     const shirt = f.avail("Chemise Oxford Saint-Germain", "Chemises bleues", "Chemise Kolm en denim indigo");
@@ -182,12 +191,71 @@ export function buildScenario(id: ScenarioId, ctx: ToolContext): Scripted {
   };
 }
 
+type Finder = ReturnType<typeof finder>;
+
+/**
+ * Tenues avec budget : les pièces à acheter viennent des catalogues des marques connectées
+ * (en stock dans la taille recommandée), complétées par des pièces déjà dans le dressing.
+ */
+const BUDGET_LOOKS: { title: string; subtitle: string; options: string[][]; owned: [string, string[]][]; explanation: string }[] = [
+  { title: "Casual de la semaine", subtitle: "Une surchemise, vos basiques", options: [["bastide-surchemise-sergé"], ["bastide-surchemise-velours"]], owned: [["T-shirt", ["T-shirt Essentiel", "T-shirts blancs"]], ["Jean", ["Jean K1 Slim selvedge brut", "Jean indigo"]], ["Chaussures", ["Sneaker Léon", "Baskets en toile marine"]]], explanation: "La surchemise beige se porte ouverte, comme une veste légère : elle réchauffe vos t-shirts blancs et votre jean brut." },
+  { title: "Bureau décontracté", subtitle: "Un chino marine qui manquait", options: [["bastide-calanque-toile"], ["bastide-chino-anthracite"]], owned: [["Chemise", ["Chemise Oxford Saint-Germain", "Chemises bleues"]], ["Maille", ["Gilet gris anthracite", "Pull col rond Mérinos"]], ["Chaussures", ["Derby Lucien", "Chelsea Marcel"]]], explanation: "Vous n'avez aucun chino marine : avec l'oxford bleu ciel et le gilet anthracite, c'est la tenue de bureau la plus simple." },
+  { title: "Deux pièces pour l'hiver", subtitle: "Un t-shirt épais et une écharpe", options: [["bastide-lourd-ecru", "bastide-echarpe-laine"], ["bastide-echarpe-laine", "bastide-bonnet-cote"], ["bastide-echarpe-laine"]], owned: [["Manteau", ["Manteau Hallen", "Trench Malmö"]], ["Jean", ["Jean indigo", "Jean K1 Slim délavé"]], ["Chaussures", ["Bottines à boucle cognac", "Chelsea Marcel"]]], explanation: "Le t-shirt écru épais et l'écharpe à chevrons gris donnent du relief au manteau camel, sans sortir de vos neutres." },
+  { title: "Soirée", subtitle: "Une maille rayée sous le cuir", options: [["bastide-raye-chataigne"], ["bastide-pima-noir"]], owned: [["Veste", ["Blouson en cuir noir", "Blazer gris chiné"]], ["Jean", ["Jean K1 Slim selvedge brut", "Jean gris"]], ["Chaussures", ["Chelsea Marcel", "Bottines à boucle cognac"]]], explanation: "Les rayures marron et gris réchauffent le blouson noir ; les chelsea cognac font le lien." },
+  { title: "Tout neuf, de la tête aux pieds", subtitle: "Une tenue complète du catalogue", options: [["bastide-essentiel-marine", "bastide-chino-pierre", "ferrand-leon-toile"], ["bastide-essentiel-blanc", "kolm-k2-indigo", "ferrand-leon"]], owned: [], explanation: "Une tenue entièrement prise dans les catalogues de vos marques, chaque pièce à votre taille." },
+];
+
+function budgetScenario(ctx: ToolContext, budget: number, f: Finder): Scripted {
+  const usable = (pid: string) => {
+    const p = productById[pid];
+    if (!p || !ctx.connected.includes(p.brandId)) return false;
+    if (p.sizes.length < 2) return true;
+    const r = recommendSizeFor(ctx, pid);
+    return !("erreur" in r) && (p.sizes.find((s) => s.size === r.size)?.stock ?? 0) > 0;
+  };
+  const looks: { look: (typeof BUDGET_LOOKS)[number]; buy: string[]; total: number }[] = [];
+  for (const look of BUDGET_LOOKS) {
+    const buy = look.options.find((o) => o.every(usable) && o.reduce((t, id) => t + productById[id].price, 0) <= budget);
+    if (buy) looks.push({ look, buy, total: buy.reduce((t, id) => t + productById[id].price, 0) });
+  }
+  const chosen = looks.sort((a, b) => b.total - a.total).slice(0, 3);
+  const brandsUsed = [...new Set(chosen.flatMap((c) => c.buy.map((id) => productById[id].brandId)))];
+  if (!chosen.length) {
+    return {
+      steps: ["Recherche dans les catalogues de vos marques", "Vérification des stocks à votre taille"],
+      parts: [{ text: ctx.connected.length ? `Avec ${budget} €, je ne trouve rien de pertinent à votre taille chez vos marques connectées. À partir de 29 €, Ligne Bastide a des basiques qui iraient avec votre dressing : voulez-vous que je la connecte ?` : "Connectez d'abord une boutique dans l'onglet Catalogue : je pourrai alors composer des tenues avec ses articles, à votre taille." }],
+    };
+  }
+  const roleOf = (pid: string) => ({ chemises: "Surchemise", hauts: "Haut", maille: "Maille", pantalons: "Pantalon", accessoires: "Accessoire", chaussures: "Chaussures" } as Record<string, string>)[productById[pid].category] ?? "Pièce";
+  return {
+    steps: ["Recherche dans les catalogues de vos marques", "Vérification des stocks à votre taille", "Accords avec votre dressing", `Optimisation du budget (${budget} €)`],
+    parts: [
+      { text: `Avec **${budget} €**, voici ${chosen.length} tenue${chosen.length > 1 ? "s" : ""}. Les pièces à acheter viennent des catalogues de ${brandsUsed.map((b) => (b === "bastide" ? "Ligne Bastide" : b === "verac" ? "Maison Vérac" : b === "kolm" ? "Kolm Denim" : b === "ferrand" ? "Atelier Ferrand" : b === "norrland" ? "Norrland Supply" : "Studio Rivage")).join(", ")}, en stock à votre taille ; le reste est déjà dans votre dressing.` },
+      ...chosen.map(({ look, buy, total }): Part => ({
+        card: {
+          type: "outfit",
+          title: look.title,
+          subtitle: `${look.subtitle} · ${formatPrice(total)}`,
+          budget,
+          pieces: [
+            ...buy.map((productId) => ({ productId, role: roleOf(productId) })),
+            ...look.owned.flatMap(([role, names]) => piece(f.avail(...names), role)),
+          ],
+          explanation: look.explanation,
+        },
+      })),
+      { text: "Vous pouvez tout ajouter au panier et commander ici, ou ouvrir chaque article sur le site de la marque. Les tailles sont présélectionnées." },
+    ],
+  };
+}
+
 /** Découpe un texte en petits morceaux pour simuler une réponse en streaming. */
 export function chunkText(text: string): string[] {
   return text.match(/\S+\s*|\s+/g) ?? [text];
 }
 
 export const SUGGESTIONS = [
+  "J'ai 80 € de budget, fais-moi une tenue.",
   "Demain j'ai un rendez-vous chez Orsay Conseil, prépare-moi une tenue.",
   "Quel pantalon je mets avec ma chemise oxford bleue ?",
   "Je pars 3 jours à Lyon pour un séminaire, fais-moi ma valise.",

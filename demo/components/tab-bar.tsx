@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Shirt, Sparkles, Store, User } from "lucide-react";
+import { Home, Shirt, ShoppingBag, Sparkles, User } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
-const TABS = [
+const TABS: { href: string; label: string; icon: typeof Home; main?: boolean; also?: string[] }[] = [
   { href: "/accueil", label: "Accueil", icon: Home },
   { href: "/dressing", label: "Dressing", icon: Shirt },
   { href: "/assistant", label: "Styliste", icon: Sparkles, main: true },
-  { href: "/boutiques", label: "Boutiques", icon: Store },
+  { href: "/catalogue", label: "Catalogue", icon: ShoppingBag, also: ["/boutiques"] },
   { href: "/profil", label: "Profil", icon: User },
 ];
 
@@ -24,7 +24,7 @@ export function TabBar() {
     <nav className="absolute inset-x-0 bottom-0 z-40 border-t border-line/80 bg-paper/85 backdrop-blur-xl" style={{ paddingBottom: "var(--bottom)" }}>
       <ul className="flex h-[62px] items-center justify-around px-2">
         {TABS.map((t) => {
-          const active = path === t.href || (t.href !== "/accueil" && path.startsWith(t.href));
+          const active = path === t.href || (t.href !== "/accueil" && path.startsWith(t.href)) || !!t.also?.some((a) => path.startsWith(a));
           const Icon = t.icon;
           return (
             <li key={t.href}>

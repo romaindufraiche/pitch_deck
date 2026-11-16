@@ -55,6 +55,7 @@ type Actions = {
   answerPrompt: (key: string) => void;
   addToCart: (l: CartLine) => void;
   clearCart: () => void;
+  removeFromCart: (productId: string) => void;
   placeOrder: (o: PlacedOrder) => void;
   pushMessage: (m: ChatMessage) => void;
   patchMessage: (id: string, fn: (m: ChatMessage) => ChatMessage) => void;
@@ -112,6 +113,7 @@ export const useStore = create<State & Actions>()(
       answerPrompt: (key) => set((s) => ({ answeredPrompts: [...s.answeredPrompts, key] })),
       addToCart: (l) => set((s) => ({ cart: [...s.cart.filter((x) => x.productId !== l.productId), l] })),
       clearCart: () => set({ cart: [] }),
+      removeFromCart: (productId) => set((s) => ({ cart: s.cart.filter((c) => c.productId !== productId) })),
       placeOrder: (o) => set((s) => ({ placedOrders: [o, ...s.placedOrders], cart: [] })),
       pushMessage: (m) => set((s) => ({ chat: [...s.chat, m] })),
       patchMessage: (id, fn) => set((s) => ({ chat: s.chat.map((m) => (m.id === id ? fn(m) : m)) })),

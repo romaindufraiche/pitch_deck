@@ -19,7 +19,8 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 /** Mode secours exécuté dans le navigateur (hors ligne ou serveur injoignable). */
 async function localScripted(p: Params, on: (e: StreamEvent) => void) {
   const items = deriveWardrobe(p.state, p.today);
-  const s = buildScenario(detectScenario(p.messages[p.messages.length - 1].text), { items, today: p.today, connected: p.state.connected as BrandId[], budget: p.budget });
+  const last = p.messages[p.messages.length - 1].text;
+  const s = buildScenario(detectScenario(last), { items, today: p.today, connected: p.state.connected as BrandId[], budget: p.budget }, last);
   on({ type: "mode", mode: "secours" });
   for (const label of s.steps) { on({ type: "step", label }); await sleep(380); }
   for (const part of s.parts) {

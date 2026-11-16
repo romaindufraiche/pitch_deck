@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { RotateCcw } from "lucide-react";
 import { PresentationMenu } from "./presentation-menu";
+import { useStore } from "@/lib/store";
 
 function useClock() {
   const [t, setT] = useState("");
@@ -32,6 +35,24 @@ function StatusBar() {
  * Sur grand écran (projection), l'app s'affiche dans un cadre de téléphone centré.
  * Sur un vrai téléphone, elle occupe tout l'écran.
  */
+/** Hors de l'écran du téléphone (grand écran uniquement) : redémarre la démo depuis le début. */
+function RestartButton() {
+  const router = useRouter();
+  const reset = useStore((s) => s.reset);
+  const [done, setDone] = useState(false);
+  return (
+    <div className="fixed left-5 top-5 z-[200] hidden flex-col gap-1.5 md:flex">
+      <button
+        onClick={() => { reset(); router.push("/"); setDone(true); setTimeout(() => setDone(false), 1500); }}
+        className="tap flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[13px] font-medium text-paper shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5)] transition hover:bg-ink/85"
+      >
+        <RotateCcw className="size-4" /> {done ? "Démo redémarrée" : "Redémarrer la démo"}
+      </button>
+      <span className="pl-2 text-[11px] text-ink/45">Menu de présentation : Shift + D</span>
+    </div>
+  );
+}
+
 export function PhoneFrame({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -51,6 +72,7 @@ export function PhoneFrame({ children }: { children: React.ReactNode }) {
         {mounted ? children : null}
         {mounted && <PresentationMenu />}
       </div>
+      {mounted && <RestartButton />}
     </div>
   );
 }

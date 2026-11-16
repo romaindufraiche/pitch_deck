@@ -30,6 +30,7 @@ const JUMPS: [string, string][] = [
   ["Mon dressing", "/dressing"],
   ["Fiche article (vue 360°)", `/dressing/${chelsea}`],
   ["Ajout par photo", "/dressing/ajout"],
+  ["Catalogue des marques", "/catalogue"],
   ["Assistant IA", "/assistant"],
   ["Profil et tailles", "/profil"],
   ["Espace marque (B2B)", "/marque"],
