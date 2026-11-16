@@ -58,7 +58,7 @@ export function PhoneFrame({ children }: { children: React.ReactNode }) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="min-h-dvh w-full bg-[#e9e5de] md:flex md:items-center md:justify-center md:bg-[radial-gradient(ellipse_at_top,#f3f0ea_0%,#ddd7cc_100%)] md:py-6">
+    <div className="min-h-dvh w-full bg-[#e8e8e6] md:flex md:items-center md:justify-center md:bg-[#ececea] md:py-6">
       <div
         id="phone"
         className="relative mx-auto h-dvh w-full overflow-hidden bg-paper md:h-[min(860px,calc(100dvh-48px))] md:w-[396px] md:rounded-[56px] md:shadow-[0_0_0_11px_#111,0_0_0_13px_#3a3a3a,0_40px_80px_-20px_rgba(0,0,0,0.45)]"

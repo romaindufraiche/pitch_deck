@@ -11,7 +11,8 @@ import { frDate } from "@/lib/time";
 import type { WardrobeItem } from "@/lib/types";
 
 const GROUPS: [string, (i: WardrobeItem) => boolean][] = [
-  ["Chemises", (i) => i.category === "chemises"],
+  ["Chemises & blouses", (i) => i.category === "chemises"],
+  ["Robes & jupes", (i) => i.category === "robes" || i.category === "jupes"],
   ["T-shirts & polos", (i) => i.category === "hauts"],
   ["Pulls & sweats", (i) => i.category === "maille"],
   ["Pantalons & jeans", (i) => i.category === "pantalons"],
@@ -23,7 +24,11 @@ const GROUPS: [string, (i: WardrobeItem) => boolean][] = [
 /** Pièces déjà importées que la vidéo retrouve aussi (dédoublonnage). Les 3 premières sont présentées à l'utilisateur. */
 const DUPES = ["Blazer Faubourg", "Jean K1 Slim délavé", "Pantalon à pinces Flanelle", "Chemise Oxford Saint-Germain", "Jean K1 Slim selvedge brut", "Derby Lucien", "T-shirt Essentiel", "T-shirt Essentiel noir", "Chemise Popeline rayée Opéra", "Pull col rond Mérinos", "Chino Luberon anthracite", "Chelsea Marcel", "Polo Sorgue"];
 /** extraits réels de la vidéo (scripts : recadrage ffmpeg) pour les doublons présentés */
+/** Léa : pièces importées retrouvées dans la vidéo */
+const DUPES_LEA = ["Veste de tailleur Opéra", "Pantalon large Calanque", "Blazer Palais", "Jean K5 Flare brut", "Pull col bateau Alpilles", "Jean K6 Boyfriend blanc", "Bottines Lucie"];
 const DUPE_SHOWN: Record<string, { text: string; img: string }> = {
+  "Veste de tailleur Opéra": { text: "Cette veste sombre", img: "/images/scan/blazer.jpg" },
+  "Pantalon large Calanque": { text: "Ce pantalon clair", img: "/images/scan/pantalon.jpg" },
   "Blazer Faubourg": { text: "Ce blazer marine", img: "/images/scan/blazer.jpg" },
   "Jean K1 Slim délavé": { text: "Ce jean délavé", img: "/images/scan/jean.jpg" },
   "Pantalon à pinces Flanelle": { text: "Ce pantalon gris clair", img: "/images/scan/pantalon.jpg" },
@@ -49,8 +54,8 @@ export default function Scan() {
   const videoRef = useRef<HTMLVideoElement>(null);
   useStatusTone(phase === "analyse" ? "light" : "dark");
 
-  const videoItems = useMemo(() => baseWardrobe.filter((i) => i.source === "video"), []);
-  const dupes = useMemo(() => DUPES.map((n) => baseWardrobe.find((i) => i.name === n)!).filter((i) => i && i.brandId && st.connected.includes(i.brandId)), [st.connected]);
+  const videoItems = useMemo(() => baseWardrobe.filter((i) => i.persona === st.persona && i.source === "video"), [st.persona]);
+  const dupes = useMemo(() => (st.persona === "lea" ? DUPES_LEA : DUPES).map((n) => baseWardrobe.find((i) => i.persona === st.persona && i.name === n)!).filter((i) => i && i.brandId && st.connected.includes(i.brandId)), [st.connected, st.persona]);
   const [qty, setQty] = useState<Record<string, number>>({});
   const groups = useMemo(() => GROUPS.map(([label, fn]) => {
     const n = videoItems.filter(fn).reduce((s, i) => s + i.quantity, 0) + dupes.filter(fn).length;
@@ -89,9 +94,9 @@ export default function Scan() {
         <div className="flex items-center px-4 pt-1"><button aria-label="Retour" onClick={() => router.back()} className="tap rounded-full p-1.5"><ChevronLeft className="size-5" /></button></div>
         <div className="min-h-0 flex-1 overflow-y-auto px-6 no-scrollbar">
           <p className="eyebrow mt-2">Étape 3 sur 3</p>
-          <h1 className="mt-2 font-display text-[34px] font-medium leading-[1.05]">Filmez votre dressing en 30 secondes</h1>
+          <h1 className="mt-2 font-display text-[25px] leading-tight">Filmez votre dressing en 30 secondes</h1>
           <p className="mt-2 text-[14px] leading-relaxed text-mute">Notre IA repère chaque pièce, sa catégorie et sa couleur. Pas besoin de tout sortir.</p>
-          <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-3xl">
+          <div className="relative mt-6 aspect-[4/3] overflow-hidden rounded-2xl">
             <img src="/video/dressing-poster.jpg" alt="" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-x-6 top-1/2 h-px -translate-y-1/2 bg-paper/60" />
@@ -128,7 +133,7 @@ export default function Scan() {
         </div>
         <div className="absolute inset-x-3 rounded-[26px] bg-paper/95 p-4 backdrop-blur" style={{ bottom: "calc(var(--bottom) + 8px)" }}>
           <div className="flex items-baseline justify-between">
-            <p className="font-display text-[40px] leading-none tabular-nums">{counted}<span className="ml-2 font-sans text-[13px] text-mute">articles détectés</span></p>
+            <p className="font-display text-[30px] leading-tight tabular-nums">{counted}<span className="ml-2 font-sans text-[13px] text-mute">articles détectés</span></p>
             <Sparkles className="size-5 text-rust" />
           </div>
           <div className="mt-3 h-[3px] overflow-hidden rounded-full bg-line"><div className="h-full bg-ink transition-[width]" style={{ width: `${progress * 100}%` }} /></div>
@@ -148,9 +153,9 @@ export default function Scan() {
     <div className="absolute inset-0 overflow-y-auto bg-paper no-scrollbar" style={{ paddingTop: "var(--top)" }}>
       <div className="px-6 pb-6">
         <p className="eyebrow mt-4">Analyse terminée</p>
-        <h1 className="mt-2 font-display text-[40px] font-medium leading-none">~{total} articles détectés</h1>
+        <h1 className="mt-2 font-display text-[30px] leading-tight">~{total} articles détectés</h1>
         <p className="mt-2 text-[13.5px] text-mute">Ajustez si besoin : les quantités sont des estimations.</p>
-        <ul className="mt-5 divide-y divide-line rounded-3xl bg-white px-4">
+        <ul className="mt-5 divide-y divide-line rounded-2xl bg-white px-4">
           {groups.map((g) => (
             <li key={g.label} className="flex items-center justify-between py-3">
               <span className="text-[14px]">{g.label}</span>
@@ -171,7 +176,7 @@ export default function Scan() {
               {dupes.filter((d) => DUPE_SHOWN[d.name]).slice(0, 3).map((d) => {
                 const choice = st.merges[d.id];
                 return (
-                  <div key={d.id} className="rounded-3xl bg-white p-4">
+                  <div key={d.id} className="rounded-2xl bg-white p-4">
                     <div className="flex items-center gap-3">
                       <span className="relative shrink-0"><img src={DUPE_SHOWN[d.name].img} alt="" className="size-14 rounded-xl object-cover" /><span className="absolute -bottom-1 left-1 rounded bg-ink px-1 text-[8.5px] font-medium text-paper">VIDÉO</span></span>
                       <span className="text-mute">→</span>
@@ -193,9 +198,9 @@ export default function Scan() {
           </>
         )}
 
-        <div className="mt-7 rounded-3xl bg-ink p-5 text-paper">
-          <Sparkles className="size-5 text-[#e2a98c]" />
-          <p className="mt-3 font-display text-[26px] leading-tight">Votre dressing est prêt.</p>
+        <div className="mt-7 rounded-2xl bg-ink p-5 text-paper">
+          <Sparkles className="size-5 text-paper" />
+          <p className="mt-3 font-display text-[19px] leading-tight">Votre dressing est prêt.</p>
           <p className="mt-2 text-[13.5px] leading-relaxed text-paper/75">Vous complèterez les détails au fil de l&apos;eau, pas besoin de tout saisir maintenant.</p>
         </div>
         <button onClick={finish} className="tap mt-5 h-[52px] w-full rounded-full bg-ink text-[15px] font-medium text-paper" style={{ marginBottom: "var(--bottom)" }}>Découvrir mon dressing</button>

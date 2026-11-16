@@ -1,6 +1,7 @@
 [
  {
   "id": "LB2505-48213",
+  "persona": "thomas",
   "brandId": "bastide",
   "date": "2025-05-28",
   "items": [
@@ -27,6 +28,7 @@
  },
  {
   "id": "MV-25-031847",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2025-06-03",
   "items": [
@@ -49,6 +51,7 @@
  },
  {
   "id": "MV-25-032266",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2025-06-14",
   "items": [
@@ -67,6 +70,7 @@
  },
  {
   "id": "KD-104927",
+  "persona": "thomas",
   "brandId": "kolm",
   "date": "2025-07-19",
   "items": [
@@ -89,6 +93,7 @@
  },
  {
   "id": "KD-105311",
+  "persona": "thomas",
   "brandId": "kolm",
   "date": "2025-07-30",
   "items": [
@@ -107,6 +112,7 @@
  },
  {
   "id": "LB2509-61877",
+  "persona": "thomas",
   "brandId": "bastide",
   "date": "2025-09-10",
   "items": [
@@ -141,6 +147,7 @@
  },
  {
   "id": "MV-25-047120",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2025-10-21",
   "items": [
@@ -167,6 +174,7 @@
  },
  {
   "id": "AF-2511-0718",
+  "persona": "thomas",
   "brandId": "ferrand",
   "date": "2025-11-29",
   "items": [
@@ -193,6 +201,7 @@
  },
  {
   "id": "LB2601-70452",
+  "persona": "thomas",
   "brandId": "bastide",
   "date": "2026-01-15",
   "items": [
@@ -231,6 +240,7 @@
  },
  {
   "id": "MV-26-012904",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2026-03-12",
   "items": [
@@ -257,6 +267,7 @@
  },
  {
   "id": "KD-109842",
+  "persona": "thomas",
   "brandId": "kolm",
   "date": "2026-04-22",
   "items": [
@@ -283,6 +294,7 @@
  },
  {
   "id": "AF-2605-0233",
+  "persona": "thomas",
   "brandId": "ferrand",
   "date": "2026-05-17",
   "items": [
@@ -309,6 +321,7 @@
  },
  {
   "id": "MV-26-038511",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2026-09-02",
   "items": [
@@ -335,6 +348,7 @@
  },
  {
   "id": "MV-26-044379",
+  "persona": "thomas",
   "brandId": "verac",
   "date": "2026-10-08",
   "items": [
@@ -348,6 +362,282 @@
    }
   ],
   "total": 135,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-25-021456",
+  "persona": "lea",
+  "brandId": "verac",
+  "date": "2025-04-10",
+  "items": [
+   {
+    "productId": "verac-f-blouse-haussmann",
+    "name": "Blouse Haussmann",
+    "size": "36",
+    "color": "Blanc",
+    "price": 115,
+    "qty": 1,
+    "returned": {
+     "reason": "Trop petit",
+     "date": "2025-04-16"
+    }
+   }
+  ],
+  "total": 115,
+  "shipping": 0,
+  "status": "remboursée"
+ },
+ {
+  "id": "MV-25-022103",
+  "persona": "lea",
+  "brandId": "verac",
+  "date": "2025-04-19",
+  "items": [
+   {
+    "productId": "verac-f-blouse-haussmann",
+    "name": "Blouse Haussmann",
+    "size": "38",
+    "color": "Blanc",
+    "price": 115,
+    "qty": 1
+   }
+  ],
+  "total": 115,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "KD-103388",
+  "persona": "lea",
+  "brandId": "kolm",
+  "date": "2025-06-02",
+  "items": [
+   {
+    "productId": "kolm-f-flare-brut",
+    "name": "Jean K5 Flare brut",
+    "size": "W27 L30",
+    "color": "Brut",
+    "price": 139,
+    "qty": 1
+   }
+  ],
+  "total": 139,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "LB2509-60214",
+  "persona": "lea",
+  "brandId": "bastide",
+  "date": "2025-09-14",
+  "items": [
+   {
+    "productId": "bastide-f-pantalon-taupe",
+    "name": "Pantalon large Calanque",
+    "size": "36",
+    "color": "Taupe",
+    "price": 65,
+    "qty": 1
+   },
+   {
+    "productId": "bastide-f-pull-bateau",
+    "name": "Pull col bateau Alpilles",
+    "size": "S",
+    "color": "Sable",
+    "price": 69,
+    "qty": 1
+   }
+  ],
+  "total": 134,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "AF-2510-0412",
+  "persona": "lea",
+  "brandId": "ferrand",
+  "date": "2025-10-03",
+  "items": [
+   {
+    "productId": "ferrand-f-bottines-lucie",
+    "name": "Bottines Lucie",
+    "size": "37.5",
+    "color": "Noir",
+    "price": 189,
+    "qty": 1
+   },
+   {
+    "productId": "ferrand-f-sac-valmy",
+    "name": "Sac Valmy femme",
+    "size": "TU",
+    "color": "Noir",
+    "price": 289,
+    "qty": 1
+   }
+  ],
+  "total": 478,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-25-049871",
+  "persona": "lea",
+  "brandId": "verac",
+  "date": "2025-11-20",
+  "items": [
+   {
+    "productId": "verac-f-tailleur-opera-veste",
+    "name": "Veste de tailleur Opéra",
+    "size": "38",
+    "color": "Noir",
+    "price": 239,
+    "qty": 1
+   },
+   {
+    "productId": "verac-f-tailleur-opera-pantalon",
+    "name": "Pantalon de tailleur Opéra",
+    "size": "38",
+    "color": "Noir",
+    "price": 139,
+    "qty": 1
+   }
+  ],
+  "total": 378,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "BC-26-00731",
+  "persona": "lea",
+  "brandId": "bitume",
+  "date": "2026-02-11",
+  "items": [
+   {
+    "productId": "bitume-hoodie-sable",
+    "name": "Hoodie Heavy sable",
+    "size": "S",
+    "color": "Sable",
+    "price": 89,
+    "qty": 1
+   },
+   {
+    "productId": "bitume-cargo-kaki",
+    "name": "Cargo Parachute kaki",
+    "size": "S",
+    "color": "Kaki",
+    "price": 85,
+    "qty": 1
+   }
+  ],
+  "total": 174,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "LB2603-73390",
+  "persona": "lea",
+  "brandId": "bastide",
+  "date": "2026-03-28",
+  "items": [
+   {
+    "productId": "bastide-f-robe-pois",
+    "name": "Robe Mistral",
+    "size": "36",
+    "color": "Noir",
+    "price": 75,
+    "qty": 1
+   }
+  ],
+  "total": 75,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "KD-110274",
+  "persona": "lea",
+  "brandId": "kolm",
+  "date": "2026-05-06",
+  "items": [
+   {
+    "productId": "kolm-f-jean-blanc",
+    "name": "Jean K6 Boyfriend blanc",
+    "size": "W28 L30",
+    "color": "Blanc",
+    "price": 129,
+    "qty": 1,
+    "returned": {
+     "reason": "Trop large à la taille",
+     "date": "2026-05-12"
+    }
+   }
+  ],
+  "total": 129,
+  "shipping": 0,
+  "status": "remboursée"
+ },
+ {
+  "id": "KD-110519",
+  "persona": "lea",
+  "brandId": "kolm",
+  "date": "2026-05-15",
+  "items": [
+   {
+    "productId": "kolm-f-jean-blanc",
+    "name": "Jean K6 Boyfriend blanc",
+    "size": "W27 L30",
+    "color": "Blanc",
+    "price": 129,
+    "qty": 1
+   }
+  ],
+  "total": 129,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "AF-2606-0587",
+  "persona": "lea",
+  "brandId": "ferrand",
+  "date": "2026-06-20",
+  "items": [
+   {
+    "productId": "ferrand-f-sandales-nude",
+    "name": "Sandales Rose",
+    "size": "37.5",
+    "color": "Nude",
+    "price": 179,
+    "qty": 1
+   }
+  ],
+  "total": 179,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-26-040122",
+  "persona": "lea",
+  "brandId": "verac",
+  "date": "2026-09-15",
+  "items": [
+   {
+    "productId": "verac-f-blazer-palais",
+    "name": "Blazer Palais",
+    "size": "38",
+    "color": "Beige",
+    "price": 229,
+    "qty": 1
+   },
+   {
+    "productId": "verac-f-jupe-plissee",
+    "name": "Jupe plissée Concorde",
+    "size": "38",
+    "color": "Écru",
+    "price": 125,
+    "qty": 1
+   }
+  ],
+  "total": 354,
   "shipping": 0,
   "status": "livrée"
  }

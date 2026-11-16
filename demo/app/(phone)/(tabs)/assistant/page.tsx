@@ -5,12 +5,11 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp, Check, RotateCcw, Sparkles } from "lucide-react";
 import { useStore, wardrobeStateOf, type ChatMessage } from "@/lib/store";
-import { useToday, useWardrobe } from "@/lib/hooks";
+import { usePersona, useToday, useWardrobe } from "@/lib/hooks";
 import { streamAssistant } from "@/lib/assistant-client";
-import { SUGGESTIONS } from "@/lib/scenarios";
+import { suggestionsFor } from "@/lib/scenarios";
 import { CardView } from "@/components/chat-cards";
 import { TAB_BAR_SPACE } from "@/components/tab-bar";
-import { user } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 /** Rendu minimal : **gras** et paragraphes. */
@@ -47,6 +46,8 @@ function AssistantInner() {
   const q = useSearchParams().get("q");
   const today = useToday();
   const items = useWardrobe();
+  const user = usePersona();
+  const SUGGESTIONS = suggestionsFor(user.id);
   const chat = useStore((s) => s.chat);
   const pushMessage = useStore((s) => s.pushMessage);
   const patchMessage = useStore((s) => s.patchMessage);
@@ -110,7 +111,7 @@ function AssistantInner() {
       <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto px-4 pt-4 no-scrollbar" style={{ paddingBottom: 16 }}>
         {chat.length === 0 && (
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="px-1 pt-6">
-            <p className="font-display text-[34px] font-medium leading-[1.05]">Bonjour {user.firstName},<br />que puis-je préparer ?</p>
+            <p className="font-display text-[25px] leading-tight">Bonjour {user.firstName},<br />que puis-je préparer ?</p>
             <p className="mt-3 text-[13.5px] leading-relaxed text-mute">Une tenue pour une occasion, un accord, une valise, ou ce qui manque vraiment à votre dressing.</p>
             <div className="mt-6 space-y-2">
               {SUGGESTIONS.map((s, k) => (

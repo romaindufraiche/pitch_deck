@@ -7,8 +7,8 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import type { Brand, BrandId, Category, CalendarTemplate, Color, Order, Product, UserProfile, WardrobeItem, WearDay, WeatherDay } from "../lib/types";
-import { COLLARS, JACKETS, LETTERS, SHOES, TROUSERS, recommendSize } from "../lib/sizing";
+import type { Brand, BrandId, Category, CalendarTemplate, Color, Gender, Order, PersonaId, Product, Style, UserProfile, WardrobeItem, WearDay, WeatherDay } from "../lib/types";
+import { COLLARS, FEMME, JACKETS, LETTERS, SHOES_MEN, SHOES_WOMEN, TROUSERS, recommendSize } from "../lib/sizing";
 
 // ───────────────────────── utilitaires ─────────────────────────
 function mulberry32(seed: number) {
@@ -19,7 +19,7 @@ function mulberry32(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
-const rnd = mulberry32(20261116);
+let rnd = mulberry32(20261116);
 const int = (a: number, b: number) => Math.floor(a + rnd() * (b - a + 1));
 const round1 = (n: number) => Math.round(n * 10) / 10;
 const img = (k: string) => `/images/px/${k}.jpg`;
@@ -55,19 +55,26 @@ const C: Record<string, Color> = {
   corail: { name: "Corail", hex: "#F07C66" },
   royal: { name: "Bleu roi", hex: "#2F5BA7" },
   mastic: { name: "Mastic", hex: "#D9D1C2" },
+  taupe: { name: "Taupe", hex: "#A99C8E" },
+  lavande: { name: "Lavande", hex: "#B9C3E3" },
+  blush: { name: "Rose blush", hex: "#EBCFC6" },
+  satin: { name: "Bleu acier", hex: "#6F8FBF" },
+  jaune: { name: "Jaune moutarde", hex: "#D9B33B" },
+  dore: { name: "Doré", hex: "#C9A963" },
+  nude: { name: "Nude", hex: "#D8BFA6" },
 };
 
 // ───────────────────────── marques ─────────────────────────
 const brands: Brand[] = [
   {
-    id: "verac", name: "Maison Vérac", tagline: "Chemisier-tailleur depuis 1987", positioning: "Chemises et tailleur premium, coupes ajustées, tissus italiens et portugais.",
+    id: "verac", name: "Maison Vérac", tagline: "Chemisier-tailleur depuis 1987", positioning: "Chemises, tailleurs et robes premium pour femme et homme, tissus italiens et portugais.",
     priceRange: [95, 260], color: "#1F2A44", ink: "#F4EFE6", logo: { font: "serif", weight: 500, tracking: 0.18, uppercase: true },
     members: 12400, founded: 1987, city: "Lyon",
     sizeGuide: {
       fit: "petit", offset: 1, shoeOffset: 0,
       summary: "Taille petit",
-      advice: "Nos coupes sont ajustées : prenez une taille au-dessus de votre taille habituelle (chemises : un tour de cou au-dessus).",
-      systems: ["tour de cou (37–45)", "vestes (44–56)", "pantalons (36–48)", "maille (XS–XXL)"],
+      advice: "Nos coupes sont ajustées : prenez une taille au-dessus de votre taille habituelle (chemises homme : un tour de cou au-dessus ; femme : 38 si vous portez 36).",
+      systems: ["homme : tour de cou (37–45), vestes (44–56), pantalons (36–48)", "femme : 34–46", "maille (XS–XXL)"],
       table: [
         { label: "Tour de cou", values: { "Taille habituelle 38": "39", "39": "40", "40": "41", "41": "42" } },
         { label: "Veste", values: { "Taille habituelle 46": "48", "48": "50", "50": "52" } },
@@ -77,7 +84,7 @@ const brands: Brand[] = [
     dataRequested: ["Historique de commandes (36 mois)", "Tailles achetées et gardées", "Retours et motifs", "Fiches produits (photos, matières)"],
   },
   {
-    id: "bastide", name: "Ligne Bastide", tagline: "Les essentiels, bien faits", positioning: "Basiques casual en matières durables : t-shirts, sweats, chinos.",
+    id: "bastide", name: "Ligne Bastide", tagline: "Les essentiels, bien faits", positioning: "Basiques casual mixtes en matières durables : t-shirts, mailles, chinos, robes et jupes.",
     priceRange: [29, 89], color: "#C8553D", ink: "#FFF8F0", logo: { font: "sans", weight: 700, tracking: -0.02, uppercase: false },
     members: 38900, founded: 2014, city: "Marseille",
     sizeGuide: {
@@ -92,7 +99,7 @@ const brands: Brand[] = [
     dataRequested: ["Historique de commandes", "Tailles achetées", "Retours et motifs"],
   },
   {
-    id: "kolm", name: "Kolm Denim", tagline: "Selvedge, coupé à la main", positioning: "Jeans selvedge japonais et coupes ajustées, ateliers en Europe.",
+    id: "kolm", name: "Kolm Denim", tagline: "Selvedge, coupé à la main", positioning: "Jeans selvedge japonais pour femme et homme, ateliers en Europe.",
     priceRange: [110, 180], color: "#24324F", ink: "#E9E4D8", logo: { font: "condensed", weight: 800, tracking: 0.06, uppercase: true },
     members: 9750, founded: 2016, city: "Roubaix",
     sizeGuide: {
@@ -107,7 +114,7 @@ const brands: Brand[] = [
     dataRequested: ["Historique de commandes", "Tailles W/L gardées", "Retours et échanges"],
   },
   {
-    id: "norrland", name: "Norrland Supply", tagline: "Pour les jours sans soleil", positioning: "Vestes et manteaux techniques, imperméables et respirants.",
+    id: "norrland", name: "Norrland Supply", tagline: "Pour les jours sans soleil", positioning: "Vestes et manteaux techniques mixtes, imperméables et respirants.",
     priceRange: [140, 390], color: "#2F4A3E", ink: "#EEF0E8", logo: { font: "wide", weight: 600, tracking: 0.32, uppercase: true },
     members: 15200, founded: 2011, city: "Annecy",
     sizeGuide: {
@@ -119,7 +126,7 @@ const brands: Brand[] = [
     dataRequested: ["Historique de commandes", "Tailles achetées", "Retours et motifs"],
   },
   {
-    id: "ferrand", name: "Atelier Ferrand", tagline: "Bottier à Romans-sur-Isère", positioning: "Chaussures en cuir cousues Goodyear et sneakers en cuir pleine fleur.",
+    id: "ferrand", name: "Atelier Ferrand", tagline: "Bottier à Romans-sur-Isère", positioning: "Chaussures et maroquinerie en cuir, pour femme et homme.",
     priceRange: [120, 320], color: "#5A3A22", ink: "#F6EEE2", logo: { font: "serif", weight: 600, tracking: 0.04, uppercase: false, italic: true },
     members: 11300, founded: 1952, city: "Romans-sur-Isère",
     sizeGuide: {
@@ -131,7 +138,7 @@ const brands: Brand[] = [
     dataRequested: ["Historique de commandes", "Pointures gardées", "Retours et motifs"],
   },
   {
-    id: "rivage", name: "Studio Rivage", tagline: "Bouger, respirer", positioning: "Sport et athleisure : running, salle, récupération.",
+    id: "rivage", name: "Studio Rivage", tagline: "Bouger, respirer", positioning: "Sport et athleisure mixtes : running, salle, yoga, récupération.",
     priceRange: [35, 120], color: "#2C6E8F", ink: "#F1F7FA", logo: { font: "sans", weight: 300, tracking: 0.42, uppercase: true },
     members: 21600, founded: 2019, city: "Biarritz",
     sizeGuide: {
@@ -142,19 +149,31 @@ const brands: Brand[] = [
     },
     dataRequested: ["Historique de commandes", "Tailles achetées", "Retours et motifs"],
   },
+  {
+    id: "bitume", name: "Bitume Club", tagline: "Fait pour la ville", positioning: "Streetwear mixte : hoodies épais, cargos, t-shirts lourds, pièces oversize.",
+    priceRange: [35, 120], color: "#1A1A1A", ink: "#D4FF3A", logo: { font: "condensed", weight: 700, tracking: 0.02, uppercase: true },
+    members: 18700, founded: 2020, city: "Montreuil",
+    sizeGuide: {
+      fit: "normal", offset: 0, shoeOffset: 0, summary: "Coupe oversize, taille normalement",
+      advice: "Nos coupes sont volontairement amples : prenez votre taille habituelle pour l'effet oversize, une taille en dessous pour un tombé classique.",
+      systems: ["XS–XXL, mixte"],
+      table: [{ label: "Hoodie", values: { S: "112 cm de tour", M: "118 cm", L: "124 cm" } }],
+    },
+    dataRequested: ["Historique de commandes", "Tailles achetées", "Retours et motifs"],
+  },
 ];
 const brandById = Object.fromEntries(brands.map((b) => [b.id, b])) as Record<BrandId, Brand>;
 
 // ───────────────────────── catalogues ─────────────────────────
 type Spec = {
   key: string; name: string; cat: Category; sub: string; img: string; color: Color; material: string; fit: string;
-  price: number; desc: string; season?: string; formality?: number; others?: Color[]; sizes?: string[];
+  price: number; desc: string; season?: string; formality?: number; others?: Color[]; sizes?: string[]; gender?: Gender; styles?: Style[];
 };
 
 const S = (key: string, name: string, cat: Category, sub: string, imgKey: string, color: Color, material: string, fit: string, price: number, desc: string, extra: Partial<Spec> = {}): Spec =>
   ({ key, name, cat, sub, img: imgKey, color, material, fit, price, desc, ...extra });
 
-const catalogSpecs: Record<BrandId, Spec[]> = {
+const catalogSpecs: Record<Exclude<BrandId, "bitume">, Spec[]> = {
   verac: [
     S("oxford-sg", "Chemise Oxford Saint-Germain", "chemises", "Chemise oxford", "ch-oxford-blue", C.ciel, "100 % coton oxford 140 g/m², tissé au Portugal", "Coupe ajustée, col boutonné", 115, "L'oxford que l'on garde dix ans : une toile dense qui s'adoucit à chaque lavage, un col boutonné qui tient sans cravate.", { formality: 3, others: [C.blanc, C.rose] }),
     S("popeline-haussmann", "Chemise Popeline Haussmann", "chemises", "Chemise habillée", "ch-white-poplin", C.blanc, "100 % coton popeline double retors 120/2", "Coupe ajustée, col italien", 125, "La chemise blanche de référence : popeline double retors au tomber net, col italien qui se porte avec ou sans cravate.", { formality: 5, others: [C.ciel] }),
@@ -322,12 +341,20 @@ const catalogSpecs: Record<BrandId, Spec[]> = {
 };
 
 // ───────────────────────── génération des produits ─────────────────────────
-const prefix: Record<BrandId, string> = { verac: "MV", bastide: "LB", kolm: "KD", norrland: "NS", ferrand: "AF", rivage: "SR" };
-const catCode: Record<Category, string> = { hauts: "HT", chemises: "CH", maille: "MA", pantalons: "PA", vestes: "VE", costumes: "CO", chaussures: "CS", accessoires: "AC", sport: "SP" };
+const prefix: Record<BrandId, string> = { verac: "MV", bastide: "LB", kolm: "KD", norrland: "NS", ferrand: "AF", rivage: "SR", bitume: "BC" };
+const catCode: Record<Category, string> = { hauts: "HT", chemises: "CH", maille: "MA", pantalons: "PA", vestes: "VE", costumes: "CO", chaussures: "CS", accessoires: "AC", sport: "SP", robes: "RO", jupes: "JU" };
 
+const JEANS_WOMEN = ["W24 L30", "W25 L30", "W26 L30", "W27 L30", "W28 L30", "W29 L30", "W27 L32", "W28 L32"];
 function sizesForSpec(b: BrandId, s: Spec): string[] {
   if (s.sizes) return s.sizes;
-  if (s.cat === "chaussures") return SHOES.slice(0, 13);
+  if (s.gender === "femme") {
+    if (s.cat === "chaussures") return SHOES_WOMEN;
+    if (b === "kolm" && s.cat === "pantalons") return JEANS_WOMEN;
+    if (b === "norrland" || b === "bitume" || b === "rivage") return LETTERS.slice(0, 5);
+    if (["vestes", "costumes", "pantalons", "jupes", "robes"].includes(s.cat) || b === "verac") return FEMME;
+    return LETTERS.slice(0, 5);
+  }
+  if (s.cat === "chaussures") return SHOES_MEN;
   if (b === "verac" && s.cat === "chemises") return COLLARS;
   if (b === "verac" && (s.cat === "vestes" || s.cat === "costumes") && !/Pantalon/.test(s.name)) return JACKETS;
   if (b === "verac" && (s.cat === "pantalons" || /Pantalon/.test(s.name))) return TROUSERS;
@@ -335,9 +362,20 @@ function sizesForSpec(b: BrandId, s: Spec): string[] {
   return LETTERS;
 }
 
+function stylesFor(b: BrandId, s: Spec): Style[] {
+  if (s.styles) return s.styles;
+  if (b === "bitume") return ["street", "casual"];
+  if (b === "rivage" || s.cat === "sport") return ["sport"];
+  if (s.cat === "costumes") return ["costume", "corporate"];
+  if ((s.formality ?? 3) >= 4) return ["corporate"];
+  if (s.sub === "Jean" || /hoodie|sweat/i.test(s.sub)) return ["casual", "street"];
+  return ["casual"];
+}
+
 const products: Product[] = [];
-for (const b of brands) {
-  catalogSpecs[b.id].forEach((s, i) => {
+function addProducts(b: Brand, specs: Spec[], offset = 0) {
+  specs.forEach((s, j) => {
+    const i = j + offset;
     const sizes = sizesForSpec(b.id, s).map((size) => ({ size, stock: rnd() < 0.12 ? 0 : int(1, 18) }));
     const baseReturn = b.id === "verac" ? 0.27 : b.id === "kolm" ? 0.24 : b.id === "ferrand" ? 0.19 : b.id === "norrland" ? 0.16 : 0.13;
     products.push({
@@ -347,6 +385,8 @@ for (const b of brands) {
       name: s.name,
       category: s.cat,
       subcategory: s.sub,
+      gender: s.gender ?? (["bonnet-cote", "echarpe-laine", "lund", "weekender", "tote"].includes(s.key) ? "mixte" : "homme"),
+      styles: stylesFor(b.id, s),
       description: s.desc,
       material: s.material,
       fit: s.fit,
@@ -363,6 +403,7 @@ for (const b of brands) {
     });
   });
 }
+for (const b of brands) if (b.id !== "bitume") addProducts(b, catalogSpecs[b.id as Exclude<BrandId, "bitume">]);
 const P = (id: string) => {
   const p = products.find((x) => x.id === id);
   if (!p) throw new Error("produit inconnu " + id);
@@ -371,6 +412,7 @@ const P = (id: string) => {
 
 // ───────────────────────── utilisateur ─────────────────────────
 const user: UserProfile = {
+  id: "thomas", gender: "homme", styles: ["casual", "corporate", "costume"],
   firstName: "Thomas", lastName: "Lefèvre", age: 28, job: "Consultant junior, cabinet de conseil en stratégie", city: "Paris 11e",
   heightCm: 180, weightKg: 74, build: "Carrure normale",
   style: "Smart casual, couleurs neutres, pas de logos visibles",
@@ -399,8 +441,8 @@ const orderDefs: { id: string; brandId: BrandId; date: string; lines: OrderLine[
   { id: "MV-26-038511", brandId: "verac", date: "2026-09-02", lines: [{ pid: "verac-faubourg", size: "50" }, { pid: "verac-cravate-tricot", size: "TU" }] },
   { id: "MV-26-044379", brandId: "verac", date: "2026-10-08", lines: [{ pid: "verac-pinces-flanelle", size: "42" }] },
 ];
-const shippingFor: Record<BrandId, number> = { verac: 0, bastide: 4.9, kolm: 0, norrland: 0, ferrand: 0, rivage: 4.9 };
-const orders: Order[] = orderDefs.map((o) => {
+const shippingFor: Record<BrandId, number> = { verac: 0, bastide: 4.9, kolm: 0, norrland: 0, ferrand: 0, rivage: 4.9, bitume: 4.9 };
+const buildOrder = (persona: PersonaId) => (o: (typeof orderDefs)[number]): Order => {
   const items = o.lines.map((l) => {
     const p = P(l.pid);
     return { productId: p.id, name: p.name, size: l.size, color: p.color.name, price: p.price, qty: 1, returned: l.returned };
@@ -408,8 +450,9 @@ const orders: Order[] = orderDefs.map((o) => {
   const total = items.reduce((s, i) => s + i.price, 0);
   const shipping = total >= 60 ? 0 : shippingFor[o.brandId];
   const allReturned = items.every((i) => i.returned);
-  return { id: o.id, brandId: o.brandId, date: o.date, items, total, shipping, status: allReturned ? "remboursée" : items.some((i) => i.returned) ? "retournée partiellement" : "livrée" };
-});
+  return { id: o.id, persona, brandId: o.brandId, date: o.date, items, total, shipping, status: allReturned ? "remboursée" : items.some((i) => i.returned) ? "retournée partiellement" : "livrée" };
+};
+const orders: Order[] = orderDefs.map(buildOrder("thomas"));
 
 // ───────────────────────── garde-robe ─────────────────────────
 const items: WardrobeItem[] = [];
@@ -423,7 +466,7 @@ for (const o of orders) {
     const p = P(l.productId);
     if (items.some((i) => i.productId === p.id)) continue;
     items.push({
-      id: nextId(), source: "import", category: p.category, subcategory: p.subcategory, name: p.name, brandId: p.brandId,
+      id: nextId(), persona: "thomas", source: "import", category: p.category, subcategory: p.subcategory, name: p.name, brandId: p.brandId,
       brandName: brandById[p.brandId].name, color: p.color, material: p.material, size: l.size, fit: p.fit, season: p.season,
       formality: p.formality, purchaseDate: o.date, price: p.price, ref: p.ref, productId: p.id, orderId: o.id,
       baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: p.image, quantity: 1, missing: [],
@@ -449,7 +492,7 @@ const photoDates = ["2024-12-21", "2025-01-11", "2026-01-24", "2025-04-05", "202
 photoDefs.forEach(([pid, size, note], i) => {
   const p = P(pid);
   items.push({
-    id: nextId(), source: "photo", category: p.category, subcategory: p.subcategory, name: p.name, brandId: p.brandId,
+    id: nextId(), persona: "thomas", source: "photo", category: p.category, subcategory: p.subcategory, name: p.name, brandId: p.brandId,
     brandName: brandById[p.brandId].name, color: p.color, material: p.material, size, fit: p.fit, season: p.season,
     formality: p.formality, purchaseDate: photoDates[i], price: note === "Cadeau" || note.startsWith("Cadeau") ? null : p.price, ref: null, productId: null, orderId: null,
     baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: p.image, quantity: 1, missing: [], notes: note,
@@ -491,7 +534,7 @@ const videoDefs: [Category, string, string, Color, string, number, number][] = [
 ];
 for (const [cat, sub, name, color, im, qty, formality] of videoDefs) {
   items.push({
-    id: nextId(), source: "video", category: cat, subcategory: sub, name, brandId: null, brandName: "Marque inconnue", color,
+    id: nextId(), persona: "thomas", source: "video", category: cat, subcategory: sub, name, brandId: null, brandName: "Marque inconnue", color,
     material: null, size: null, fit: null, season: "toutes saisons", formality, purchaseDate: null, price: null, ref: null, productId: null,
     orderId: null, baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: img(im), quantity: qty,
     missing: ["marque", "taille", "matière", "date d'achat"],
@@ -653,25 +696,238 @@ const brandDashboard = {
   })),
 };
 
+// ───────────────────────── version mixte : catalogues femme et streetwear ─────────────────────────
+// Générateur aléatoire séparé : les données de Thomas restent identiques d'une version à l'autre.
+rnd = mulberry32(20261117);
+const F = (key: string, name: string, cat: Category, sub: string, imgKey: string, color: Color, material: string, fit: string, price: number, desc: string, extra: Partial<Spec> = {}): Spec =>
+  S(key, name, cat, sub, imgKey, color, material, fit, price, desc, { gender: "femme", ...extra });
+
+const femmeSpecs: Record<Exclude<BrandId, "bitume">, Spec[]> = {
+  verac: [
+    F("f-blouse-haussmann", "Blouse Haussmann", "chemises", "Blouse", "wf-blouse-white", C.blanc, "100 % coton popeline double retors", "Coupe droite, col montant noué", 115, "La blouse blanche de référence : popeline nette, col montant à nouer, poignets boutonnés.", { formality: 4 }),
+    F("f-blouse-opera", "Blouse Opéra", "chemises", "Blouse", "wf-blouse-taupe", C.taupe, "100 % viscose crêpe", "Coupe ample, manches bouffantes", 109, "Un crêpe fluide couleur taupe, à rentrer dans un pantalon large ou à porter sur un jean.", { formality: 4 }),
+    F("f-tailleur-opera-veste", "Veste de tailleur Opéra", "costumes", "Veste de tailleur", "wf-suit-black", C.noir, "98 % laine, 2 % élasthanne, doublure cupro", "Coupe ajustée, un bouton", 239, "La veste noire qui structure tout : laine stretch, épaule nette, un seul bouton.", { formality: 5 }),
+    F("f-tailleur-opera-pantalon", "Pantalon de tailleur Opéra", "costumes", "Pantalon de tailleur", "wf-pants-black-flare", C.noir, "98 % laine, 2 % élasthanne", "Coupe évasée, taille haute", 139, "Le pantalon assorti à la veste Opéra, évasé pour allonger la silhouette.", { formality: 5 }),
+    F("f-blazer-palais", "Blazer Palais", "vestes", "Blazer", "wf-blazer-beige", C.beige, "70 % laine, 30 % lin, motif chevrons", "Coupe droite, deux boutons", 229, "Un blazer beige chiné qui passe du bureau au week-end, sur un jean comme sur un pantalon large.", { formality: 4 }),
+    F("f-blazer-faubourg", "Blazer Faubourg femme", "vestes", "Blazer", "wf-blazer-black", C.noir, "100 % laine vierge, doublure cupro", "Coupe cintrée, revers cranté", 235, "Le blazer noir cintré, la pièce corporate qui va avec tout.", { formality: 4 }),
+    F("f-blazer-tuileries", "Blazer Tuileries", "vestes", "Blazer", "wf-blazer-yellow", C.jaune, "Crêpe de laine, revers en satin noir", "Coupe droite", 225, "Un jaune moutarde à revers contrastés, pour sortir du noir sans perdre en allure.", { formality: 4 }),
+    F("f-tailleur-monceau", "Tailleur Monceau", "costumes", "Tailleur", "wf-suit-white", C.ecru, "Laine fresco 4 plis, écru", "Veste croisée, pantalon droit", 349, "Un tailleur écru croisé, léger et respirant, pour les rendez-vous de printemps.", { season: "printemps-été", formality: 5 }),
+    F("f-tailleur-trocadero", "Tailleur Trocadéro femme", "costumes", "Tailleur", "wf-suit-navy", C.marine, "Laine Super 110's tissée à Biella", "Veste oversize, pantalon large", 359, "La version femme de notre costume Trocadéro, en coupe ample.", { formality: 5 }),
+    F("f-tailleur-roi", "Tailleur Roi", "costumes", "Tailleur", "wf-suit-blue", C.royal, "Crêpe de laine stretch", "Veste cintrée, pantalon cigarette", 339, "Un bleu roi franc, pour les présentations où l'on veut marquer les esprits.", { formality: 5 }),
+    F("f-pantalon-saint-honore", "Pantalon large Saint-Honoré", "pantalons", "Pantalon large", "wf-pants-black-wide", C.noir, "Crêpe de laine, taille haute", "Coupe large, pinces", 139, "Le pantalon large noir, à porter avec une blouse ou un simple t-shirt.", { formality: 4 }),
+    F("f-pantalon-marais", "Pantalon large Marais", "pantalons", "Pantalon large", "wf-pants-beige-wide", C.beige, "Laine et lin, taille haute", "Coupe large", 135, "Un beige clair et fluide, pour un look bureau en été.", { season: "printemps-été", formality: 4 }),
+    F("f-jupe-plissee", "Jupe plissée Concorde", "jupes", "Jupe midi", "wf-skirt-pleated-white", C.ecru, "Crêpe plissé soleil", "Midi, taille élastiquée", 125, "Une jupe plissée écrue qui bouge à chaque pas, avec une blouse noire ou un pull fin.", { formality: 4 }),
+    F("f-robe-riviera", "Robe portefeuille Riviera", "robes", "Robe de cérémonie", "wf-dress-blue-satin", C.satin, "Satin de soie lavée", "Portefeuille, mi-longue", 245, "Un satin bleu acier drapé en portefeuille : la robe des mariages et des soirées d'été.", { season: "printemps-été", formality: 5 }),
+    F("f-robe-blush", "Robe Matignon", "robes", "Robe de cérémonie", "wf-dress-blush", C.blush, "Crêpe de viscose", "Portefeuille, sans manches", 219, "Un rose blush poudré, ceinture nouée, pour les cérémonies de jour.", { season: "printemps-été", formality: 5 }),
+    F("f-robe-soir", "Robe Vendôme", "robes", "Robe du soir", "wf-dress-black-satin", C.noir, "Satin stretch", "Ajustée, fendue", 229, "La robe noire du soir, satinée et fendue.", { formality: 5 }),
+    F("f-robe-chemise", "Robe chemise Rivoli", "robes", "Robe chemise", "wf-shirtdress-lavender", C.lavande, "100 % coton popeline", "Droite, longueur genou", 149, "La robe chemise lavande, à porter ceinturée ou ouverte sur un jean.", { formality: 3 }),
+  ],
+  bastide: [
+    F("f-blouse-fleurie", "Blouse Lourmarin", "chemises", "Blouse", "wf-blouse-floral", C.ecru, "100 % viscose imprimée fleurs", "Manches bouffantes, col en V", 49, "Une blouse fleurie légère, à rentrer dans un jean ou une jupe.", { season: "printemps-été", formality: 2 }),
+    F("f-pull-bateau", "Pull col bateau Alpilles", "maille", "Pull", "wf-sweater-beige", C.sable, "60 % coton, 40 % laine", "Ample, épaules dénudées", 69, "Un pull doux couleur sable, à porter sur une épaule.", { season: "automne-hiver", formality: 2 }),
+    F("f-pantalon-taupe", "Pantalon large Calanque", "pantalons", "Pantalon large", "wf-pants-taupe", C.taupe, "Viscose et lin", "Coupe large, taille haute", 65, "Le pantalon large taupe, fluide, avec ceinture à passants.", { formality: 3 }),
+    F("f-pantalon-camel", "Pantalon large Luberon", "pantalons", "Pantalon large", "wf-pants-camel", C.camel, "100 % lin lavé", "Coupe large, cheville", 59, "Le lin camel des week-ends d'été.", { season: "printemps-été", formality: 2 }),
+    F("f-jupe-fleurie", "Jupe midi Durance", "jupes", "Jupe midi", "wf-skirt-floral", C.marron, "Viscose imprimée", "Midi évasée", 45, "Une jupe midi à petites fleurs, pour l'été comme l'hiver avec des bottines.", { formality: 2 }),
+    F("f-jupe-pois", "Jupe midi Sorgue", "jupes", "Jupe midi", "wf-skirt-brown-dots", C.chocolat, "Viscose à pois", "Midi droite, boutonnée", 49, "Une jupe chocolat à pois crème, boutonnée devant.", { formality: 3 }),
+    F("f-jupe-rose", "Jupe Camargue", "jupes", "Jupe", "wf-skirt-pink", C.corail, "100 % coton sergé", "Droite, taille paperbag", 45, "Une jupe corail en sergé, taille froncée.", { season: "printemps-été", formality: 2 }),
+    F("f-robe-beige", "Robe chemise Ventoux", "robes", "Robe chemise", "wf-dress-beige", C.sable, "100 % lin", "Midi, ceinture à nouer", 79, "La robe chemise en lin sable, boutonnée de haut en bas.", { season: "printemps-été", formality: 3 }),
+    F("f-robe-pois", "Robe Mistral", "robes", "Robe midi", "wf-dress-black-dots", C.noir, "Crêpe de viscose à pois", "Midi, volants", 75, "La robe noire à pois blancs, volants à l'ourlet.", { formality: 3 }),
+    F("f-robe-fleurie-noire", "Robe nuisette Luberon", "robes", "Robe midi", "wf-dress-floral-black", C.noir, "Viscose imprimée fleurs", "Bretelles fines, midi", 69, "Une robe fleurie à bretelles, avec un pull par-dessus à la mi-saison.", { formality: 2 }),
+    F("f-robe-fleurie", "Robe portefeuille Gordes", "robes", "Robe midi", "wf-dress-floral", C.ecru, "Coton imprimé", "Portefeuille, manches courtes", 79, "Une robe portefeuille crème à fleurs, nouée à la taille.", { season: "printemps-été", formality: 3 }),
+    F("f-robe-pull", "Robe pull Alpilles", "robes", "Robe pull", "wf-dress-brown", C.tabac, "Maille côtelée", "Ajustée, manches longues", 79, "La robe en maille tabac, avec des bottines.", { season: "automne-hiver", formality: 3 }),
+    S("tote", "Tote bag Bastide", "accessoires", "Sac", "wf-tote-white", C.ecru, "Toile de coton biologique 340 g/m²", "40 × 38 cm", 25, "Le tote en toile épaisse, pour tous les jours.", { sizes: ["TU"], gender: "mixte" }),
+  ],
+  kolm: [
+    F("f-flare-brut", "Jean K5 Flare brut", "pantalons", "Jean", "wf-jeans-flare", C.brut, "98 % coton, 2 % élasthanne, 12 oz", "K5 Flare : taille haute, évasé", 139, "Un flare brut taille haute qui allonge la jambe.", { formality: 2 }),
+    F("f-jean-blanc", "Jean K6 Boyfriend blanc", "pantalons", "Jean", "wf-jeans-white", C.blanc, "100 % coton 11 oz, effet usé", "K6 Boyfriend : droit, ample", 129, "Un jean blanc ample, effet usé, pour l'été.", { season: "printemps-été", formality: 1 }),
+    F("f-robe-jean", "Robe en jean Kolm", "robes", "Robe en jean", "wf-dress-denim", C.indigo, "100 % coton denim 6 oz", "Babydoll, manches bouffantes", 119, "Une robe en denim léger, manches bouffantes.", { formality: 2, sizes: FEMME }),
+  ],
+  norrland: [
+    F("f-stockholm", "Blouson cuir Stockholm femme", "vestes", "Blouson", "wf-leather-jacket", C.noir, "Cuir d'agneau plongé", "Coupe biker, cintrée", 369, "Le blouson cuir noir cintré, qui se porte sur tout.", { formality: 2 }),
+    F("f-malmo", "Trench Malmö femme", "vestes", "Trench", "lkf-trench", C.beige, "Gabardine de coton déperlante", "Coupe droite, ceinturé", 319, "Le trench beige déperlant, version femme.", { formality: 4 }),
+  ],
+  ferrand: [
+    F("f-bottines-lucie", "Bottines Lucie", "chaussures", "Bottines", "wf-boots-black", C.noir, "Cuir de veau froncé, talon 4 cm", "Forme ronde", 189, "Des bottines noires à petit talon, confortables toute la journée.", { season: "automne-hiver", formality: 3 }),
+    F("f-bottines-louise", "Bottines Louise", "chaussures", "Bottines", "wf-boots-taupe", C.taupe, "Nubuck, sangle à boucle", "Forme ronde, talon plat", 179, "Des bottines taupe à boucle, pour les jeans et les jupes.", { season: "automne-hiver", formality: 2 }),
+    F("f-bottines-ines", "Bottines Inès", "chaussures", "Bottines", "wf-boots-heel-black", C.noir, "Cuir lisse, talon 7 cm", "Forme amande", 219, "Les bottines à talon qui habillent un pantalon de tailleur.", { formality: 4 }),
+    F("f-bottines-franges", "Bottines Camille", "chaussures", "Bottines", "wf-boots-tan", C.cognac, "Daim de veau, franges", "Forme ronde, talon 3 cm", 169, "Des bottines cognac à franges, esprit bohème.", { formality: 2 }),
+    F("f-escarpins-noirs", "Escarpins Adèle", "chaussures", "Escarpins", "wf-heels-black", C.noir, "Daim de chèvre, talon 7 cm", "Bout pointu", 199, "Les escarpins noirs en daim, la base.", { formality: 5 }),
+    F("f-escarpins-marine", "Escarpins Colette", "chaussures", "Escarpins", "wf-pumps-navy", C.marine, "Cuir glacé, talon bloc 8 cm", "Bride cheville", 209, "Un escarpin marine à bride et talon carré, stable.", { formality: 4 }),
+    F("f-ballerines", "Ballerines Jeanne", "chaussures", "Ballerines", "wf-flats-black", C.noir, "Cuir nappa souple", "Bout rond", 149, "Les ballerines noires en nappa, pliables dans un sac.", { formality: 3 }),
+    F("f-sandales-nude", "Sandales Rose", "chaussures", "Sandales à talon", "wf-sandals-nude", C.nude, "Cuir métallisé, talon 9 cm", "Bride cheville", 179, "Des sandales nude irisées, pour les cérémonies.", { season: "printemps-été", formality: 5 }),
+    F("f-sandales-dorees", "Sandales Diane", "chaussures", "Sandales à talon", "wf-sandals-gold", C.dore, "Cuir doré, talon aiguille", "Trois brides", 199, "Les sandales dorées du soir.", { season: "printemps-été", formality: 5 }),
+    F("f-sandales-noires", "Sandales Margot", "chaussures", "Sandales à talon", "wf-sandals-black", C.noir, "Cuir verni, talon 9 cm", "Deux brides", 189, "Des sandales noires vernies, élégantes et simples.", { formality: 4 }),
+    F("f-sac-valmy", "Sac Valmy femme", "accessoires", "Sac à main", "wf-bag-black", C.noir, "Cuir grainé embossé", "32 × 24 × 13 cm", 289, "Un sac à main noir structuré, qui accueille un ordinateur 13 pouces.", { sizes: ["TU"], formality: 4 }),
+    F("f-sac-bordeaux", "Sac Pauline", "accessoires", "Sac à main", "wf-bag-burgundy", C.bordeaux, "Cuir grainé", "Format bowling", 259, "Un sac bordeaux à deux anses, bandoulière amovible.", { sizes: ["TU"], formality: 3 }),
+    F("f-pochette-corail", "Pochette Lili", "accessoires", "Pochette", "wf-bag-coral", C.corail, "Cuir lisse, chaîne dorée", "18 × 12 cm", 129, "Une petite pochette corail à chaîne, pour les soirées et les mariages.", { sizes: ["TU"], formality: 4 }),
+    F("f-besace-blanche", "Besace Odette", "accessoires", "Besace", "wf-bag-white", C.blanc, "Cuir grainé, fermoir laiton", "22 × 17 cm", 179, "Une besace blanche à rabat et fermoir doré.", { sizes: ["TU"], formality: 3 }),
+  ],
+  rivage: [
+    F("f-legging", "Legging Alizé", "sport", "Legging", "wf-leggings-grey", C.gris, "Polyamide recyclé et élasthanne, taille haute", "Près du corps", 59, "Un legging gris chiné opaque, taille haute, pour la course comme le yoga.", { formality: 1 }),
+    F("f-hoodie", "Hoodie Marée femme", "sport", "Sweat à capuche", "wf-hoodie-grey", C.grisclair, "Coton biologique, molleton léger", "Coupe droite", 69, "Le sweat à capuche gris clair, à zip, pour l'échauffement.", { formality: 1 }),
+  ],
+};
+for (const b of brands) if (b.id !== "bitume") addProducts(b, femmeSpecs[b.id as Exclude<BrandId, "bitume">], 100);
+
+const bitumeSpecs: Spec[] = [
+  S("hoodie-sable", "Hoodie Heavy sable", "maille", "Sweat à capuche", "wf-hoodie-beige", C.sable, "100 % coton biologique, molleton 450 g/m²", "Oversize, épaules tombantes", 89, "Notre hoodie le plus épais, sans logo, coloris sable.", { gender: "mixte", sizes: LETTERS.slice(0, 5) }),
+  S("cargo-kaki", "Cargo Parachute kaki", "pantalons", "Cargo", "wf-cargo-khaki", C.kaki, "Nylon ripstop déperlant", "Ample, chevilles serrées", 85, "Un cargo parachute kaki, six poches, chevilles ajustables.", { gender: "femme", sizes: LETTERS.slice(0, 5) }),
+  S("cargo-noir", "Cargo Work noir", "pantalons", "Cargo", "lk-street-cargo", C.noir, "Coton sergé 12 oz", "Droit, ample", 89, "Le cargo noir de tous les jours, poches plaquées.", { gender: "homme", sizes: LETTERS.slice(1, 6) }),
+  S("hoodie-noir", "Hoodie Heavy noir", "maille", "Sweat à capuche", "lk-street-skate", C.noir, "100 % coton biologique, molleton 450 g/m²", "Oversize", 89, "Le hoodie épais en noir, sans inscription.", { gender: "homme", sizes: LETTERS.slice(1, 6) }),
+  S("hoodie-gris", "Hoodie Heavy gris chiné", "maille", "Sweat à capuche", "sw-hoodie-grey", C.gris, "Coton et polyester recyclé", "Oversize", 85, "Le hoodie gris chiné, poche kangourou.", { gender: "homme", sizes: LETTERS.slice(1, 6) }),
+  S("tee-lourd", "T-shirt Heavy noir", "hauts", "T-shirt", "tee-black-2", C.noir, "100 % coton 260 g/m²", "Boxy, épaules tombantes", 39, "Un t-shirt lourd et boxy, qui garde sa forme.", { gender: "homme", sizes: LETTERS.slice(1, 6) }),
+  S("jogging", "Jogging Heavy", "pantalons", "Jogging", "sp-jogging-grey", C.anthracite, "Molleton 400 g/m²", "Fuselé", 75, "Le jogging assorti au hoodie Heavy.", { gender: "homme", sizes: LETTERS.slice(1, 6) }),
+  S("mini-plissee", "Mini-jupe plissée Club", "jupes", "Mini-jupe", "wf-skirt-white-mini", C.ecru, "Crêpe plissé, ceinture", "Courte, plissée", 55, "La mini-jupe plissée écrue, avec un hoodie oversize.", { gender: "femme", sizes: LETTERS.slice(0, 5) }),
+  S("jupe-cuir", "Jupe plissée Cuir", "jupes", "Mini-jupe", "wf-skirt-leather-brown", C.cognac, "Cuir synthétique végan", "Courte, plissée", 69, "Une jupe courte en cuir végan cognac, ceinture à boucle.", { gender: "femme", sizes: LETTERS.slice(0, 5) }),
+  S("jupe-noire", "Jupe patineuse Club", "jupes", "Mini-jupe", "wf-skirt-black", C.noir, "Jersey épais", "Courte, évasée", 39, "La jupe patineuse noire.", { gender: "femme", sizes: LETTERS.slice(0, 5) }),
+];
+addProducts(brandById.bitume, bitumeSpecs);
+
+// ───────────────────────── Léa (deuxième profil de démo) ─────────────────────────
+const lea: UserProfile = {
+  id: "lea", gender: "femme", styles: ["street", "casual", "corporate"],
+  firstName: "Léa", lastName: "Garnier", age: 26, job: "Chargée de projet marketing dans une agence", city: "Paris 10e",
+  heightCm: 168, weightKg: 57, build: "Silhouette fine",
+  style: "Mélange streetwear et corporate : hoodies et cargos le week-end, blazers et pantalons larges au bureau",
+  favoriteColors: [C.noir, C.blanc, C.beige, C.kaki, C.camel],
+  dislikes: ["Imprimés trop chargés", "Talons de plus de 8 cm au bureau"],
+  monthlyBudget: 100,
+  reference: { top: "S", collar: "-", waist: "27", inseam: "30", trousersFr: "-", jacket: "-", femme: "36", shoe: "38", chestCm: 84, waistCm: 66 },
+  avatar: img("avatar-lea"),
+};
+const leaOrderDefs: (typeof orderDefs)[number][] = [
+  { id: "MV-25-021456", brandId: "verac", date: "2025-04-10", lines: [{ pid: "verac-f-blouse-haussmann", size: "36", returned: { reason: "Trop petit", date: "2025-04-16" } }] },
+  { id: "MV-25-022103", brandId: "verac", date: "2025-04-19", lines: [{ pid: "verac-f-blouse-haussmann", size: "38" }] },
+  { id: "KD-103388", brandId: "kolm", date: "2025-06-02", lines: [{ pid: "kolm-f-flare-brut", size: "W27 L30" }] },
+  { id: "LB2509-60214", brandId: "bastide", date: "2025-09-14", lines: [{ pid: "bastide-f-pantalon-taupe", size: "36" }, { pid: "bastide-f-pull-bateau", size: "S" }] },
+  { id: "AF-2510-0412", brandId: "ferrand", date: "2025-10-03", lines: [{ pid: "ferrand-f-bottines-lucie", size: "37.5" }, { pid: "ferrand-f-sac-valmy", size: "TU" }] },
+  { id: "MV-25-049871", brandId: "verac", date: "2025-11-20", lines: [{ pid: "verac-f-tailleur-opera-veste", size: "38" }, { pid: "verac-f-tailleur-opera-pantalon", size: "38" }] },
+  { id: "BC-26-00731", brandId: "bitume", date: "2026-02-11", lines: [{ pid: "bitume-hoodie-sable", size: "S" }, { pid: "bitume-cargo-kaki", size: "S" }] },
+  { id: "LB2603-73390", brandId: "bastide", date: "2026-03-28", lines: [{ pid: "bastide-f-robe-pois", size: "36" }] },
+  { id: "KD-110274", brandId: "kolm", date: "2026-05-06", lines: [{ pid: "kolm-f-jean-blanc", size: "W28 L30", returned: { reason: "Trop large à la taille", date: "2026-05-12" } }] },
+  { id: "KD-110519", brandId: "kolm", date: "2026-05-15", lines: [{ pid: "kolm-f-jean-blanc", size: "W27 L30" }] },
+  { id: "AF-2606-0587", brandId: "ferrand", date: "2026-06-20", lines: [{ pid: "ferrand-f-sandales-nude", size: "37.5" }] },
+  { id: "MV-26-040122", brandId: "verac", date: "2026-09-15", lines: [{ pid: "verac-f-blazer-palais", size: "38" }, { pid: "verac-f-jupe-plissee", size: "38" }] },
+];
+const leaOrders = leaOrderDefs.map(buildOrder("lea"));
+const leaItems: WardrobeItem[] = [];
+let ln = 0;
+const leaId = () => `l${String(++ln).padStart(3, "0")}`;
+const fromProduct = (pid: string, source: WardrobeItem["source"], size: string, date: string, orderId: string | null, notes?: string): WardrobeItem => {
+  const p = P(pid);
+  return {
+    id: leaId(), persona: "lea", source, category: p.category, subcategory: p.subcategory, name: p.name, brandId: p.brandId,
+    brandName: brandById[p.brandId].name, color: p.color, material: p.material, size, fit: p.fit, season: p.season, formality: p.formality,
+    purchaseDate: date, price: notes?.startsWith("Cadeau") ? null : p.price, ref: source === "import" ? p.ref : null, productId: source === "import" ? p.id : null, orderId,
+    baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: p.image, quantity: 1, missing: [], notes,
+  };
+};
+for (const o of leaOrders) for (const l of o.items) if (!l.returned && !leaItems.some((i) => i.productId === l.productId)) leaItems.push(fromProduct(l.productId, "import", l.size, o.date, o.id));
+([
+  ["norrland-f-stockholm", "XS", "2024-11-09", "Acheté en boutique, rue Vieille-du-Temple"],
+  ["norrland-f-malmo", "XS", "2025-03-22", "Soldes, boutique Saint-Germain"],
+  ["rivage-f-legging", "S", "2025-01-08", "Acheté en boutique"],
+  ["rivage-f-hoodie", "S", "2025-01-08", "Acheté en boutique"],
+  ["ferrand-f-sac-bordeaux", "TU", "2024-12-25", "Cadeau de Noël"],
+  ["ferrand-f-ballerines", "37.5", "2025-05-30", "Acheté à l'atelier de Romans"],
+] as [string, string, string, string][]).forEach(([pid, size, date, note]) => leaItems.push(fromProduct(pid, "photo", size, date, null, note)));
+const leaVideo: [Category, string, string, Color, string, number, number][] = [
+  ["hauts", "T-shirt", "T-shirts blancs", C.blanc, "lkf-casual-tee", 4, 1],
+  ["chemises", "Blouse", "Blouse fleurie", C.ecru, "wf-blouse-floral", 1, 2],
+  ["chemises", "Blouse", "Blouse taupe", C.taupe, "wf-blouse-taupe", 1, 4],
+  ["robes", "Robe chemise", "Robe chemise lavande", C.lavande, "wf-shirtdress-lavender", 1, 3],
+  ["robes", "Robe", "Robe fleurie crème", C.ecru, "wf-dress-floral", 1, 3],
+  ["robes", "Robe du soir", "Robe noire satinée", C.noir, "wf-dress-black-satin", 1, 5],
+  ["jupes", "Jupe midi", "Jupe midi fleurie", C.marron, "wf-skirt-floral", 1, 2],
+  ["jupes", "Jupe", "Jupe corail", C.corail, "wf-skirt-pink", 1, 2],
+  ["pantalons", "Pantalon large", "Pantalon large camel", C.camel, "wf-pants-camel", 1, 2],
+  ["pantalons", "Cargo", "Cargo olive", C.olive, "lkf-cargo-olive", 1, 1],
+  ["maille", "Gilet", "Gilet crème", C.ecru, "lkf-cardigan", 1, 2],
+  ["vestes", "Blazer", "Blazer jaune", C.jaune, "wf-blazer-yellow", 1, 4],
+  ["chaussures", "Escarpins", "Escarpins noirs", C.noir, "wf-heels-black", 1, 5],
+  ["chaussures", "Bottines", "Bottines taupe", C.taupe, "wf-boots-taupe", 1, 2],
+  ["chaussures", "Bottines", "Bottines à franges cognac", C.cognac, "wf-boots-tan", 1, 2],
+  ["chaussures", "Sandales", "Sandales noires", C.noir, "wf-sandals-black", 1, 4],
+  ["accessoires", "Sac", "Tote en toile", C.ecru, "wf-tote-white", 1, 1],
+  ["accessoires", "Pochette", "Pochette corail", C.corail, "wf-bag-coral", 1, 4],
+];
+for (const [cat, sub, name, color, im, qty, formality] of leaVideo) {
+  leaItems.push({
+    id: leaId(), persona: "lea", source: "video", category: cat, subcategory: sub, name, brandId: null, brandName: "Marque inconnue", color,
+    material: null, size: null, fit: null, season: "toutes saisons", formality, purchaseDate: null, price: null, ref: null, productId: null,
+    orderId: null, baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: img(im), quantity: qty, missing: ["marque", "taille", "matière", "date d'achat"],
+  });
+}
+const lb = (name: string) => {
+  const it = leaItems.find((i) => i.name === name);
+  if (!it) throw new Error("article Léa introuvable " + name);
+  return it;
+};
+lb("Blouse Haussmann").status = "au pressing";
+lb("T-shirts blancs").status = "au linge";
+for (const it of leaItems) {
+  const ageDays = it.purchaseDate ? Math.max(30, Math.round((Date.parse("2026-11-16") - Date.parse(it.purchaseDate)) / 86400000)) : int(200, 900);
+  const freq = it.formality >= 5 ? 0.02 : it.category === "hauts" ? 0.08 : it.category === "accessoires" ? 0.06 : 0.045;
+  it.baseWears = Math.max(0, Math.round((ageDays - 30) * freq * (0.6 + rnd() * 0.8)));
+  it.baseLastWornDaysAgo = it.baseWears ? int(31, 140) : null;
+}
+lb("T-shirts blancs").baseWears = 9;
+for (const name of ["Robe fleurie crème", "Jupe corail", "Blazer jaune", "Bottines à franges cognac", "Robe chemise lavande", "Pochette corail", "Robe noire satinée", "Jupe midi fleurie"]) {
+  const it = lb(name);
+  it.baseLastWornDaysAgo = int(95, 260); it.baseWears = Math.min(it.baseWears, int(1, 5));
+}
+const lid = (name: string) => lb(name).id;
+const leaWork: [string[], string][] = [
+  [["Blazer Palais", "Pantalon large Calanque", "Blouse taupe", "Bottines Lucie", "Sac Valmy femme"], "Bureau"],
+  [["Veste de tailleur Opéra", "Pantalon de tailleur Opéra", "Blouse Haussmann", "Escarpins noirs", "Sac Valmy femme"], "Présentation client"],
+  [["Pull col bateau Alpilles", "Jean K5 Flare brut", "Bottines Lucie", "Sac Valmy femme"], "Bureau"],
+  [["Blazer Palais", "Jean K6 Boyfriend blanc", "Gilet crème", "Ballerines Jeanne"], "Bureau (vendredi)"],
+  [["Jupe plissée Concorde", "Pull col bateau Alpilles", "Bottines Lucie", "Trench Malmö femme"], "Bureau"],
+];
+const leaWeekend: [string[], string][] = [
+  [["Hoodie Heavy sable", "Cargo Parachute kaki", "Tote en toile"], "Brunch"],
+  [["Blouson cuir Stockholm femme", "Robe Mistral", "Bottines Lucie"], "Soirée"],
+  [["Hoodie Marée femme", "Legging Alizé"], "Running"],
+  [["Hoodie Heavy sable", "Jean K6 Boyfriend blanc", "Bottines taupe"], "Expo + café"],
+  [["Blouson cuir Stockholm femme", "Cargo olive", "T-shirts blancs"], "Concert"],
+];
+const leaLog: WearDay[] = [];
+{
+  let wi = 0, we = 0;
+  for (let d = 1; d <= 30; d++) {
+    const dow = new Date(anchor.getTime() - d * 86400000).getUTCDay();
+    const weekend = dow === 0 || dow === 6;
+    const [names, occasion] = weekend ? leaWeekend[we++ % leaWeekend.length] : leaWork[(wi++ * 2) % leaWork.length];
+    leaLog.push({ daysAgo: d, itemIds: names.map(lid), occasion });
+  }
+}
+const leaPinned = { weekday: 2, itemIds: [lid("Pull col bateau Alpilles"), lid("Jean K5 Flare brut"), lid("Bottines Lucie"), lid("Sac Valmy femme")], occasion: "Bureau", laundry: [lid("Jean K5 Flare brut")] };
+
+brandDashboard.insights.splice(3, 0, { value: "41 %", text: "de vos clientes connectées ont un tailleur mais aucune blouse assortie disponible.", action: "Proposer la Blouse Opéra dans les tenues générées avec la Veste de tailleur Opéra." });
+
 // ───────────────────────── écriture ─────────────────────────
 fs.mkdirSync(OUT, { recursive: true });
 const write = (f: string, d: unknown) => fs.writeFileSync(path.join(OUT, f), JSON.stringify(d, null, 1) + "\n");
 write("brands.json", brands);
 write("products.json", products);
-write("user.json", user);
-write("orders.json", orders);
-write("wardrobe.json", items);
-write("wear-log.json", { days: wearLog, pinnedTuesday });
+write("personas.json", { thomas: user, lea });
+write("orders.json", [...orders, ...leaOrders]);
+write("wardrobe.json", [...items, ...leaItems]);
+write("wear-log.json", { thomas: { days: wearLog, pinned: pinnedTuesday }, lea: { days: leaLog, pinned: leaPinned } });
 write("calendar.json", calendar);
 write("weather.json", { city: "Paris", days: weather });
 write("brand-dashboard.json", brandDashboard);
+if (fs.existsSync(path.join(OUT, "user.json"))) fs.rmSync(path.join(OUT, "user.json"));
 
 // contrôle de cohérence des tailles achetées avec le moteur de recommandation
-for (const it of items.filter((i) => i.source === "import")) {
-  const p = P(it.productId!);
-  const b = brandById[p.brandId];
-  const rec = recommendSize(user, b, p.category, p.sizes.map((s) => s.size));
-  if (p.sizes.length > 1 && rec.size !== it.size) throw new Error(`Incohérence de taille : ${p.name} acheté en ${it.size}, moteur = ${rec.size}`);
+for (const [profile, list] of [[user, items], [lea, leaItems]] as [UserProfile, WardrobeItem[]][]) {
+  for (const it of list.filter((i) => i.source === "import")) {
+    const p = P(it.productId!);
+    const b = brandById[p.brandId];
+    const rec = recommendSize(profile, b, p.category, p.sizes.map((s) => s.size));
+    if (p.sizes.length > 1 && rec.size !== it.size) throw new Error(`Incohérence de taille (${profile.firstName}) : ${p.name} acheté en ${it.size}, moteur = ${rec.size}`);
+  }
 }
-const counts = items.reduce<Record<string, number>>((a, i) => ((a[i.source] = (a[i.source] ?? 0) + 1), a), {});
-console.log(`${brands.length} marques, ${products.length} produits, ${orders.length} commandes, ${items.length} articles`, counts);
+const counts = (l: WardrobeItem[]) => l.reduce<Record<string, number>>((a, i) => ((a[i.source] = (a[i.source] ?? 0) + 1), a), {});
+console.log(`${brands.length} marques, ${products.length} produits (${products.filter((p) => p.gender === "femme").length} femme), ${orders.length + leaOrders.length} commandes`);
+console.log(`Thomas : ${items.length} articles`, counts(items), `· Léa : ${leaItems.length} articles`, counts(leaItems));

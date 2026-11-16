@@ -6,6 +6,10 @@
   "name": "Chemise Oxford Saint-Germain",
   "category": "chemises",
   "subcategory": "Chemise oxford",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "L'oxford que l'on garde dix ans : une toile dense qui s'adoucit à chaque lavage, un col boutonné qui tient sans cravate.",
   "material": "100 % coton oxford 140 g/m², tissé au Portugal",
   "fit": "Coupe ajustée, col boutonné",
@@ -76,6 +80,10 @@
   "name": "Chemise Popeline Haussmann",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "La chemise blanche de référence : popeline double retors au tomber net, col italien qui se porte avec ou sans cravate.",
   "material": "100 % coton popeline double retors 120/2",
   "fit": "Coupe ajustée, col italien",
@@ -142,6 +150,10 @@
   "name": "Chemise Popeline rayée Opéra",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "De fines rayures bleu ciel pour une allure nette en rendez-vous client, sous une veste comme seule.",
   "material": "100 % coton popeline 120/2, fines rayures bâton",
   "fit": "Coupe ajustée, col semi-italien",
@@ -203,6 +215,10 @@
   "name": "Chemise Vichy Montaigne",
   "category": "chemises",
   "subcategory": "Chemise casual",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un vichy fin tissé teint, pour les vendredis et les déjeuners en terrasse.",
   "material": "100 % coton, vichy tissé teint 2 × 2 mm",
   "fit": "Coupe ajustée, col boutonné",
@@ -264,6 +280,10 @@
   "name": "Chemise Matignon",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un rose poudré discret, à porter avec un costume marine ou gris pour sortir du blanc.",
   "material": "100 % coton pinpoint oxford",
   "fit": "Coupe ajustée, col cutaway",
@@ -325,6 +345,10 @@
   "name": "Chemise Riviera en lin",
   "category": "chemises",
   "subcategory": "Chemise en lin",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le lin normand lavé, souple dès le premier jour. Col officier, idéal de mai à septembre.",
   "material": "100 % lin lavé, filé en Normandie",
   "fit": "Coupe droite, col officier",
@@ -386,6 +410,10 @@
   "name": "Chemise Twill Vendôme",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un twill légèrement brillant qui ne froisse presque pas : la chemise des longues journées.",
   "material": "100 % coton twill 100/2",
   "fit": "Coupe ajustée, col français",
@@ -456,6 +484,10 @@
   "name": "Chemise Pinpoint Rivoli",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Entre oxford et popeline, le pinpoint offre la tenue d'une chemise habillée et le confort d'une casual.",
   "material": "100 % coton pinpoint 80/2",
   "fit": "Coupe ajustée, col boutonné",
@@ -517,6 +549,10 @@
   "name": "Chemise Carmin",
   "category": "chemises",
   "subcategory": "Chemise casual",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un bordeaux profond en sergé brossé, chaud au toucher, pour l'automne.",
   "material": "100 % coton sergé brossé",
   "fit": "Coupe ajustée",
@@ -578,6 +614,10 @@
   "name": "Chemise Popeline Haussmann bleue",
   "category": "chemises",
   "subcategory": "Chemise habillée",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Notre popeline Haussmann dans un bleu franc, pour un dos et des épaules parfaitement nets.",
   "material": "100 % coton popeline double retors 120/2",
   "fit": "Coupe ajustée, col italien",
@@ -639,6 +679,10 @@
   "name": "Blazer Faubourg",
   "category": "vestes",
   "subcategory": "Blazer",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le blazer marine qui va avec tout : épaule naturelle, laine Super 110's au tomber souple, boutons en corozo.",
   "material": "100 % laine vierge Super 110's, doublure cupro",
   "fit": "Coupe ajustée, deux boutons, épaule naturelle",
@@ -692,6 +736,10 @@
   "name": "Blazer Marais",
   "category": "vestes",
   "subcategory": "Blazer",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une veste déstructurée en laine et cachemire, aussi confortable qu'un cardigan.",
   "material": "80 % laine, 20 % cachemire, non doublé",
   "fit": "Coupe ajustée, construction déstructurée",
@@ -745,6 +793,10 @@
   "name": "Veste Palais prince-de-galles",
   "category": "vestes",
   "subcategory": "Blazer",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le prince-de-galles discret d'un anthracite profond, à porter avec un pantalon uni.",
   "material": "100 % laine vierge, motif prince-de-galles",
   "fit": "Coupe ajustée, deux boutons",
@@ -798,6 +850,10 @@
   "name": "Veste Concorde",
   "category": "vestes",
   "subcategory": "Blazer",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Une veste noire stretch pour les soirées : tenue impeccable, liberté de mouvement.",
   "material": "98 % laine, 2 % élasthanne, stretch",
   "fit": "Coupe ajustée, revers cranté",
@@ -851,6 +907,11 @@
   "name": "Veste de costume Trocadéro",
   "category": "costumes",
   "subcategory": "Veste de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "La veste de notre costume Trocadéro, en laine de Biella. Se porte aussi seule, en dépareillé.",
   "material": "100 % laine vierge Super 120's, tissée à Biella",
   "fit": "Coupe ajustée, deux boutons",
@@ -904,6 +965,11 @@
   "name": "Pantalon de costume Trocadéro",
   "category": "costumes",
   "subcategory": "Pantalon de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "Le pantalon assorti à la veste Trocadéro, bas à revers de 4 cm à la demande.",
   "material": "100 % laine vierge Super 120's",
   "fit": "Coupe fuselée, sans pinces",
@@ -957,6 +1023,11 @@
   "name": "Veste de costume Wagram",
   "category": "costumes",
   "subcategory": "Veste de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "Un anthracite intemporel pour les rendez-vous qui comptent.",
   "material": "100 % laine vierge Super 110's",
   "fit": "Coupe ajustée, deux boutons",
@@ -1010,6 +1081,11 @@
   "name": "Veste de costume Monceau",
   "category": "costumes",
   "subcategory": "Veste de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "Une laine fresco respirante, d'un gris clair qui éclaire les journées de printemps.",
   "material": "100 % laine fresco 4 plis",
   "fit": "Coupe ajustée, deux boutons",
@@ -1063,6 +1139,11 @@
   "name": "Veste de costume Riviera",
   "category": "costumes",
   "subcategory": "Veste de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "Lin et laine pour les cérémonies d'été : un sable lumineux qui froisse avec élégance.",
   "material": "55 % lin, 45 % laine, demi-doublée",
   "fit": "Coupe ajustée, deux boutons",
@@ -1116,6 +1197,11 @@
   "name": "Pantalon de costume Riviera",
   "category": "costumes",
   "subcategory": "Pantalon de costume",
+  "gender": "homme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
   "description": "Le pantalon assorti à la veste Riviera, ceinture à pattes de serrage.",
   "material": "55 % lin, 45 % laine",
   "fit": "Coupe droite, une pince",
@@ -1169,6 +1255,10 @@
   "name": "Pantalon à pinces Flanelle",
   "category": "pantalons",
   "subcategory": "Pantalon habillé",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Une flanelle gris clair, douce et chaude, qui habille un simple pull.",
   "material": "100 % laine flanelle 280 g/m²",
   "fit": "Coupe droite, une pince",
@@ -1222,6 +1312,10 @@
   "name": "Pantalon Saint-Honoré",
   "category": "pantalons",
   "subcategory": "Pantalon habillé",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un marron chocolat qui change du gris, avec une chemise bleu ciel ou un col roulé.",
   "material": "98 % coton, 2 % élasthanne, sergé",
   "fit": "Coupe fuselée",
@@ -1275,6 +1369,10 @@
   "name": "Cravate tricot à pois",
   "category": "accessoires",
   "subcategory": "Cravate",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "La cravate en soie tricotée qui détend un costume : pois blancs sur fond marine.",
   "material": "100 % soie tricotée, faite à Côme",
   "fit": "Largeur 6 cm, bout carré",
@@ -1304,6 +1402,10 @@
   "name": "Col roulé Montparnasse",
   "category": "maille",
   "subcategory": "Col roulé",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le col roulé fin qui remplace la chemise sous un blazer, en mérinos extra-fin.",
   "material": "100 % laine mérinos extra-fine 16,5 µm",
   "fit": "Coupe ajustée, côtes fines",
@@ -1358,6 +1460,10 @@
   "name": "Col roulé Montparnasse noir",
   "category": "maille",
   "subcategory": "Col roulé",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le Montparnasse en noir, pour les soirées et les tenues monochromes.",
   "material": "100 % laine mérinos extra-fine 16,5 µm",
   "fit": "Coupe ajustée",
@@ -1407,6 +1513,10 @@
   "name": "Pardessus Odéon",
   "category": "vestes",
   "subcategory": "Manteau",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un pardessus anthracite à porter sur un costume, laine et cachemire.",
   "material": "70 % laine, 20 % polyamide, 10 % cachemire",
   "fit": "Coupe droite, longueur genou",
@@ -1460,6 +1570,10 @@
   "name": "T-shirt Essentiel",
   "category": "hauts",
   "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le t-shirt blanc juste comme il faut : ni trop fin, ni trop épais, col qui ne se déforme pas.",
   "material": "100 % coton biologique, jersey 180 g/m²",
   "fit": "Coupe droite, col rond",
@@ -1522,6 +1636,10 @@
   "name": "T-shirt Essentiel noir",
   "category": "hauts",
   "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Notre Essentiel en noir profond, teinture résistante aux lavages.",
   "material": "100 % coton biologique, jersey 180 g/m²",
   "fit": "Coupe droite, col rond",
@@ -1571,6 +1689,10 @@
   "name": "T-shirt Essentiel marine",
   "category": "hauts",
   "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le marine, plus doux que le noir, qui va avec tous vos jeans.",
   "material": "100 % coton biologique, jersey 180 g/m²",
   "fit": "Coupe droite, col rond",
@@ -1620,6 +1742,10 @@
   "name": "T-shirt Lourd",
   "category": "hauts",
   "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un jersey épais et structuré, qui tombe comme une chemise.",
   "material": "100 % coton peigné, jersey 240 g/m²",
   "fit": "Coupe ample, épaules tombantes",
@@ -1669,6 +1795,10 @@
   "name": "T-shirt Pima",
   "category": "hauts",
   "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le coton Pima, plus long et plus doux : un t-shirt qui se porte sous un blazer.",
   "material": "100 % coton Pima, jersey 160 g/m²",
   "fit": "Coupe ajustée",
@@ -1718,6 +1848,10 @@
   "name": "Polo Sorgue",
   "category": "hauts",
   "subcategory": "Polo",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le polo piqué sans logo, à porter boutonné jusqu'en haut.",
   "material": "100 % coton piqué 210 g/m²",
   "fit": "Coupe ajustée, patte deux boutons",
@@ -1776,6 +1910,10 @@
   "name": "Polo Sorgue ciel",
   "category": "hauts",
   "subcategory": "Polo",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Notre Sorgue dans un bleu ciel d'été.",
   "material": "100 % coton piqué 210 g/m²",
   "fit": "Coupe ajustée",
@@ -1825,6 +1963,10 @@
   "name": "Polo maille Calanque",
   "category": "hauts",
   "subcategory": "Polo",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une maille fine rayée ton sur ton, col marine contrasté.",
   "material": "100 % coton, maille fine rayée ton sur ton",
   "fit": "Coupe ajustée, col contrasté",
@@ -1874,6 +2016,11 @@
   "name": "Sweat Luberon",
   "category": "maille",
   "subcategory": "Sweat",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Un molleton épais gratté à l'intérieur, sans aucune inscription.",
   "material": "100 % coton biologique, molleton gratté 340 g/m²",
   "fit": "Coupe droite, col rond",
@@ -1923,6 +2070,11 @@
   "name": "Hoodie Ventoux",
   "category": "maille",
   "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le sweat à capuche gris chiné, poche kangourou, cordons plats.",
   "material": "80 % coton biologique, 20 % polyester recyclé",
   "fit": "Coupe droite",
@@ -1972,6 +2124,10 @@
   "name": "Pull col rond Mérinos",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le pull fin à porter sur une chemise ou à même la peau.",
   "material": "100 % laine mérinos 14 gauges",
   "fit": "Coupe ajustée",
@@ -2030,6 +2186,10 @@
   "name": "Pull col rond Mérinos gris",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Notre Mérinos en gris chiné clair.",
   "material": "100 % laine mérinos 14 gauges",
   "fit": "Coupe ajustée",
@@ -2079,6 +2239,10 @@
   "name": "Pull marinière Ventoux",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une marinière en grosse maille de coton, rayures marine et gris.",
   "material": "100 % coton, maille côtelée épaisse",
   "fit": "Coupe droite",
@@ -2128,6 +2292,10 @@
   "name": "Gilet Alpilles",
   "category": "maille",
   "subcategory": "Gilet",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un gilet col châle épais, à porter comme une veste.",
   "material": "60 % laine, 40 % coton, maille anglaise",
   "fit": "Coupe droite, col châle",
@@ -2177,6 +2345,10 @@
   "name": "Pull camionneur",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le col camionneur qui se porte sur une chemise, col ouvert.",
   "material": "100 % laine d'agneau",
   "fit": "Coupe ajustée, col zippé",
@@ -2226,6 +2398,10 @@
   "name": "Pull col V Mérinos",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un col V net pour les soirées, en mérinos fin.",
   "material": "100 % laine mérinos 14 gauges",
   "fit": "Coupe ajustée",
@@ -2275,6 +2451,10 @@
   "name": "Pull rayé Châtaigne",
   "category": "maille",
   "subcategory": "Pull",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Des rayures marron et gris pour réchauffer un jean brut.",
   "material": "70 % coton, 30 % laine",
   "fit": "Coupe ajustée, col V",
@@ -2324,6 +2504,10 @@
   "name": "Chino Luberon",
   "category": "pantalons",
   "subcategory": "Chino",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le chino à tout faire : sergé épais légèrement stretch, coupe fuselée qui s'arrête à la cheville.",
   "material": "98 % coton, 2 % élasthanne, sergé 270 g/m²",
   "fit": "Coupe fuselée",
@@ -2402,6 +2586,10 @@
   "name": "Chino Luberon anthracite",
   "category": "pantalons",
   "subcategory": "Chino",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le Luberon en gris anthracite : le chino qui passe au bureau.",
   "material": "98 % coton, 2 % élasthanne, sergé 270 g/m²",
   "fit": "Coupe fuselée",
@@ -2467,6 +2655,10 @@
   "name": "Chino Luberon pierre",
   "category": "pantalons",
   "subcategory": "Chino",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un ton pierre très clair pour le printemps.",
   "material": "98 % coton, 2 % élasthanne, sergé 270 g/m²",
   "fit": "Coupe fuselée",
@@ -2532,6 +2724,10 @@
   "name": "Chino Calanque, toile légère",
   "category": "pantalons",
   "subcategory": "Chino",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une toile légère pour l'été, existe en marine, sable et corail.",
   "material": "100 % coton, toile 210 g/m²",
   "fit": "Coupe droite",
@@ -2606,6 +2802,10 @@
   "name": "Surchemise velours Camargue",
   "category": "chemises",
   "subcategory": "Surchemise",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La surchemise en velours camel qui remplace une veste en mi-saison.",
   "material": "100 % coton, velours côtelé 14 côtes",
   "fit": "Coupe droite, deux poches plaquées",
@@ -2655,6 +2855,10 @@
   "name": "Surchemise Camargue sergé",
   "category": "chemises",
   "subcategory": "Surchemise",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une surchemise beige en sergé lavé, à porter ouverte sur un t-shirt.",
   "material": "100 % coton sergé lavé",
   "fit": "Coupe droite",
@@ -2704,6 +2908,10 @@
   "name": "Chemise flanelle Durance",
   "category": "chemises",
   "subcategory": "Chemise casual",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une flanelle brossée à carreaux, douce comme un plaid.",
   "material": "100 % coton flanelle brossée",
   "fit": "Coupe droite",
@@ -2753,6 +2961,10 @@
   "name": "Bonnet côtelé",
   "category": "accessoires",
   "subcategory": "Bonnet",
+  "gender": "mixte",
+  "styles": [
+   "casual"
+  ],
   "description": "Un bonnet côtelé en mérinos, qui ne gratte pas.",
   "material": "100 % laine mérinos",
   "fit": "Revers",
@@ -2782,6 +2994,10 @@
   "name": "Écharpe Mistral",
   "category": "accessoires",
   "subcategory": "Écharpe",
+  "gender": "mixte",
+  "styles": [
+   "casual"
+  ],
   "description": "Une écharpe à chevrons gris, assez longue pour un double tour.",
   "material": "100 % laine d'agneau, chevrons",
   "fit": "180 × 30 cm",
@@ -2811,6 +3027,11 @@
   "name": "Jean K1 Slim selvedge brut",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Notre best-seller : un selvedge japonais de 14 oz qui prendra vos plis en six mois.",
   "material": "100 % coton selvedge japonais 14 oz, non lavé",
   "fit": "K1 Slim : taille normale, jambe étroite",
@@ -2876,6 +3097,11 @@
   "name": "Jean K1 Slim délavé",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le K1 dans un délavé moyen naturel, sans effet usé artificiel.",
   "material": "99 % coton, 1 % élasthanne, 12,5 oz, lavage pierre",
   "fit": "K1 Slim",
@@ -2941,6 +3167,11 @@
   "name": "Jean K2 Droit indigo rincé",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Une jambe droite et un indigo rincé, le jean qui va avec une veste.",
   "material": "100 % coton 13 oz, rincé une fois",
   "fit": "K2 Droit : taille normale, jambe droite",
@@ -3006,6 +3237,11 @@
   "name": "Jean K1 Slim gris acier",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Un gris acier délavé, à porter avec une chemise blanche.",
   "material": "98 % coton, 2 % élasthanne, 12 oz",
   "fit": "K1 Slim",
@@ -3071,6 +3307,11 @@
   "name": "Jean K3 Fuselé noir délavé",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le noir délavé qui ne grisaille pas, en coupe fuselée.",
   "material": "98 % coton, 2 % élasthanne, 12 oz",
   "fit": "K3 Fuselé : taille haute, jambe fuselée",
@@ -3136,6 +3377,11 @@
   "name": "Jean K2 Droit selvedge 15 oz",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Notre denim le plus lourd, tissé sur métiers à navette à Okayama.",
   "material": "100 % coton selvedge japonais 15 oz, lisière rouge",
   "fit": "K2 Droit",
@@ -3201,6 +3447,11 @@
   "name": "Jean K4 Relax vintage",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Une coupe relax et un lavage vintage pour le week-end.",
   "material": "100 % coton 13 oz, lavage vintage",
   "fit": "K4 Relax : coupe ample",
@@ -3266,6 +3517,11 @@
   "name": "Jean K3 Fuselé brut",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le brut en coupe fuselée, revers recommandé.",
   "material": "100 % coton selvedge 13,5 oz",
   "fit": "K3 Fuselé",
@@ -3331,6 +3587,11 @@
   "name": "Jean K3 Fuselé délavé clair",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Un délavé clair pour l'été.",
   "material": "99 % coton, 1 % élasthanne",
   "fit": "K3 Fuselé",
@@ -3396,6 +3657,11 @@
   "name": "Jean K2 Droit gris",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le K2 en gris moyen.",
   "material": "100 % coton 12 oz",
   "fit": "K2 Droit",
@@ -3461,6 +3727,11 @@
   "name": "Jean K2 Droit noir",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Un noir teint en fil qui garde sa profondeur.",
   "material": "100 % coton 13 oz, teint en fil",
   "fit": "K2 Droit",
@@ -3526,6 +3797,11 @@
   "name": "Jean K1 Slim stretch",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "La K1 en version stretch, pour les journées assises.",
   "material": "92 % coton, 6 % polyester recyclé, 2 % élasthanne",
   "fit": "K1 Slim",
@@ -3591,6 +3867,11 @@
   "name": "Jean K4 Relax brut",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le K4 en brut selvedge.",
   "material": "100 % coton selvedge 14 oz",
   "fit": "K4 Relax",
@@ -3656,6 +3937,11 @@
   "name": "Jean K3 Fuselé gris",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le K3 en gris délavé.",
   "material": "98 % coton, 2 % élasthanne",
   "fit": "K3 Fuselé",
@@ -3721,6 +4007,11 @@
   "name": "Jean K4 Relax délavé",
   "category": "pantalons",
   "subcategory": "Jean",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Le K4 délavé moyen.",
   "material": "100 % coton 12 oz",
   "fit": "K4 Relax",
@@ -3786,6 +4077,10 @@
   "name": "Chemise Kolm en denim indigo",
   "category": "chemises",
   "subcategory": "Chemise en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une chemise en denim léger qui se patine comme un jean.",
   "material": "100 % coton denim 8 oz",
   "fit": "Coupe ajustée, deux poches à rabat",
@@ -3835,6 +4130,10 @@
   "name": "Chemise Western",
   "category": "chemises",
   "subcategory": "Chemise en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Les empiècements western, sans les clichés.",
   "material": "100 % coton denim 7 oz",
   "fit": "Coupe ajustée, empiècements",
@@ -3884,6 +4183,10 @@
   "name": "Chemise Chambray délavée",
   "category": "chemises",
   "subcategory": "Chemise en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un chambray léger, presque une chemise d'été.",
   "material": "100 % coton chambray 5 oz",
   "fit": "Coupe ajustée",
@@ -3933,6 +4236,10 @@
   "name": "Chemise denim brut",
   "category": "chemises",
   "subcategory": "Chemise en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La version non lavée, pour les puristes.",
   "material": "100 % coton denim brut 9 oz",
   "fit": "Coupe ajustée",
@@ -3982,6 +4289,10 @@
   "name": "Veste en jean Type III",
   "category": "vestes",
   "subcategory": "Veste en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Notre veste en jean courte, à porter sur un sweat.",
   "material": "100 % coton 13 oz",
   "fit": "Coupe courte, ajustée",
@@ -4031,6 +4342,10 @@
   "name": "Veste Trucker brute",
   "category": "vestes",
   "subcategory": "Veste en jean",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La Type III en selvedge brut.",
   "material": "100 % coton selvedge 14 oz",
   "fit": "Coupe courte",
@@ -4080,6 +4395,10 @@
   "name": "Surchemise Moleskine",
   "category": "chemises",
   "subcategory": "Surchemise",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une surchemise de travail en moleskine.",
   "material": "100 % coton moleskine",
   "fit": "Coupe droite",
@@ -4129,6 +4448,11 @@
   "name": "Sweat Loopwheel",
   "category": "maille",
   "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "street"
+  ],
   "description": "Un molleton tricoté lentement, sans couture latérale.",
   "material": "100 % coton, molleton tricoté loopwheel",
   "fit": "Coupe droite",
@@ -4178,6 +4502,10 @@
   "name": "Chino de travail Kolm",
   "category": "pantalons",
   "subcategory": "Chino",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un chino coupé comme nos jeans.",
   "material": "100 % coton sergé 11 oz",
   "fit": "Coupe droite",
@@ -4227,6 +4555,10 @@
   "name": "Ceinture tannage végétal",
   "category": "accessoires",
   "subcategory": "Ceinture",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une ceinture épaisse qui se patine avec vos jeans.",
   "material": "Cuir de vachette tannage végétal 4 mm",
   "fit": "Largeur 3,5 cm",
@@ -4272,6 +4604,10 @@
   "name": "Parka Kiruna",
   "category": "vestes",
   "subcategory": "Parka",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Notre parka grand froid, testée à −25 °C en Laponie suédoise.",
   "material": "Coton ciré 3 couches, garnissage duvet 90/10, capuche fourrure synthétique",
   "fit": "Coupe droite, mi-cuisse",
@@ -4321,6 +4657,10 @@
   "name": "Doudoune Abisko",
   "category": "vestes",
   "subcategory": "Doudoune",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La doudoune légère et chaude qui se glisse sous un manteau ou se porte seule.",
   "material": "Polyamide recyclé déperlant, garnissage duvet 700 cuin",
   "fit": "Coupe ajustée",
@@ -4370,6 +4710,10 @@
   "name": "Doudoune Lofoten",
   "category": "vestes",
   "subcategory": "Doudoune",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une ouate synthétique qui garde la chaleur même humide.",
   "material": "Polyamide recyclé, ouate synthétique PrimaLoft",
   "fit": "Coupe ajustée",
@@ -4419,6 +4763,10 @@
   "name": "Veste de pluie Tromsø",
   "category": "vestes",
   "subcategory": "Imperméable",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une vraie veste de pluie, discrète en ville, efficace en montagne.",
   "material": "Membrane 3 couches 20 000 mm / 20 000 g, coutures étanchées",
   "fit": "Coupe droite, capuche ajustable",
@@ -4468,6 +4816,10 @@
   "name": "Softshell Lapland",
   "category": "vestes",
   "subcategory": "Softshell",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Coupe-vent et respirant pour les jours frais et secs.",
   "material": "Softshell 3 couches, coupe-vent, déperlant",
   "fit": "Coupe ajustée",
@@ -4517,6 +4869,10 @@
   "name": "Veste huilée Gotland",
   "category": "vestes",
   "subcategory": "Veste huilée",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le coton huilé à l'anglaise, réimperméabilisable à vie.",
   "material": "Coton huilé 8 oz, doublure tartan",
   "fit": "Coupe droite, col velours",
@@ -4566,6 +4922,10 @@
   "name": "Trench Malmö",
   "category": "vestes",
   "subcategory": "Trench",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un trench mastic, imperméable sans en avoir l'air, avec doublure amovible pour l'hiver.",
   "material": "Gabardine de coton déperlante, doublure amovible",
   "fit": "Coupe droite, croisé",
@@ -4615,6 +4975,10 @@
   "name": "Trench Uppsala",
   "category": "vestes",
   "subcategory": "Trench",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Notre trench court, plus près du corps.",
   "material": "Gabardine de coton 2 couches",
   "fit": "Coupe ajustée",
@@ -4664,6 +5028,10 @@
   "name": "Veste matelassée Visby",
   "category": "vestes",
   "subcategory": "Veste matelassée",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La veste matelassée à porter sur une chemise et sous un manteau.",
   "material": "Polyamide matelassé losanges, ouate recyclée",
   "fit": "Coupe droite",
@@ -4713,6 +5081,10 @@
   "name": "Field jacket Fårö",
   "category": "vestes",
   "subcategory": "Field jacket",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La field jacket de mi-saison, quatre poches à soufflet.",
   "material": "Coton ripstop déperlant",
   "fit": "Coupe droite, quatre poches",
@@ -4762,6 +5134,10 @@
   "name": "Polaire Kebnekaise",
   "category": "vestes",
   "subcategory": "Polaire",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une polaire épaisse en fibres recyclées, poches zippées.",
   "material": "Polaire 100 % recyclée, grille 300 g/m²",
   "fit": "Coupe ajustée",
@@ -4811,6 +5187,10 @@
   "name": "Bomber Narvik",
   "category": "vestes",
   "subcategory": "Bomber",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le bomber marine au col sherpa amovible.",
   "material": "Nylon déperlant, col sherpa",
   "fit": "Coupe courte",
@@ -4860,6 +5240,10 @@
   "name": "Veste montagne Sarek",
   "category": "vestes",
   "subcategory": "Veste technique",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une veste de randonnée qui garde la ligne en ville.",
   "material": "Membrane 2,5 couches, coupe-vent",
   "fit": "Coupe ajustée",
@@ -4909,6 +5293,10 @@
   "name": "Manteau Hallen",
   "category": "vestes",
   "subcategory": "Manteau",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un manteau camel en laine traitée déperlante : élégant même sous l'averse.",
   "material": "80 % laine, 20 % polyamide, traitement déperlant",
   "fit": "Coupe droite, longueur genou",
@@ -4958,6 +5346,10 @@
   "name": "Manteau Göta",
   "category": "vestes",
   "subcategory": "Manteau",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le Hallen en gris anthracite.",
   "material": "80 % laine, 20 % polyamide",
   "fit": "Coupe droite",
@@ -5007,6 +5399,10 @@
   "name": "Blouson cuir Stockholm",
   "category": "vestes",
   "subcategory": "Blouson",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un blouson en agneau souple, sans ornements.",
   "material": "Cuir d'agneau plongé, doublure coton",
   "fit": "Coupe ajustée",
@@ -5056,6 +5452,10 @@
   "name": "Blouson cuir Vasa",
   "category": "vestes",
   "subcategory": "Blouson",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le Vasa, plus robuste, qui se patine avec le temps.",
   "material": "Cuir de vachette ciré",
   "fit": "Coupe ajustée",
@@ -5105,6 +5505,10 @@
   "name": "Écharpe Lund",
   "category": "accessoires",
   "subcategory": "Écharpe",
+  "gender": "mixte",
+  "styles": [
+   "casual"
+  ],
   "description": "Un cachemire recyclé, doux et chaud.",
   "material": "100 % cachemire recyclé",
   "fit": "190 × 30 cm",
@@ -5134,6 +5538,10 @@
   "name": "Midlayer Sarek",
   "category": "sport",
   "subcategory": "Haut technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Une couche intermédiaire légère pour la montagne et le running d'hiver.",
   "material": "Polyester recyclé grid fleece",
   "fit": "Coupe ajustée",
@@ -5183,6 +5591,10 @@
   "name": "Doudoune Abisko Light",
   "category": "vestes",
   "subcategory": "Doudoune",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "L'Abisko en version ultra-légère, compressible dans sa poche.",
   "material": "Polyamide 10D, duvet 800 cuin",
   "fit": "Coupe ajustée",
@@ -5232,6 +5644,10 @@
   "name": "Veste de pluie Tromsø courte",
   "category": "vestes",
   "subcategory": "Imperméable",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La Tromsø en version courte, pour la ville.",
   "material": "Membrane 2,5 couches 15 000 mm",
   "fit": "Coupe courte",
@@ -5281,6 +5697,10 @@
   "name": "Trench Malmö long",
   "category": "vestes",
   "subcategory": "Trench",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le Malmö en longueur mi-mollet.",
   "material": "Gabardine de coton déperlante",
   "fit": "Coupe droite, mi-mollet",
@@ -5330,6 +5750,10 @@
   "name": "Gilet matelassé Visby",
   "category": "vestes",
   "subcategory": "Gilet matelassé",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le Visby sans manches, sous une veste.",
   "material": "Polyamide matelassé, ouate recyclée",
   "fit": "Coupe ajustée",
@@ -5379,6 +5803,10 @@
   "name": "Parka Kiruna Light",
   "category": "vestes",
   "subcategory": "Parka",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La Kiruna pour les hivers urbains.",
   "material": "Coton ciré 2 couches, ouate synthétique",
   "fit": "Coupe droite",
@@ -5428,6 +5856,10 @@
   "name": "Veste huilée Gotland courte",
   "category": "vestes",
   "subcategory": "Veste huilée",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une version courte et plus légère.",
   "material": "Coton huilé 6 oz",
   "fit": "Coupe courte",
@@ -5477,6 +5909,10 @@
   "name": "Derby Lucien",
   "category": "chaussures",
   "subcategory": "Derby",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le derby à tout faire, cuir grainé qui ne craint pas la pluie, ressemelable à vie.",
   "material": "Cuir de veau grainé, cousu Goodyear, semelle cuir",
   "fit": "Forme 12, bout rond",
@@ -5554,6 +5990,10 @@
   "name": "Richelieu Auguste",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le richelieu noir des rendez-vous importants : box-calf lisse, bout amande.",
   "material": "Cuir de veau box-calf, cousu Goodyear, semelle cuir",
   "fit": "Forme 9, bout amande",
@@ -5631,6 +6071,10 @@
   "name": "Chelsea Marcel",
   "category": "chaussures",
   "subcategory": "Chelsea boots",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La chelsea patinée à la main, semelle gomme pour les trottoirs mouillés.",
   "material": "Cuir de veau patiné main, élastiques latéraux, semelle gomme Dainite",
   "fit": "Forme 12",
@@ -5708,6 +6152,10 @@
   "name": "Sneaker Léon",
   "category": "chaussures",
   "subcategory": "Sneakers",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La sneaker en cuir cognac, assez sobre pour le bureau.",
   "material": "Cuir de veau pleine fleur, semelle cousue",
   "fit": "Forme basse",
@@ -5785,6 +6233,10 @@
   "name": "Richelieu Auguste cognac",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "L'Auguste en cognac patiné, pour les costumes bleus.",
   "material": "Cuir de veau patiné main, cousu Goodyear",
   "fit": "Forme 9",
@@ -5862,6 +6314,10 @@
   "name": "Richelieu Gaston",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Notre patine la plus profonde, réalisée en douze passages.",
   "material": "Cuir de veau, patine à l'ancienne",
   "fit": "Forme 9",
@@ -5939,6 +6395,10 @@
   "name": "Richelieu Émile",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un richelieu plus souple, cousu Blake.",
   "material": "Cuir de veau, cousu Blake",
   "fit": "Forme 7, bout rond",
@@ -6016,6 +6476,10 @@
   "name": "Richelieu Émile tabac",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "L'Émile en tabac.",
   "material": "Cuir de veau, cousu Blake",
   "fit": "Forme 7",
@@ -6093,6 +6557,10 @@
   "name": "Richelieu Théodore",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un bout droit fleuri, discret.",
   "material": "Cuir de veau, bout droit fleuri",
   "fit": "Forme 9",
@@ -6170,6 +6638,10 @@
   "name": "Richelieu Auguste olive",
   "category": "chaussures",
   "subcategory": "Richelieu",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "L'Auguste dans un vert olive rare, avec un costume gris.",
   "material": "Cuir de veau teint au tonneau, vert olive",
   "fit": "Forme 9",
@@ -6247,6 +6719,10 @@
   "name": "Derby Lucien chocolat",
   "category": "chaussures",
   "subcategory": "Derby",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le Lucien en cuir lisse chocolat.",
   "material": "Cuir de veau lisse, cousu Goodyear",
   "fit": "Forme 12",
@@ -6324,6 +6800,10 @@
   "name": "Derby Jules",
   "category": "chaussures",
   "subcategory": "Derby",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Un derby camel clair, pour l'été et les mariages.",
   "material": "Cuir de veau, semelle cuir",
   "fit": "Forme 10",
@@ -6401,6 +6881,10 @@
   "name": "Derby Armand",
   "category": "chaussures",
   "subcategory": "Derby",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le bordeaux, alternative élégante au marron.",
   "material": "Cuir de veau bordeaux",
   "fit": "Forme 10",
@@ -6478,6 +6962,10 @@
   "name": "Derby Jules daim",
   "category": "chaussures",
   "subcategory": "Derby",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Le Jules en daim bleu, pour le week-end.",
   "material": "Daim de veau, semelle crêpe",
   "fit": "Forme 10",
@@ -6555,6 +7043,10 @@
   "name": "Double boucle Victor",
   "category": "chaussures",
   "subcategory": "Double boucle",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "La double boucle, entre derby et mocassin.",
   "material": "Cuir de veau, cousu Goodyear",
   "fit": "Forme 9",
@@ -6632,6 +7124,10 @@
   "name": "Mocassin Henri",
   "category": "chaussures",
   "subcategory": "Mocassin",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un mocassin à mors, sans chaussettes l'été.",
   "material": "Cuir de veau et daim, mors métal",
   "fit": "Forme 6",
@@ -6709,6 +7205,10 @@
   "name": "Chelsea Marcel tabac",
   "category": "chaussures",
   "subcategory": "Chelsea boots",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La Marcel en tabac clair.",
   "material": "Cuir de veau, semelle gomme",
   "fit": "Forme 12",
@@ -6786,6 +7286,10 @@
   "name": "Chelsea Marcel daim",
   "category": "chaussures",
   "subcategory": "Chelsea boots",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Un daim gris traité contre l'eau.",
   "material": "Daim de veau hydrofuge",
   "fit": "Forme 12",
@@ -6863,6 +7367,10 @@
   "name": "Bottine Gabriel",
   "category": "chaussures",
   "subcategory": "Bottines",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La bottine lacée pour l'hiver, cuir gras imperméable.",
   "material": "Cuir de veau gras, semelle commando",
   "fit": "Forme 14",
@@ -6940,6 +7448,10 @@
   "name": "Bottine Raymond",
   "category": "chaussures",
   "subcategory": "Bottines",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une bottine à boucle, patinée main.",
   "material": "Cuir de veau patiné, boucle laiton",
   "fit": "Forme 9",
@@ -7017,6 +7529,10 @@
   "name": "Sneaker Léon toile",
   "category": "chaussures",
   "subcategory": "Sneakers",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "La Léon en toile marine pour l'été.",
   "material": "Toile de coton, semelle caoutchouc vulcanisée",
   "fit": "Forme basse",
@@ -7094,6 +7610,10 @@
   "name": "Ceinture Ferrand",
   "category": "accessoires",
   "subcategory": "Ceinture",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une ceinture fine en cuir marine, bords peints main.",
   "material": "Cuir de veau, boucle laiton brossé",
   "fit": "Largeur 3 cm",
@@ -7135,6 +7655,10 @@
   "name": "Besace Valmy",
   "category": "accessoires",
   "subcategory": "Sac",
+  "gender": "homme",
+  "styles": [
+   "casual"
+  ],
   "description": "Une besace en cuir pull-up qui accueille un ordinateur 14 pouces.",
   "material": "Cuir de vachette pull-up, sangle réglable",
   "fit": "38 × 28 × 10 cm",
@@ -7164,6 +7688,10 @@
   "name": "Porte-documents Valmy",
   "category": "accessoires",
   "subcategory": "Sac",
+  "gender": "homme",
+  "styles": [
+   "corporate"
+  ],
   "description": "Le porte-documents camel, fermeture à rabat.",
   "material": "Cuir de vachette tannage végétal",
   "fit": "40 × 30 × 8 cm",
@@ -7193,6 +7721,10 @@
   "name": "Sac week-end Ferrand",
   "category": "accessoires",
   "subcategory": "Sac de voyage",
+  "gender": "mixte",
+  "styles": [
+   "casual"
+  ],
   "description": "Le sac de 48 heures, format cabine.",
   "material": "Cuir de vachette pull-up, doublure coton",
   "fit": "50 × 28 × 26 cm, 36 L",
@@ -7222,6 +7754,10 @@
   "name": "T-shirt Course",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Un t-shirt de course qui sèche en vingt minutes.",
   "material": "Polyester recyclé 140 g/m², maille respirante",
   "fit": "Coupe près du corps",
@@ -7271,6 +7807,10 @@
   "name": "T-shirt Course corail",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le Course en corail, visible à la tombée du jour.",
   "material": "Polyester recyclé 120 g/m²",
   "fit": "Coupe près du corps",
@@ -7320,6 +7860,10 @@
   "name": "Haut de course thermique",
   "category": "sport",
   "subcategory": "Haut technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le haut d'hiver pour courir quand il fait 3 °C.",
   "material": "Polyester gratté, col zippé",
   "fit": "Coupe près du corps",
@@ -7369,6 +7913,10 @@
   "name": "Sweat Repos",
   "category": "sport",
   "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le sweat d'après séance, épais et doux.",
   "material": "Coton et polyester recyclé, molleton 300 g/m²",
   "fit": "Coupe droite",
@@ -7418,6 +7966,10 @@
   "name": "Jogging Repos",
   "category": "sport",
   "subcategory": "Jogging",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le jogging assorti au sweat Repos.",
   "material": "Coton et polyester recyclé, molleton 300 g/m²",
   "fit": "Coupe fuselée, bas côtelé",
@@ -7467,6 +8019,10 @@
   "name": "Baskets Vague",
   "category": "chaussures",
   "subcategory": "Baskets",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Une basket en maille légère, pour la salle et la ville.",
   "material": "Tige en maille recyclée, semelle EVA",
   "fit": "Forme basse",
@@ -7544,6 +8100,10 @@
   "name": "Baskets Vague grises",
   "category": "chaussures",
   "subcategory": "Baskets",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "La Vague en gris anthracite, moins salissante.",
   "material": "Tige en maille recyclée, semelle EVA",
   "fit": "Forme basse",
@@ -7621,6 +8181,10 @@
   "name": "Polaire Alizé",
   "category": "sport",
   "subcategory": "Polaire",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Une polaire zippée pour les sorties fraîches.",
   "material": "Polaire recyclée 260 g/m²",
   "fit": "Coupe droite",
@@ -7670,6 +8234,10 @@
   "name": "T-shirt Respirant",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Un t-shirt de sport qui ressemble à un t-shirt de ville.",
   "material": "Coton et Tencel™, jersey 150 g/m²",
   "fit": "Coupe droite",
@@ -7719,6 +8287,10 @@
   "name": "T-shirt Respirant noir",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le Respirant en noir.",
   "material": "Coton et Tencel™, jersey 150 g/m²",
   "fit": "Coupe droite",
@@ -7768,6 +8340,10 @@
   "name": "Hoodie Rivage",
   "category": "sport",
   "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le hoodie gris chiné à porter partout.",
   "material": "100 % coton biologique",
   "fit": "Coupe droite",
@@ -7817,6 +8393,10 @@
   "name": "Sweat Marée",
   "category": "sport",
   "subcategory": "Sweat",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Un sweat léger pour l'échauffement.",
   "material": "Coton biologique, molleton léger",
   "fit": "Coupe droite",
@@ -7866,6 +8446,10 @@
   "name": "Haut thermique Zéphyr",
   "category": "sport",
   "subcategory": "Haut technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "La version sans col zippé.",
   "material": "Polyester gratté",
   "fit": "Coupe près du corps",
@@ -7915,6 +8499,10 @@
   "name": "T-shirt Course manches longues",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le Course à manches longues.",
   "material": "Polyester recyclé",
   "fit": "Coupe près du corps",
@@ -7964,6 +8552,10 @@
   "name": "Baskets Vague Plus",
   "category": "chaussures",
   "subcategory": "Baskets",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Plus d'amorti pour courir jusqu'à 10 km.",
   "material": "Maille recyclée, semelle amortie",
   "fit": "Forme basse",
@@ -8041,6 +8633,10 @@
   "name": "Ensemble Repos",
   "category": "sport",
   "subcategory": "Ensemble",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le sweat et le jogging Repos ensemble.",
   "material": "Coton et polyester recyclé",
   "fit": "Coupe droite",
@@ -8082,6 +8678,10 @@
   "name": "Débardeur Course",
   "category": "sport",
   "subcategory": "Débardeur",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le débardeur pour les jours chauds.",
   "material": "Polyester recyclé",
   "fit": "Coupe près du corps",
@@ -8131,6 +8731,10 @@
   "name": "Gilet polaire Alizé",
   "category": "sport",
   "subcategory": "Polaire",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "L'Alizé sans manches.",
   "material": "Polaire recyclée",
   "fit": "Coupe droite",
@@ -8180,6 +8784,10 @@
   "name": "Baskets Vague Trail",
   "category": "chaussures",
   "subcategory": "Baskets",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "La Vague avec une semelle crantée pour les chemins.",
   "material": "Maille recyclée renforcée, crampons",
   "fit": "Forme basse",
@@ -8257,6 +8865,10 @@
   "name": "Lot de 2 t-shirts Respirant",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Deux t-shirts Respirant, blanc et noir.",
   "material": "Coton et Tencel™",
   "fit": "Coupe droite",
@@ -8306,6 +8918,10 @@
   "name": "Veste de course Grain",
   "category": "sport",
   "subcategory": "Veste technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Coupe-vent léger à porter sur le thermique.",
   "material": "Polyester déperlant",
   "fit": "Coupe près du corps",
@@ -8355,6 +8971,10 @@
   "name": "Hoodie zippé Rivage",
   "category": "sport",
   "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le hoodie Rivage en version zippée.",
   "material": "100 % coton biologique",
   "fit": "Coupe droite",
@@ -8404,6 +9024,10 @@
   "name": "Jogging Repos léger",
   "category": "sport",
   "subcategory": "Jogging",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le jogging Repos pour la mi-saison.",
   "material": "Coton léger 220 g/m²",
   "fit": "Coupe fuselée",
@@ -8453,6 +9077,10 @@
   "name": "Sweat Marée col zippé",
   "category": "sport",
   "subcategory": "Sweat",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le Marée avec un col camionneur.",
   "material": "Coton biologique",
   "fit": "Coupe droite",
@@ -8502,6 +9130,10 @@
   "name": "T-shirt Course noir",
   "category": "sport",
   "subcategory": "T-shirt technique",
+  "gender": "homme",
+  "styles": [
+   "sport"
+  ],
   "description": "Le Course en noir.",
   "material": "Polyester recyclé",
   "fit": "Coupe près du corps",
@@ -8543,5 +9175,3419 @@
   "image": "/images/px/tee-black.jpg",
   "season": "toutes saisons",
   "formality": 1
+ },
+ {
+  "id": "verac-f-blouse-haussmann",
+  "ref": "MV-CH-3100-46",
+  "brandId": "verac",
+  "name": "Blouse Haussmann",
+  "category": "chemises",
+  "subcategory": "Blouse",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "La blouse blanche de référence : popeline nette, col montant à nouer, poignets boutonnés.",
+  "material": "100 % coton popeline double retors",
+  "fit": "Coupe droite, col montant noué",
+  "color": {
+   "name": "Blanc",
+   "hex": "#F7F6F2"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 2
+   },
+   {
+    "size": "36",
+    "stock": 1
+   },
+   {
+    "size": "38",
+    "stock": 3
+   },
+   {
+    "size": "40",
+    "stock": 12
+   },
+   {
+    "size": "42",
+    "stock": 11
+   },
+   {
+    "size": "44",
+    "stock": 2
+   },
+   {
+    "size": "46",
+    "stock": 0
+   }
+  ],
+  "price": 115,
+  "rating": 4.7,
+  "reviews": 29,
+  "returnRate": 27.6,
+  "image": "/images/px/wf-blouse-white.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-blouse-opera",
+  "ref": "MV-CH-3107-59",
+  "brandId": "verac",
+  "name": "Blouse Opéra",
+  "category": "chemises",
+  "subcategory": "Blouse",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un crêpe fluide couleur taupe, à rentrer dans un pantalon large ou à porter sur un jean.",
+  "material": "100 % viscose crêpe",
+  "fit": "Coupe ample, manches bouffantes",
+  "color": {
+   "name": "Taupe",
+   "hex": "#A99C8E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 1
+   },
+   {
+    "size": "36",
+    "stock": 10
+   },
+   {
+    "size": "38",
+    "stock": 2
+   },
+   {
+    "size": "40",
+    "stock": 9
+   },
+   {
+    "size": "42",
+    "stock": 1
+   },
+   {
+    "size": "44",
+    "stock": 14
+   },
+   {
+    "size": "46",
+    "stock": 3
+   }
+  ],
+  "price": 109,
+  "rating": 4.6,
+  "reviews": 230,
+  "returnRate": 30.3,
+  "image": "/images/px/wf-blouse-taupe.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-tailleur-opera-veste",
+  "ref": "MV-CO-3114-24",
+  "brandId": "verac",
+  "name": "Veste de tailleur Opéra",
+  "category": "costumes",
+  "subcategory": "Veste de tailleur",
+  "gender": "femme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
+  "description": "La veste noire qui structure tout : laine stretch, épaule nette, un seul bouton.",
+  "material": "98 % laine, 2 % élasthanne, doublure cupro",
+  "fit": "Coupe ajustée, un bouton",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 17
+   },
+   {
+    "size": "36",
+    "stock": 4
+   },
+   {
+    "size": "38",
+    "stock": 13
+   },
+   {
+    "size": "40",
+    "stock": 8
+   },
+   {
+    "size": "42",
+    "stock": 9
+   },
+   {
+    "size": "44",
+    "stock": 14
+   },
+   {
+    "size": "46",
+    "stock": 2
+   }
+  ],
+  "price": 239,
+  "rating": 4.8,
+  "reviews": 222,
+  "returnRate": 28.5,
+  "image": "/images/px/wf-suit-black.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-tailleur-opera-pantalon",
+  "ref": "MV-CO-3121-54",
+  "brandId": "verac",
+  "name": "Pantalon de tailleur Opéra",
+  "category": "costumes",
+  "subcategory": "Pantalon de tailleur",
+  "gender": "femme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
+  "description": "Le pantalon assorti à la veste Opéra, évasé pour allonger la silhouette.",
+  "material": "98 % laine, 2 % élasthanne",
+  "fit": "Coupe évasée, taille haute",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 5
+   },
+   {
+    "size": "36",
+    "stock": 9
+   },
+   {
+    "size": "38",
+    "stock": 10
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "42",
+    "stock": 4
+   },
+   {
+    "size": "44",
+    "stock": 9
+   },
+   {
+    "size": "46",
+    "stock": 12
+   }
+  ],
+  "price": 139,
+  "rating": 4.3,
+  "reviews": 457,
+  "returnRate": 29.2,
+  "image": "/images/px/wf-pants-black-flare.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-blazer-palais",
+  "ref": "MV-VE-3130-22",
+  "brandId": "verac",
+  "name": "Blazer Palais",
+  "category": "vestes",
+  "subcategory": "Blazer",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un blazer beige chiné qui passe du bureau au week-end, sur un jean comme sur un pantalon large.",
+  "material": "70 % laine, 30 % lin, motif chevrons",
+  "fit": "Coupe droite, deux boutons",
+  "color": {
+   "name": "Beige",
+   "hex": "#C8B48F"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 5
+   },
+   {
+    "size": "36",
+    "stock": 10
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "40",
+    "stock": 12
+   },
+   {
+    "size": "42",
+    "stock": 16
+   },
+   {
+    "size": "44",
+    "stock": 1
+   },
+   {
+    "size": "46",
+    "stock": 14
+   }
+  ],
+  "price": 229,
+  "rating": 4.1,
+  "reviews": 550,
+  "returnRate": 26.1,
+  "image": "/images/px/wf-blazer-beige.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-blazer-faubourg",
+  "ref": "MV-VE-3140-72",
+  "brandId": "verac",
+  "name": "Blazer Faubourg femme",
+  "category": "vestes",
+  "subcategory": "Blazer",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Le blazer noir cintré, la pièce corporate qui va avec tout.",
+  "material": "100 % laine vierge, doublure cupro",
+  "fit": "Coupe cintrée, revers cranté",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 1
+   },
+   {
+    "size": "36",
+    "stock": 4
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "40",
+    "stock": 1
+   },
+   {
+    "size": "42",
+    "stock": 14
+   },
+   {
+    "size": "44",
+    "stock": 18
+   },
+   {
+    "size": "46",
+    "stock": 14
+   }
+  ],
+  "price": 235,
+  "rating": 4.4,
+  "reviews": 359,
+  "returnRate": 27.4,
+  "image": "/images/px/wf-blazer-black.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-blazer-tuileries",
+  "ref": "MV-VE-3148-67",
+  "brandId": "verac",
+  "name": "Blazer Tuileries",
+  "category": "vestes",
+  "subcategory": "Blazer",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un jaune moutarde à revers contrastés, pour sortir du noir sans perdre en allure.",
+  "material": "Crêpe de laine, revers en satin noir",
+  "fit": "Coupe droite",
+  "color": {
+   "name": "Jaune moutarde",
+   "hex": "#D9B33B"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 7
+   },
+   {
+    "size": "36",
+    "stock": 9
+   },
+   {
+    "size": "38",
+    "stock": 15
+   },
+   {
+    "size": "40",
+    "stock": 5
+   },
+   {
+    "size": "42",
+    "stock": 2
+   },
+   {
+    "size": "44",
+    "stock": 7
+   },
+   {
+    "size": "46",
+    "stock": 2
+   }
+  ],
+  "price": 225,
+  "rating": 4.3,
+  "reviews": 138,
+  "returnRate": 25.5,
+  "image": "/images/px/wf-blazer-yellow.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-tailleur-monceau",
+  "ref": "MV-CO-3154-49",
+  "brandId": "verac",
+  "name": "Tailleur Monceau",
+  "category": "costumes",
+  "subcategory": "Tailleur",
+  "gender": "femme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
+  "description": "Un tailleur écru croisé, léger et respirant, pour les rendez-vous de printemps.",
+  "material": "Laine fresco 4 plis, écru",
+  "fit": "Veste croisée, pantalon droit",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 15
+   },
+   {
+    "size": "36",
+    "stock": 4
+   },
+   {
+    "size": "38",
+    "stock": 2
+   },
+   {
+    "size": "40",
+    "stock": 1
+   },
+   {
+    "size": "42",
+    "stock": 6
+   },
+   {
+    "size": "44",
+    "stock": 6
+   },
+   {
+    "size": "46",
+    "stock": 3
+   }
+  ],
+  "price": 349,
+  "rating": 4.8,
+  "reviews": 270,
+  "returnRate": 24.9,
+  "image": "/images/px/wf-suit-white.jpg",
+  "season": "printemps-été",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-tailleur-trocadero",
+  "ref": "MV-CO-3156-71",
+  "brandId": "verac",
+  "name": "Tailleur Trocadéro femme",
+  "category": "costumes",
+  "subcategory": "Tailleur",
+  "gender": "femme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
+  "description": "La version femme de notre costume Trocadéro, en coupe ample.",
+  "material": "Laine Super 110's tissée à Biella",
+  "fit": "Veste oversize, pantalon large",
+  "color": {
+   "name": "Marine",
+   "hex": "#1F2A44"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 15
+   },
+   {
+    "size": "36",
+    "stock": 3
+   },
+   {
+    "size": "38",
+    "stock": 3
+   },
+   {
+    "size": "40",
+    "stock": 14
+   },
+   {
+    "size": "42",
+    "stock": 1
+   },
+   {
+    "size": "44",
+    "stock": 17
+   },
+   {
+    "size": "46",
+    "stock": 17
+   }
+  ],
+  "price": 359,
+  "rating": 4.7,
+  "reviews": 146,
+  "returnRate": 28.6,
+  "image": "/images/px/wf-suit-navy.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-tailleur-roi",
+  "ref": "MV-CO-3166-20",
+  "brandId": "verac",
+  "name": "Tailleur Roi",
+  "category": "costumes",
+  "subcategory": "Tailleur",
+  "gender": "femme",
+  "styles": [
+   "costume",
+   "corporate"
+  ],
+  "description": "Un bleu roi franc, pour les présentations où l'on veut marquer les esprits.",
+  "material": "Crêpe de laine stretch",
+  "fit": "Veste cintrée, pantalon cigarette",
+  "color": {
+   "name": "Bleu roi",
+   "hex": "#2F5BA7"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 11
+   },
+   {
+    "size": "36",
+    "stock": 17
+   },
+   {
+    "size": "38",
+    "stock": 9
+   },
+   {
+    "size": "40",
+    "stock": 11
+   },
+   {
+    "size": "42",
+    "stock": 2
+   },
+   {
+    "size": "44",
+    "stock": 12
+   },
+   {
+    "size": "46",
+    "stock": 8
+   }
+  ],
+  "price": 339,
+  "rating": 4.6,
+  "reviews": 83,
+  "returnRate": 24.9,
+  "image": "/images/px/wf-suit-blue.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-pantalon-saint-honore",
+  "ref": "MV-PA-3170-15",
+  "brandId": "verac",
+  "name": "Pantalon large Saint-Honoré",
+  "category": "pantalons",
+  "subcategory": "Pantalon large",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Le pantalon large noir, à porter avec une blouse ou un simple t-shirt.",
+  "material": "Crêpe de laine, taille haute",
+  "fit": "Coupe large, pinces",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 7
+   },
+   {
+    "size": "36",
+    "stock": 12
+   },
+   {
+    "size": "38",
+    "stock": 6
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "42",
+    "stock": 0
+   },
+   {
+    "size": "44",
+    "stock": 9
+   },
+   {
+    "size": "46",
+    "stock": 11
+   }
+  ],
+  "price": 139,
+  "rating": 4.9,
+  "reviews": 174,
+  "returnRate": 26.2,
+  "image": "/images/px/wf-pants-black-wide.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-pantalon-marais",
+  "ref": "MV-PA-3183-91",
+  "brandId": "verac",
+  "name": "Pantalon large Marais",
+  "category": "pantalons",
+  "subcategory": "Pantalon large",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un beige clair et fluide, pour un look bureau en été.",
+  "material": "Laine et lin, taille haute",
+  "fit": "Coupe large",
+  "color": {
+   "name": "Beige",
+   "hex": "#C8B48F"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 0
+   },
+   {
+    "size": "36",
+    "stock": 18
+   },
+   {
+    "size": "38",
+    "stock": 10
+   },
+   {
+    "size": "40",
+    "stock": 16
+   },
+   {
+    "size": "42",
+    "stock": 14
+   },
+   {
+    "size": "44",
+    "stock": 17
+   },
+   {
+    "size": "46",
+    "stock": 17
+   }
+  ],
+  "price": 135,
+  "rating": 4.6,
+  "reviews": 443,
+  "returnRate": 30.9,
+  "image": "/images/px/wf-pants-beige-wide.jpg",
+  "season": "printemps-été",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-jupe-plissee",
+  "ref": "MV-JU-3188-30",
+  "brandId": "verac",
+  "name": "Jupe plissée Concorde",
+  "category": "jupes",
+  "subcategory": "Jupe midi",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Une jupe plissée écrue qui bouge à chaque pas, avec une blouse noire ou un pull fin.",
+  "material": "Crêpe plissé soleil",
+  "fit": "Midi, taille élastiquée",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 4
+   },
+   {
+    "size": "36",
+    "stock": 5
+   },
+   {
+    "size": "38",
+    "stock": 16
+   },
+   {
+    "size": "40",
+    "stock": 13
+   },
+   {
+    "size": "42",
+    "stock": 0
+   },
+   {
+    "size": "44",
+    "stock": 18
+   },
+   {
+    "size": "46",
+    "stock": 18
+   }
+  ],
+  "price": 125,
+  "rating": 4.7,
+  "reviews": 236,
+  "returnRate": 24.5,
+  "image": "/images/px/wf-skirt-pleated-white.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "verac-f-robe-riviera",
+  "ref": "MV-RO-3196-44",
+  "brandId": "verac",
+  "name": "Robe portefeuille Riviera",
+  "category": "robes",
+  "subcategory": "Robe de cérémonie",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un satin bleu acier drapé en portefeuille : la robe des mariages et des soirées d'été.",
+  "material": "Satin de soie lavée",
+  "fit": "Portefeuille, mi-longue",
+  "color": {
+   "name": "Bleu acier",
+   "hex": "#6F8FBF"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 4
+   },
+   {
+    "size": "36",
+    "stock": 14
+   },
+   {
+    "size": "38",
+    "stock": 12
+   },
+   {
+    "size": "40",
+    "stock": 6
+   },
+   {
+    "size": "42",
+    "stock": 9
+   },
+   {
+    "size": "44",
+    "stock": 3
+   },
+   {
+    "size": "46",
+    "stock": 0
+   }
+  ],
+  "price": 245,
+  "rating": 4.4,
+  "reviews": 472,
+  "returnRate": 23.4,
+  "image": "/images/px/wf-dress-blue-satin.jpg",
+  "season": "printemps-été",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-robe-blush",
+  "ref": "MV-RO-3202-90",
+  "brandId": "verac",
+  "name": "Robe Matignon",
+  "category": "robes",
+  "subcategory": "Robe de cérémonie",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un rose blush poudré, ceinture nouée, pour les cérémonies de jour.",
+  "material": "Crêpe de viscose",
+  "fit": "Portefeuille, sans manches",
+  "color": {
+   "name": "Rose blush",
+   "hex": "#EBCFC6"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 1
+   },
+   {
+    "size": "36",
+    "stock": 14
+   },
+   {
+    "size": "38",
+    "stock": 8
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "42",
+    "stock": 14
+   },
+   {
+    "size": "44",
+    "stock": 14
+   },
+   {
+    "size": "46",
+    "stock": 11
+   }
+  ],
+  "price": 219,
+  "rating": 4.3,
+  "reviews": 143,
+  "returnRate": 27.6,
+  "image": "/images/px/wf-dress-blush.jpg",
+  "season": "printemps-été",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-robe-soir",
+  "ref": "MV-RO-3206-93",
+  "brandId": "verac",
+  "name": "Robe Vendôme",
+  "category": "robes",
+  "subcategory": "Robe du soir",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "La robe noire du soir, satinée et fendue.",
+  "material": "Satin stretch",
+  "fit": "Ajustée, fendue",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 18
+   },
+   {
+    "size": "36",
+    "stock": 2
+   },
+   {
+    "size": "38",
+    "stock": 14
+   },
+   {
+    "size": "40",
+    "stock": 17
+   },
+   {
+    "size": "42",
+    "stock": 7
+   },
+   {
+    "size": "44",
+    "stock": 2
+   },
+   {
+    "size": "46",
+    "stock": 1
+   }
+  ],
+  "price": 229,
+  "rating": 4.3,
+  "reviews": 254,
+  "returnRate": 29.4,
+  "image": "/images/px/wf-dress-black-satin.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "verac-f-robe-chemise",
+  "ref": "MV-RO-3214-55",
+  "brandId": "verac",
+  "name": "Robe chemise Rivoli",
+  "category": "robes",
+  "subcategory": "Robe chemise",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "La robe chemise lavande, à porter ceinturée ou ouverte sur un jean.",
+  "material": "100 % coton popeline",
+  "fit": "Droite, longueur genou",
+  "color": {
+   "name": "Lavande",
+   "hex": "#B9C3E3"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 2
+   },
+   {
+    "size": "36",
+    "stock": 5
+   },
+   {
+    "size": "38",
+    "stock": 5
+   },
+   {
+    "size": "40",
+    "stock": 6
+   },
+   {
+    "size": "42",
+    "stock": 7
+   },
+   {
+    "size": "44",
+    "stock": 14
+   },
+   {
+    "size": "46",
+    "stock": 9
+   }
+  ],
+  "price": 149,
+  "rating": 4.5,
+  "reviews": 423,
+  "returnRate": 27.4,
+  "image": "/images/px/wf-shirtdress-lavender.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-blouse-fleurie",
+  "ref": "LB-CH-3106-59",
+  "brandId": "bastide",
+  "name": "Blouse Lourmarin",
+  "category": "chemises",
+  "subcategory": "Blouse",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une blouse fleurie légère, à rentrer dans un jean ou une jupe.",
+  "material": "100 % viscose imprimée fleurs",
+  "fit": "Manches bouffantes, col en V",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 2
+   },
+   {
+    "size": "S",
+    "stock": 1
+   },
+   {
+    "size": "M",
+    "stock": 9
+   },
+   {
+    "size": "L",
+    "stock": 5
+   },
+   {
+    "size": "XL",
+    "stock": 17
+   }
+  ],
+  "price": 49,
+  "rating": 4.9,
+  "reviews": 358,
+  "returnRate": 15.1,
+  "image": "/images/px/wf-blouse-floral.jpg",
+  "season": "printemps-été",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-pull-bateau",
+  "ref": "LB-MA-3109-60",
+  "brandId": "bastide",
+  "name": "Pull col bateau Alpilles",
+  "category": "maille",
+  "subcategory": "Pull",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Un pull doux couleur sable, à porter sur une épaule.",
+  "material": "60 % coton, 40 % laine",
+  "fit": "Ample, épaules dénudées",
+  "color": {
+   "name": "Sable",
+   "hex": "#D8C8A8"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 10
+   },
+   {
+    "size": "S",
+    "stock": 11
+   },
+   {
+    "size": "M",
+    "stock": 0
+   },
+   {
+    "size": "L",
+    "stock": 9
+   },
+   {
+    "size": "XL",
+    "stock": 1
+   }
+  ],
+  "price": 69,
+  "rating": 4.7,
+  "reviews": 302,
+  "returnRate": 15.1,
+  "image": "/images/px/wf-sweater-beige.jpg",
+  "season": "automne-hiver",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-pantalon-taupe",
+  "ref": "LB-PA-3120-67",
+  "brandId": "bastide",
+  "name": "Pantalon large Calanque",
+  "category": "pantalons",
+  "subcategory": "Pantalon large",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Le pantalon large taupe, fluide, avec ceinture à passants.",
+  "material": "Viscose et lin",
+  "fit": "Coupe large, taille haute",
+  "color": {
+   "name": "Taupe",
+   "hex": "#A99C8E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 13
+   },
+   {
+    "size": "36",
+    "stock": 0
+   },
+   {
+    "size": "38",
+    "stock": 16
+   },
+   {
+    "size": "40",
+    "stock": 8
+   },
+   {
+    "size": "42",
+    "stock": 11
+   },
+   {
+    "size": "44",
+    "stock": 1
+   },
+   {
+    "size": "46",
+    "stock": 9
+   }
+  ],
+  "price": 65,
+  "rating": 4.2,
+  "reviews": 410,
+  "returnRate": 10.3,
+  "image": "/images/px/wf-pants-taupe.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-pantalon-camel",
+  "ref": "LB-PA-3125-35",
+  "brandId": "bastide",
+  "name": "Pantalon large Luberon",
+  "category": "pantalons",
+  "subcategory": "Pantalon large",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Le lin camel des week-ends d'été.",
+  "material": "100 % lin lavé",
+  "fit": "Coupe large, cheville",
+  "color": {
+   "name": "Camel",
+   "hex": "#B08355"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 13
+   },
+   {
+    "size": "36",
+    "stock": 16
+   },
+   {
+    "size": "38",
+    "stock": 1
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "42",
+    "stock": 1
+   },
+   {
+    "size": "44",
+    "stock": 4
+   },
+   {
+    "size": "46",
+    "stock": 16
+   }
+  ],
+  "price": 59,
+  "rating": 4.4,
+  "reviews": 621,
+  "returnRate": 15.3,
+  "image": "/images/px/wf-pants-camel.jpg",
+  "season": "printemps-été",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-jupe-fleurie",
+  "ref": "LB-JU-3129-81",
+  "brandId": "bastide",
+  "name": "Jupe midi Durance",
+  "category": "jupes",
+  "subcategory": "Jupe midi",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une jupe midi à petites fleurs, pour l'été comme l'hiver avec des bottines.",
+  "material": "Viscose imprimée",
+  "fit": "Midi évasée",
+  "color": {
+   "name": "Marron",
+   "hex": "#6B4428"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 16
+   },
+   {
+    "size": "36",
+    "stock": 15
+   },
+   {
+    "size": "38",
+    "stock": 3
+   },
+   {
+    "size": "40",
+    "stock": 11
+   },
+   {
+    "size": "42",
+    "stock": 2
+   },
+   {
+    "size": "44",
+    "stock": 13
+   },
+   {
+    "size": "46",
+    "stock": 0
+   }
+  ],
+  "price": 45,
+  "rating": 4.7,
+  "reviews": 229,
+  "returnRate": 11.5,
+  "image": "/images/px/wf-skirt-floral.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-jupe-pois",
+  "ref": "LB-JU-3141-32",
+  "brandId": "bastide",
+  "name": "Jupe midi Sorgue",
+  "category": "jupes",
+  "subcategory": "Jupe midi",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une jupe chocolat à pois crème, boutonnée devant.",
+  "material": "Viscose à pois",
+  "fit": "Midi droite, boutonnée",
+  "color": {
+   "name": "Chocolat",
+   "hex": "#4A2E1E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 15
+   },
+   {
+    "size": "36",
+    "stock": 8
+   },
+   {
+    "size": "38",
+    "stock": 17
+   },
+   {
+    "size": "40",
+    "stock": 8
+   },
+   {
+    "size": "42",
+    "stock": 7
+   },
+   {
+    "size": "44",
+    "stock": 18
+   },
+   {
+    "size": "46",
+    "stock": 9
+   }
+  ],
+  "price": 49,
+  "rating": 4.6,
+  "reviews": 38,
+  "returnRate": 10.5,
+  "image": "/images/px/wf-skirt-brown-dots.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-jupe-rose",
+  "ref": "LB-JU-3148-39",
+  "brandId": "bastide",
+  "name": "Jupe Camargue",
+  "category": "jupes",
+  "subcategory": "Jupe",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une jupe corail en sergé, taille froncée.",
+  "material": "100 % coton sergé",
+  "fit": "Droite, taille paperbag",
+  "color": {
+   "name": "Corail",
+   "hex": "#F07C66"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 12
+   },
+   {
+    "size": "36",
+    "stock": 3
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "40",
+    "stock": 6
+   },
+   {
+    "size": "42",
+    "stock": 11
+   },
+   {
+    "size": "44",
+    "stock": 9
+   },
+   {
+    "size": "46",
+    "stock": 1
+   }
+  ],
+  "price": 45,
+  "rating": 4.4,
+  "reviews": 476,
+  "returnRate": 14.4,
+  "image": "/images/px/wf-skirt-pink.jpg",
+  "season": "printemps-été",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-robe-beige",
+  "ref": "LB-RO-3151-42",
+  "brandId": "bastide",
+  "name": "Robe chemise Ventoux",
+  "category": "robes",
+  "subcategory": "Robe chemise",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "La robe chemise en lin sable, boutonnée de haut en bas.",
+  "material": "100 % lin",
+  "fit": "Midi, ceinture à nouer",
+  "color": {
+   "name": "Sable",
+   "hex": "#D8C8A8"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 13
+   },
+   {
+    "size": "36",
+    "stock": 0
+   },
+   {
+    "size": "38",
+    "stock": 2
+   },
+   {
+    "size": "40",
+    "stock": 2
+   },
+   {
+    "size": "42",
+    "stock": 1
+   },
+   {
+    "size": "44",
+    "stock": 15
+   },
+   {
+    "size": "46",
+    "stock": 11
+   }
+  ],
+  "price": 79,
+  "rating": 4.3,
+  "reviews": 115,
+  "returnRate": 15.9,
+  "image": "/images/px/wf-dress-beige.jpg",
+  "season": "printemps-été",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-robe-pois",
+  "ref": "LB-RO-3162-81",
+  "brandId": "bastide",
+  "name": "Robe Mistral",
+  "category": "robes",
+  "subcategory": "Robe midi",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "La robe noire à pois blancs, volants à l'ourlet.",
+  "material": "Crêpe de viscose à pois",
+  "fit": "Midi, volants",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 15
+   },
+   {
+    "size": "36",
+    "stock": 9
+   },
+   {
+    "size": "38",
+    "stock": 7
+   },
+   {
+    "size": "40",
+    "stock": 7
+   },
+   {
+    "size": "42",
+    "stock": 2
+   },
+   {
+    "size": "44",
+    "stock": 10
+   },
+   {
+    "size": "46",
+    "stock": 11
+   }
+  ],
+  "price": 75,
+  "rating": 4.6,
+  "reviews": 24,
+  "returnRate": 15.1,
+  "image": "/images/px/wf-dress-black-dots.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-robe-fleurie-noire",
+  "ref": "LB-RO-3169-53",
+  "brandId": "bastide",
+  "name": "Robe nuisette Luberon",
+  "category": "robes",
+  "subcategory": "Robe midi",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une robe fleurie à bretelles, avec un pull par-dessus à la mi-saison.",
+  "material": "Viscose imprimée fleurs",
+  "fit": "Bretelles fines, midi",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 11
+   },
+   {
+    "size": "36",
+    "stock": 18
+   },
+   {
+    "size": "38",
+    "stock": 7
+   },
+   {
+    "size": "40",
+    "stock": 8
+   },
+   {
+    "size": "42",
+    "stock": 11
+   },
+   {
+    "size": "44",
+    "stock": 8
+   },
+   {
+    "size": "46",
+    "stock": 2
+   }
+  ],
+  "price": 69,
+  "rating": 4.1,
+  "reviews": 226,
+  "returnRate": 13.6,
+  "image": "/images/px/wf-dress-floral-black.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "bastide-f-robe-fleurie",
+  "ref": "LB-RO-3170-22",
+  "brandId": "bastide",
+  "name": "Robe portefeuille Gordes",
+  "category": "robes",
+  "subcategory": "Robe midi",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une robe portefeuille crème à fleurs, nouée à la taille.",
+  "material": "Coton imprimé",
+  "fit": "Portefeuille, manches courtes",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 0
+   },
+   {
+    "size": "36",
+    "stock": 6
+   },
+   {
+    "size": "38",
+    "stock": 18
+   },
+   {
+    "size": "40",
+    "stock": 17
+   },
+   {
+    "size": "42",
+    "stock": 15
+   },
+   {
+    "size": "44",
+    "stock": 4
+   },
+   {
+    "size": "46",
+    "stock": 15
+   }
+  ],
+  "price": 79,
+  "rating": 4.9,
+  "reviews": 352,
+  "returnRate": 13.5,
+  "image": "/images/px/wf-dress-floral.jpg",
+  "season": "printemps-été",
+  "formality": 3
+ },
+ {
+  "id": "bastide-f-robe-pull",
+  "ref": "LB-RO-3180-51",
+  "brandId": "bastide",
+  "name": "Robe pull Alpilles",
+  "category": "robes",
+  "subcategory": "Robe pull",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "La robe en maille tabac, avec des bottines.",
+  "material": "Maille côtelée",
+  "fit": "Ajustée, manches longues",
+  "color": {
+   "name": "Tabac",
+   "hex": "#7E5232"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 6
+   },
+   {
+    "size": "36",
+    "stock": 2
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "40",
+    "stock": 15
+   },
+   {
+    "size": "42",
+    "stock": 6
+   },
+   {
+    "size": "44",
+    "stock": 0
+   },
+   {
+    "size": "46",
+    "stock": 0
+   }
+  ],
+  "price": 79,
+  "rating": 4.6,
+  "reviews": 422,
+  "returnRate": 14.7,
+  "image": "/images/px/wf-dress-brown.jpg",
+  "season": "automne-hiver",
+  "formality": 3
+ },
+ {
+  "id": "bastide-tote",
+  "ref": "LB-AC-3187-38",
+  "brandId": "bastide",
+  "name": "Tote bag Bastide",
+  "category": "accessoires",
+  "subcategory": "Sac",
+  "gender": "mixte",
+  "styles": [
+   "casual"
+  ],
+  "description": "Le tote en toile épaisse, pour tous les jours.",
+  "material": "Toile de coton biologique 340 g/m²",
+  "fit": "40 × 38 cm",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "TU",
+    "stock": 16
+   }
+  ],
+  "price": 25,
+  "rating": 4.2,
+  "reviews": 179,
+  "returnRate": 12.8,
+  "image": "/images/px/wf-tote-white.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "kolm-f-flare-brut",
+  "ref": "KD-PA-3105-93",
+  "brandId": "kolm",
+  "name": "Jean K5 Flare brut",
+  "category": "pantalons",
+  "subcategory": "Jean",
+  "gender": "femme",
+  "styles": [
+   "casual",
+   "street"
+  ],
+  "description": "Un flare brut taille haute qui allonge la jambe.",
+  "material": "98 % coton, 2 % élasthanne, 12 oz",
+  "fit": "K5 Flare : taille haute, évasé",
+  "color": {
+   "name": "Brut",
+   "hex": "#1E2B45"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "W24 L30",
+    "stock": 16
+   },
+   {
+    "size": "W25 L30",
+    "stock": 3
+   },
+   {
+    "size": "W26 L30",
+    "stock": 13
+   },
+   {
+    "size": "W27 L30",
+    "stock": 18
+   },
+   {
+    "size": "W28 L30",
+    "stock": 12
+   },
+   {
+    "size": "W29 L30",
+    "stock": 0
+   },
+   {
+    "size": "W27 L32",
+    "stock": 9
+   },
+   {
+    "size": "W28 L32",
+    "stock": 3
+   }
+  ],
+  "price": 139,
+  "rating": 4.7,
+  "reviews": 281,
+  "returnRate": 25.3,
+  "image": "/images/px/wf-jeans-flare.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "kolm-f-jean-blanc",
+  "ref": "KD-PA-3113-70",
+  "brandId": "kolm",
+  "name": "Jean K6 Boyfriend blanc",
+  "category": "pantalons",
+  "subcategory": "Jean",
+  "gender": "femme",
+  "styles": [
+   "casual",
+   "street"
+  ],
+  "description": "Un jean blanc ample, effet usé, pour l'été.",
+  "material": "100 % coton 11 oz, effet usé",
+  "fit": "K6 Boyfriend : droit, ample",
+  "color": {
+   "name": "Blanc",
+   "hex": "#F7F6F2"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "W24 L30",
+    "stock": 10
+   },
+   {
+    "size": "W25 L30",
+    "stock": 14
+   },
+   {
+    "size": "W26 L30",
+    "stock": 3
+   },
+   {
+    "size": "W27 L30",
+    "stock": 13
+   },
+   {
+    "size": "W28 L30",
+    "stock": 3
+   },
+   {
+    "size": "W29 L30",
+    "stock": 3
+   },
+   {
+    "size": "W27 L32",
+    "stock": 9
+   },
+   {
+    "size": "W28 L32",
+    "stock": 2
+   }
+  ],
+  "price": 129,
+  "rating": 4.2,
+  "reviews": 637,
+  "returnRate": 25,
+  "image": "/images/px/wf-jeans-white.jpg",
+  "season": "printemps-été",
+  "formality": 1
+ },
+ {
+  "id": "kolm-f-robe-jean",
+  "ref": "KD-RO-3115-71",
+  "brandId": "kolm",
+  "name": "Robe en jean Kolm",
+  "category": "robes",
+  "subcategory": "Robe en jean",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une robe en denim léger, manches bouffantes.",
+  "material": "100 % coton denim 6 oz",
+  "fit": "Babydoll, manches bouffantes",
+  "color": {
+   "name": "Indigo",
+   "hex": "#2B3A5C"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "34",
+    "stock": 8
+   },
+   {
+    "size": "36",
+    "stock": 4
+   },
+   {
+    "size": "38",
+    "stock": 10
+   },
+   {
+    "size": "40",
+    "stock": 8
+   },
+   {
+    "size": "42",
+    "stock": 0
+   },
+   {
+    "size": "44",
+    "stock": 11
+   },
+   {
+    "size": "46",
+    "stock": 15
+   }
+  ],
+  "price": 119,
+  "rating": 4.5,
+  "reviews": 43,
+  "returnRate": 25,
+  "image": "/images/px/wf-dress-denim.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "norrland-f-stockholm",
+  "ref": "NS-VE-3100-38",
+  "brandId": "norrland",
+  "name": "Blouson cuir Stockholm femme",
+  "category": "vestes",
+  "subcategory": "Blouson",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Le blouson cuir noir cintré, qui se porte sur tout.",
+  "material": "Cuir d'agneau plongé",
+  "fit": "Coupe biker, cintrée",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 0
+   },
+   {
+    "size": "S",
+    "stock": 9
+   },
+   {
+    "size": "M",
+    "stock": 6
+   },
+   {
+    "size": "L",
+    "stock": 3
+   },
+   {
+    "size": "XL",
+    "stock": 6
+   }
+  ],
+  "price": 369,
+  "rating": 4.4,
+  "reviews": 140,
+  "returnRate": 17,
+  "image": "/images/px/wf-leather-jacket.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "norrland-f-malmo",
+  "ref": "NS-VE-3111-99",
+  "brandId": "norrland",
+  "name": "Trench Malmö femme",
+  "category": "vestes",
+  "subcategory": "Trench",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Le trench beige déperlant, version femme.",
+  "material": "Gabardine de coton déperlante",
+  "fit": "Coupe droite, ceinturé",
+  "color": {
+   "name": "Beige",
+   "hex": "#C8B48F"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 13
+   },
+   {
+    "size": "S",
+    "stock": 16
+   },
+   {
+    "size": "M",
+    "stock": 0
+   },
+   {
+    "size": "L",
+    "stock": 16
+   },
+   {
+    "size": "XL",
+    "stock": 5
+   }
+  ],
+  "price": 319,
+  "rating": 4.4,
+  "reviews": 625,
+  "returnRate": 12,
+  "image": "/images/px/lkf-trench.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-bottines-lucie",
+  "ref": "AF-CS-3106-87",
+  "brandId": "ferrand",
+  "name": "Bottines Lucie",
+  "category": "chaussures",
+  "subcategory": "Bottines",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Des bottines noires à petit talon, confortables toute la journée.",
+  "material": "Cuir de veau froncé, talon 4 cm",
+  "fit": "Forme ronde",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 10
+   },
+   {
+    "size": "36.5",
+    "stock": 14
+   },
+   {
+    "size": "37",
+    "stock": 16
+   },
+   {
+    "size": "37.5",
+    "stock": 6
+   },
+   {
+    "size": "38",
+    "stock": 11
+   },
+   {
+    "size": "38.5",
+    "stock": 17
+   },
+   {
+    "size": "39",
+    "stock": 18
+   },
+   {
+    "size": "39.5",
+    "stock": 7
+   },
+   {
+    "size": "40",
+    "stock": 12
+   },
+   {
+    "size": "40.5",
+    "stock": 9
+   },
+   {
+    "size": "41",
+    "stock": 4
+   }
+  ],
+  "price": 189,
+  "rating": 4.3,
+  "reviews": 311,
+  "returnRate": 23,
+  "image": "/images/px/wf-boots-black.jpg",
+  "season": "automne-hiver",
+  "formality": 3
+ },
+ {
+  "id": "ferrand-f-bottines-louise",
+  "ref": "AF-CS-3110-82",
+  "brandId": "ferrand",
+  "name": "Bottines Louise",
+  "category": "chaussures",
+  "subcategory": "Bottines",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Des bottines taupe à boucle, pour les jeans et les jupes.",
+  "material": "Nubuck, sangle à boucle",
+  "fit": "Forme ronde, talon plat",
+  "color": {
+   "name": "Taupe",
+   "hex": "#A99C8E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 11
+   },
+   {
+    "size": "36.5",
+    "stock": 4
+   },
+   {
+    "size": "37",
+    "stock": 0
+   },
+   {
+    "size": "37.5",
+    "stock": 3
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "38.5",
+    "stock": 9
+   },
+   {
+    "size": "39",
+    "stock": 1
+   },
+   {
+    "size": "39.5",
+    "stock": 9
+   },
+   {
+    "size": "40",
+    "stock": 7
+   },
+   {
+    "size": "40.5",
+    "stock": 11
+   },
+   {
+    "size": "41",
+    "stock": 18
+   }
+  ],
+  "price": 179,
+  "rating": 4.8,
+  "reviews": 336,
+  "returnRate": 15.2,
+  "image": "/images/px/wf-boots-taupe.jpg",
+  "season": "automne-hiver",
+  "formality": 2
+ },
+ {
+  "id": "ferrand-f-bottines-ines",
+  "ref": "AF-CS-3120-70",
+  "brandId": "ferrand",
+  "name": "Bottines Inès",
+  "category": "chaussures",
+  "subcategory": "Bottines",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Les bottines à talon qui habillent un pantalon de tailleur.",
+  "material": "Cuir lisse, talon 7 cm",
+  "fit": "Forme amande",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 0
+   },
+   {
+    "size": "36.5",
+    "stock": 12
+   },
+   {
+    "size": "37",
+    "stock": 6
+   },
+   {
+    "size": "37.5",
+    "stock": 4
+   },
+   {
+    "size": "38",
+    "stock": 7
+   },
+   {
+    "size": "38.5",
+    "stock": 9
+   },
+   {
+    "size": "39",
+    "stock": 15
+   },
+   {
+    "size": "39.5",
+    "stock": 9
+   },
+   {
+    "size": "40",
+    "stock": 10
+   },
+   {
+    "size": "40.5",
+    "stock": 3
+   },
+   {
+    "size": "41",
+    "stock": 6
+   }
+  ],
+  "price": 219,
+  "rating": 4.5,
+  "reviews": 471,
+  "returnRate": 18.8,
+  "image": "/images/px/wf-boots-heel-black.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-bottines-franges",
+  "ref": "AF-CS-3126-44",
+  "brandId": "ferrand",
+  "name": "Bottines Camille",
+  "category": "chaussures",
+  "subcategory": "Bottines",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Des bottines cognac à franges, esprit bohème.",
+  "material": "Daim de veau, franges",
+  "fit": "Forme ronde, talon 3 cm",
+  "color": {
+   "name": "Cognac",
+   "hex": "#9A5A2E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 7
+   },
+   {
+    "size": "36.5",
+    "stock": 15
+   },
+   {
+    "size": "37",
+    "stock": 0
+   },
+   {
+    "size": "37.5",
+    "stock": 2
+   },
+   {
+    "size": "38",
+    "stock": 5
+   },
+   {
+    "size": "38.5",
+    "stock": 7
+   },
+   {
+    "size": "39",
+    "stock": 13
+   },
+   {
+    "size": "39.5",
+    "stock": 13
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "40.5",
+    "stock": 13
+   },
+   {
+    "size": "41",
+    "stock": 14
+   }
+  ],
+  "price": 169,
+  "rating": 4.4,
+  "reviews": 239,
+  "returnRate": 18.2,
+  "image": "/images/px/wf-boots-tan.jpg",
+  "season": "toutes saisons",
+  "formality": 2
+ },
+ {
+  "id": "ferrand-f-escarpins-noirs",
+  "ref": "AF-CS-3132-95",
+  "brandId": "ferrand",
+  "name": "Escarpins Adèle",
+  "category": "chaussures",
+  "subcategory": "Escarpins",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Les escarpins noirs en daim, la base.",
+  "material": "Daim de chèvre, talon 7 cm",
+  "fit": "Bout pointu",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 11
+   },
+   {
+    "size": "36.5",
+    "stock": 16
+   },
+   {
+    "size": "37",
+    "stock": 13
+   },
+   {
+    "size": "37.5",
+    "stock": 12
+   },
+   {
+    "size": "38",
+    "stock": 3
+   },
+   {
+    "size": "38.5",
+    "stock": 16
+   },
+   {
+    "size": "39",
+    "stock": 13
+   },
+   {
+    "size": "39.5",
+    "stock": 12
+   },
+   {
+    "size": "40",
+    "stock": 11
+   },
+   {
+    "size": "40.5",
+    "stock": 12
+   },
+   {
+    "size": "41",
+    "stock": 0
+   }
+  ],
+  "price": 199,
+  "rating": 4.5,
+  "reviews": 324,
+  "returnRate": 16.4,
+  "image": "/images/px/wf-heels-black.jpg",
+  "season": "toutes saisons",
+  "formality": 5
+ },
+ {
+  "id": "ferrand-f-escarpins-marine",
+  "ref": "AF-CS-3136-98",
+  "brandId": "ferrand",
+  "name": "Escarpins Colette",
+  "category": "chaussures",
+  "subcategory": "Escarpins",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un escarpin marine à bride et talon carré, stable.",
+  "material": "Cuir glacé, talon bloc 8 cm",
+  "fit": "Bride cheville",
+  "color": {
+   "name": "Marine",
+   "hex": "#1F2A44"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 10
+   },
+   {
+    "size": "36.5",
+    "stock": 1
+   },
+   {
+    "size": "37",
+    "stock": 6
+   },
+   {
+    "size": "37.5",
+    "stock": 5
+   },
+   {
+    "size": "38",
+    "stock": 5
+   },
+   {
+    "size": "38.5",
+    "stock": 6
+   },
+   {
+    "size": "39",
+    "stock": 11
+   },
+   {
+    "size": "39.5",
+    "stock": 8
+   },
+   {
+    "size": "40",
+    "stock": 13
+   },
+   {
+    "size": "40.5",
+    "stock": 2
+   },
+   {
+    "size": "41",
+    "stock": 0
+   }
+  ],
+  "price": 209,
+  "rating": 4.6,
+  "reviews": 251,
+  "returnRate": 20.2,
+  "image": "/images/px/wf-pumps-navy.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-ballerines",
+  "ref": "AF-CS-3143-23",
+  "brandId": "ferrand",
+  "name": "Ballerines Jeanne",
+  "category": "chaussures",
+  "subcategory": "Ballerines",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Les ballerines noires en nappa, pliables dans un sac.",
+  "material": "Cuir nappa souple",
+  "fit": "Bout rond",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 5
+   },
+   {
+    "size": "36.5",
+    "stock": 0
+   },
+   {
+    "size": "37",
+    "stock": 14
+   },
+   {
+    "size": "37.5",
+    "stock": 6
+   },
+   {
+    "size": "38",
+    "stock": 0
+   },
+   {
+    "size": "38.5",
+    "stock": 17
+   },
+   {
+    "size": "39",
+    "stock": 15
+   },
+   {
+    "size": "39.5",
+    "stock": 4
+   },
+   {
+    "size": "40",
+    "stock": 18
+   },
+   {
+    "size": "40.5",
+    "stock": 2
+   },
+   {
+    "size": "41",
+    "stock": 2
+   }
+  ],
+  "price": 149,
+  "rating": 4.6,
+  "reviews": 469,
+  "returnRate": 18.9,
+  "image": "/images/px/wf-flats-black.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "ferrand-f-sandales-nude",
+  "ref": "AF-CS-3154-32",
+  "brandId": "ferrand",
+  "name": "Sandales Rose",
+  "category": "chaussures",
+  "subcategory": "Sandales à talon",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Des sandales nude irisées, pour les cérémonies.",
+  "material": "Cuir métallisé, talon 9 cm",
+  "fit": "Bride cheville",
+  "color": {
+   "name": "Nude",
+   "hex": "#D8BFA6"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 11
+   },
+   {
+    "size": "36.5",
+    "stock": 2
+   },
+   {
+    "size": "37",
+    "stock": 0
+   },
+   {
+    "size": "37.5",
+    "stock": 16
+   },
+   {
+    "size": "38",
+    "stock": 5
+   },
+   {
+    "size": "38.5",
+    "stock": 3
+   },
+   {
+    "size": "39",
+    "stock": 13
+   },
+   {
+    "size": "39.5",
+    "stock": 2
+   },
+   {
+    "size": "40",
+    "stock": 0
+   },
+   {
+    "size": "40.5",
+    "stock": 7
+   },
+   {
+    "size": "41",
+    "stock": 3
+   }
+  ],
+  "price": 179,
+  "rating": 4.7,
+  "reviews": 127,
+  "returnRate": 16.1,
+  "image": "/images/px/wf-sandals-nude.jpg",
+  "season": "printemps-été",
+  "formality": 5
+ },
+ {
+  "id": "ferrand-f-sandales-dorees",
+  "ref": "AF-CS-3159-17",
+  "brandId": "ferrand",
+  "name": "Sandales Diane",
+  "category": "chaussures",
+  "subcategory": "Sandales à talon",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Les sandales dorées du soir.",
+  "material": "Cuir doré, talon aiguille",
+  "fit": "Trois brides",
+  "color": {
+   "name": "Doré",
+   "hex": "#C9A963"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 9
+   },
+   {
+    "size": "36.5",
+    "stock": 14
+   },
+   {
+    "size": "37",
+    "stock": 18
+   },
+   {
+    "size": "37.5",
+    "stock": 15
+   },
+   {
+    "size": "38",
+    "stock": 7
+   },
+   {
+    "size": "38.5",
+    "stock": 2
+   },
+   {
+    "size": "39",
+    "stock": 3
+   },
+   {
+    "size": "39.5",
+    "stock": 8
+   },
+   {
+    "size": "40",
+    "stock": 14
+   },
+   {
+    "size": "40.5",
+    "stock": 0
+   },
+   {
+    "size": "41",
+    "stock": 11
+   }
+  ],
+  "price": 199,
+  "rating": 4.1,
+  "reviews": 33,
+  "returnRate": 18.6,
+  "image": "/images/px/wf-sandals-gold.jpg",
+  "season": "printemps-été",
+  "formality": 5
+ },
+ {
+  "id": "ferrand-f-sandales-noires",
+  "ref": "AF-CS-3166-74",
+  "brandId": "ferrand",
+  "name": "Sandales Margot",
+  "category": "chaussures",
+  "subcategory": "Sandales à talon",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Des sandales noires vernies, élégantes et simples.",
+  "material": "Cuir verni, talon 9 cm",
+  "fit": "Deux brides",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "36",
+    "stock": 8
+   },
+   {
+    "size": "36.5",
+    "stock": 0
+   },
+   {
+    "size": "37",
+    "stock": 11
+   },
+   {
+    "size": "37.5",
+    "stock": 2
+   },
+   {
+    "size": "38",
+    "stock": 18
+   },
+   {
+    "size": "38.5",
+    "stock": 5
+   },
+   {
+    "size": "39",
+    "stock": 15
+   },
+   {
+    "size": "39.5",
+    "stock": 18
+   },
+   {
+    "size": "40",
+    "stock": 11
+   },
+   {
+    "size": "40.5",
+    "stock": 1
+   },
+   {
+    "size": "41",
+    "stock": 16
+   }
+  ],
+  "price": 189,
+  "rating": 4.5,
+  "reviews": 359,
+  "returnRate": 17.5,
+  "image": "/images/px/wf-sandals-black.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-sac-valmy",
+  "ref": "AF-AC-3174-16",
+  "brandId": "ferrand",
+  "name": "Sac Valmy femme",
+  "category": "accessoires",
+  "subcategory": "Sac à main",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Un sac à main noir structuré, qui accueille un ordinateur 13 pouces.",
+  "material": "Cuir grainé embossé",
+  "fit": "32 × 24 × 13 cm",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "TU",
+    "stock": 0
+   }
+  ],
+  "price": 289,
+  "rating": 4.2,
+  "reviews": 208,
+  "returnRate": 20.9,
+  "image": "/images/px/wf-bag-black.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-sac-bordeaux",
+  "ref": "AF-AC-3178-14",
+  "brandId": "ferrand",
+  "name": "Sac Pauline",
+  "category": "accessoires",
+  "subcategory": "Sac à main",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Un sac bordeaux à deux anses, bandoulière amovible.",
+  "material": "Cuir grainé",
+  "fit": "Format bowling",
+  "color": {
+   "name": "Bordeaux",
+   "hex": "#6E1F2E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "TU",
+    "stock": 3
+   }
+  ],
+  "price": 259,
+  "rating": 4.8,
+  "reviews": 509,
+  "returnRate": 21.1,
+  "image": "/images/px/wf-bag-burgundy.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "ferrand-f-pochette-corail",
+  "ref": "AF-AC-3185-96",
+  "brandId": "ferrand",
+  "name": "Pochette Lili",
+  "category": "accessoires",
+  "subcategory": "Pochette",
+  "gender": "femme",
+  "styles": [
+   "corporate"
+  ],
+  "description": "Une petite pochette corail à chaîne, pour les soirées et les mariages.",
+  "material": "Cuir lisse, chaîne dorée",
+  "fit": "18 × 12 cm",
+  "color": {
+   "name": "Corail",
+   "hex": "#F07C66"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "TU",
+    "stock": 5
+   }
+  ],
+  "price": 129,
+  "rating": 4.6,
+  "reviews": 276,
+  "returnRate": 15.7,
+  "image": "/images/px/wf-bag-coral.jpg",
+  "season": "toutes saisons",
+  "formality": 4
+ },
+ {
+  "id": "ferrand-f-besace-blanche",
+  "ref": "AF-AC-3191-98",
+  "brandId": "ferrand",
+  "name": "Besace Odette",
+  "category": "accessoires",
+  "subcategory": "Besace",
+  "gender": "femme",
+  "styles": [
+   "casual"
+  ],
+  "description": "Une besace blanche à rabat et fermoir doré.",
+  "material": "Cuir grainé, fermoir laiton",
+  "fit": "22 × 17 cm",
+  "color": {
+   "name": "Blanc",
+   "hex": "#F7F6F2"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "TU",
+    "stock": 11
+   }
+  ],
+  "price": 179,
+  "rating": 4.3,
+  "reviews": 448,
+  "returnRate": 18.8,
+  "image": "/images/px/wf-bag-white.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "rivage-f-legging",
+  "ref": "SR-SP-3104-57",
+  "brandId": "rivage",
+  "name": "Legging Alizé",
+  "category": "sport",
+  "subcategory": "Legging",
+  "gender": "femme",
+  "styles": [
+   "sport"
+  ],
+  "description": "Un legging gris chiné opaque, taille haute, pour la course comme le yoga.",
+  "material": "Polyamide recyclé et élasthanne, taille haute",
+  "fit": "Près du corps",
+  "color": {
+   "name": "Gris chiné",
+   "hex": "#9A9DA1"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 5
+   },
+   {
+    "size": "S",
+    "stock": 11
+   },
+   {
+    "size": "M",
+    "stock": 14
+   },
+   {
+    "size": "L",
+    "stock": 10
+   },
+   {
+    "size": "XL",
+    "stock": 13
+   }
+  ],
+  "price": 59,
+  "rating": 4.3,
+  "reviews": 66,
+  "returnRate": 16.4,
+  "image": "/images/px/wf-leggings-grey.jpg",
+  "season": "toutes saisons",
+  "formality": 1
+ },
+ {
+  "id": "rivage-f-hoodie",
+  "ref": "SR-SP-3112-76",
+  "brandId": "rivage",
+  "name": "Hoodie Marée femme",
+  "category": "sport",
+  "subcategory": "Sweat à capuche",
+  "gender": "femme",
+  "styles": [
+   "sport"
+  ],
+  "description": "Le sweat à capuche gris clair, à zip, pour l'échauffement.",
+  "material": "Coton biologique, molleton léger",
+  "fit": "Coupe droite",
+  "color": {
+   "name": "Gris clair",
+   "hex": "#C9CACC"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 8
+   },
+   {
+    "size": "S",
+    "stock": 8
+   },
+   {
+    "size": "M",
+    "stock": 8
+   },
+   {
+    "size": "L",
+    "stock": 13
+   },
+   {
+    "size": "XL",
+    "stock": 13
+   }
+  ],
+  "price": 69,
+  "rating": 4.5,
+  "reviews": 629,
+  "returnRate": 16,
+  "image": "/images/px/wf-hoodie-grey.jpg",
+  "season": "toutes saisons",
+  "formality": 1
+ },
+ {
+  "id": "bitume-hoodie-sable",
+  "ref": "BC-MA-2404-13",
+  "brandId": "bitume",
+  "name": "Hoodie Heavy sable",
+  "category": "maille",
+  "subcategory": "Sweat à capuche",
+  "gender": "mixte",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Notre hoodie le plus épais, sans logo, coloris sable.",
+  "material": "100 % coton biologique, molleton 450 g/m²",
+  "fit": "Oversize, épaules tombantes",
+  "color": {
+   "name": "Sable",
+   "hex": "#D8C8A8"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 11
+   },
+   {
+    "size": "S",
+    "stock": 13
+   },
+   {
+    "size": "M",
+    "stock": 1
+   },
+   {
+    "size": "L",
+    "stock": 7
+   },
+   {
+    "size": "XL",
+    "stock": 6
+   }
+  ],
+  "price": 89,
+  "rating": 4.2,
+  "reviews": 342,
+  "returnRate": 11.1,
+  "image": "/images/px/wf-hoodie-beige.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-cargo-kaki",
+  "ref": "BC-PA-2408-76",
+  "brandId": "bitume",
+  "name": "Cargo Parachute kaki",
+  "category": "pantalons",
+  "subcategory": "Cargo",
+  "gender": "femme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Un cargo parachute kaki, six poches, chevilles ajustables.",
+  "material": "Nylon ripstop déperlant",
+  "fit": "Ample, chevilles serrées",
+  "color": {
+   "name": "Kaki",
+   "hex": "#6E6A50"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 4
+   },
+   {
+    "size": "S",
+    "stock": 18
+   },
+   {
+    "size": "M",
+    "stock": 0
+   },
+   {
+    "size": "L",
+    "stock": 2
+   },
+   {
+    "size": "XL",
+    "stock": 14
+   }
+  ],
+  "price": 85,
+  "rating": 4.8,
+  "reviews": 145,
+  "returnRate": 11.3,
+  "image": "/images/px/wf-cargo-khaki.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-cargo-noir",
+  "ref": "BC-PA-2420-26",
+  "brandId": "bitume",
+  "name": "Cargo Work noir",
+  "category": "pantalons",
+  "subcategory": "Cargo",
+  "gender": "homme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Le cargo noir de tous les jours, poches plaquées.",
+  "material": "Coton sergé 12 oz",
+  "fit": "Droit, ample",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "S",
+    "stock": 11
+   },
+   {
+    "size": "M",
+    "stock": 7
+   },
+   {
+    "size": "L",
+    "stock": 17
+   },
+   {
+    "size": "XL",
+    "stock": 0
+   },
+   {
+    "size": "XXL",
+    "stock": 17
+   }
+  ],
+  "price": 89,
+  "rating": 4.3,
+  "reviews": 226,
+  "returnRate": 15.6,
+  "image": "/images/px/lk-street-cargo.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-hoodie-noir",
+  "ref": "BC-MA-2421-58",
+  "brandId": "bitume",
+  "name": "Hoodie Heavy noir",
+  "category": "maille",
+  "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Le hoodie épais en noir, sans inscription.",
+  "material": "100 % coton biologique, molleton 450 g/m²",
+  "fit": "Oversize",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "S",
+    "stock": 8
+   },
+   {
+    "size": "M",
+    "stock": 8
+   },
+   {
+    "size": "L",
+    "stock": 16
+   },
+   {
+    "size": "XL",
+    "stock": 11
+   },
+   {
+    "size": "XXL",
+    "stock": 15
+   }
+  ],
+  "price": 89,
+  "rating": 4.5,
+  "reviews": 528,
+  "returnRate": 10.4,
+  "image": "/images/px/lk-street-skate.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-hoodie-gris",
+  "ref": "BC-MA-2433-27",
+  "brandId": "bitume",
+  "name": "Hoodie Heavy gris chiné",
+  "category": "maille",
+  "subcategory": "Sweat à capuche",
+  "gender": "homme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Le hoodie gris chiné, poche kangourou.",
+  "material": "Coton et polyester recyclé",
+  "fit": "Oversize",
+  "color": {
+   "name": "Gris chiné",
+   "hex": "#9A9DA1"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "S",
+    "stock": 2
+   },
+   {
+    "size": "M",
+    "stock": 13
+   },
+   {
+    "size": "L",
+    "stock": 11
+   },
+   {
+    "size": "XL",
+    "stock": 2
+   },
+   {
+    "size": "XXL",
+    "stock": 10
+   }
+  ],
+  "price": 85,
+  "rating": 4.1,
+  "reviews": 528,
+  "returnRate": 9.7,
+  "image": "/images/px/sw-hoodie-grey.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-tee-lourd",
+  "ref": "BC-HT-2438-69",
+  "brandId": "bitume",
+  "name": "T-shirt Heavy noir",
+  "category": "hauts",
+  "subcategory": "T-shirt",
+  "gender": "homme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Un t-shirt lourd et boxy, qui garde sa forme.",
+  "material": "100 % coton 260 g/m²",
+  "fit": "Boxy, épaules tombantes",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "S",
+    "stock": 5
+   },
+   {
+    "size": "M",
+    "stock": 9
+   },
+   {
+    "size": "L",
+    "stock": 15
+   },
+   {
+    "size": "XL",
+    "stock": 0
+   },
+   {
+    "size": "XXL",
+    "stock": 16
+   }
+  ],
+  "price": 39,
+  "rating": 4.3,
+  "reviews": 548,
+  "returnRate": 11.9,
+  "image": "/images/px/tee-black-2.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-jogging",
+  "ref": "BC-PA-2445-87",
+  "brandId": "bitume",
+  "name": "Jogging Heavy",
+  "category": "pantalons",
+  "subcategory": "Jogging",
+  "gender": "homme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Le jogging assorti au hoodie Heavy.",
+  "material": "Molleton 400 g/m²",
+  "fit": "Fuselé",
+  "color": {
+   "name": "Gris anthracite",
+   "hex": "#3A3C40"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "S",
+    "stock": 10
+   },
+   {
+    "size": "M",
+    "stock": 7
+   },
+   {
+    "size": "L",
+    "stock": 7
+   },
+   {
+    "size": "XL",
+    "stock": 18
+   },
+   {
+    "size": "XXL",
+    "stock": 6
+   }
+  ],
+  "price": 75,
+  "rating": 4.5,
+  "reviews": 31,
+  "returnRate": 10.9,
+  "image": "/images/px/sp-jogging-grey.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-mini-plissee",
+  "ref": "BC-JU-2453-36",
+  "brandId": "bitume",
+  "name": "Mini-jupe plissée Club",
+  "category": "jupes",
+  "subcategory": "Mini-jupe",
+  "gender": "femme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "La mini-jupe plissée écrue, avec un hoodie oversize.",
+  "material": "Crêpe plissé, ceinture",
+  "fit": "Courte, plissée",
+  "color": {
+   "name": "Écru",
+   "hex": "#EFE8DA"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 15
+   },
+   {
+    "size": "S",
+    "stock": 13
+   },
+   {
+    "size": "M",
+    "stock": 9
+   },
+   {
+    "size": "L",
+    "stock": 12
+   },
+   {
+    "size": "XL",
+    "stock": 12
+   }
+  ],
+  "price": 55,
+  "rating": 4.1,
+  "reviews": 37,
+  "returnRate": 15.5,
+  "image": "/images/px/wf-skirt-white-mini.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-jupe-cuir",
+  "ref": "BC-JU-2460-44",
+  "brandId": "bitume",
+  "name": "Jupe plissée Cuir",
+  "category": "jupes",
+  "subcategory": "Mini-jupe",
+  "gender": "femme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "Une jupe courte en cuir végan cognac, ceinture à boucle.",
+  "material": "Cuir synthétique végan",
+  "fit": "Courte, plissée",
+  "color": {
+   "name": "Cognac",
+   "hex": "#9A5A2E"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 2
+   },
+   {
+    "size": "S",
+    "stock": 0
+   },
+   {
+    "size": "M",
+    "stock": 3
+   },
+   {
+    "size": "L",
+    "stock": 12
+   },
+   {
+    "size": "XL",
+    "stock": 11
+   }
+  ],
+  "price": 69,
+  "rating": 4.2,
+  "reviews": 509,
+  "returnRate": 10.4,
+  "image": "/images/px/wf-skirt-leather-brown.jpg",
+  "season": "toutes saisons",
+  "formality": 3
+ },
+ {
+  "id": "bitume-jupe-noire",
+  "ref": "BC-JU-2467-37",
+  "brandId": "bitume",
+  "name": "Jupe patineuse Club",
+  "category": "jupes",
+  "subcategory": "Mini-jupe",
+  "gender": "femme",
+  "styles": [
+   "street",
+   "casual"
+  ],
+  "description": "La jupe patineuse noire.",
+  "material": "Jersey épais",
+  "fit": "Courte, évasée",
+  "color": {
+   "name": "Noir",
+   "hex": "#141414"
+  },
+  "otherColors": [],
+  "sizes": [
+   {
+    "size": "XS",
+    "stock": 13
+   },
+   {
+    "size": "S",
+    "stock": 0
+   },
+   {
+    "size": "M",
+    "stock": 5
+   },
+   {
+    "size": "L",
+    "stock": 0
+   },
+   {
+    "size": "XL",
+    "stock": 11
+   }
+  ],
+  "price": 39,
+  "rating": 4.4,
+  "reviews": 331,
+  "returnRate": 15.7,
+  "image": "/images/px/wf-skirt-black.jpg",
+  "season": "toutes saisons",
+  "formality": 3
  }
 ]

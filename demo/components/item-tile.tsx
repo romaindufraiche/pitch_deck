@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function StatusDot({ status }: { status: DerivedItem["status"] }) {
   if (status === "disponible") return null;
-  return <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-medium backdrop-blur", status === "au linge" ? "bg-[#dfe8f1]/90 text-[#2c4a6b]" : "bg-[#efe3d3]/90 text-[#7a4b1e]")}>{status === "au linge" ? "Au linge" : "Au pressing"}</span>;
+  return <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-medium backdrop-blur", status === "au linge" ? "bg-[#dfe8f1]/90 text-ink" : "bg-[#efe3d3]/90 text-[#7a4b1e]")}>{status === "au linge" ? "Au linge" : "Au pressing"}</span>;
 }
 
 export function ItemTile({ item, compact = false }: { item: DerivedItem; compact?: boolean }) {

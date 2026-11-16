@@ -74,9 +74,9 @@ export function ProductSheet({ product, onClose }: { product: Product | null; on
           <img src={product.image} alt={product.name} className="aspect-[4/5] w-full object-cover" />
           <div className="px-5 pt-5">
             <BrandLogo brand={brandById[product.brandId]} size={12} />
-            <h2 className="mt-2 font-display text-[30px] font-medium leading-tight">{product.name}</h2>
+            <h2 className="mt-2 font-display text-[22px] leading-tight">{product.name}</h2>
             <div className="mt-1 flex items-center gap-3 text-[13px]">
-              <span className="font-display text-[24px]">{formatPrice(product.price)}</span>
+              <span className="font-display text-[18px]">{formatPrice(product.price)}</span>
               <span className="flex items-center gap-1 text-mute"><Star className="size-3.5 fill-current" /> {product.rating.toString().replace(".", ",")} · {product.reviews} avis</span>
             </div>
             <p className="mt-3 text-[13.5px] leading-relaxed text-ink/85">{product.description}</p>

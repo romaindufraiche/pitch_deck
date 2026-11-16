@@ -5,7 +5,8 @@ import { ShowCardsInput, type StreamEvent } from "@/lib/cards";
 import { deriveWardrobe, type WardrobeState } from "@/lib/wardrobe";
 import { getCalendar, getWardrobe, getWeather, getWearHistory, recommendSizeFor, sanitizeCards, searchCatalog, type ToolContext } from "@/lib/assistant-tools";
 import { buildScenario, chunkText, detectScenario } from "@/lib/scenarios";
-import { user } from "@/lib/data";
+import { personaOf } from "@/lib/data";
+import type { UserProfile } from "@/lib/types";
 import { longDate } from "@/lib/time";
 
 export const runtime = "nodejs";
@@ -19,17 +20,18 @@ const Body = z.object({
     prefilled: z.boolean(),
     overrides: z.record(z.string(), z.any()),
     added: z.array(z.any()),
+    persona: z.enum(["thomas", "lea"]).optional(),
   }),
   today: z.string(),
   budget: z.number().optional(),
   forceSecours: z.boolean().optional(),
 });
 
-const SYSTEM = `Tu es le styliste personnel de l'application ${APP_NAME}, une app mobile pour hommes qui numérise leur garde-robe.
+const systemFor = (user: UserProfile) => `Tu es le ou la styliste personnel(le) de l'application ${APP_NAME} : une app mobile qui numérise la garde-robe de femmes et d'hommes de 18 à 40 ans, tous styles confondus (corporate, costume et tailleur, streetwear, casual, sport).
 Tu parles à ${user.firstName} ${user.lastName}, ${user.age} ans, ${user.job.toLowerCase()}, ${user.city}. ${user.heightCm / 100} m, ${user.weightKg} kg, ${user.build.toLowerCase()}.
-Son style : ${user.style}. Couleurs préférées : ${user.favoriteColors.map((c) => c.name.toLowerCase()).join(", ")}. Il n'aime pas : ${user.dislikes.join(", ").toLowerCase()}. Budget vêtements : environ ${user.monthlyBudget} € par mois.
+Son style : ${user.style}. Styles : ${user.styles.join(", ")}. Couleurs préférées : ${user.favoriteColors.map((c) => c.name.toLowerCase()).join(", ")}. À éviter : ${user.dislikes.join(", ").toLowerCase()}. Budget vêtements : environ ${user.monthlyBudget} € par mois.
 
-Ta personnalité : un styliste masculin chaleureux, précis et concis. Tu vouvoies ${user.firstName}. Tu réponds en français, en 2 à 4 phrases courtes autour des cartes, sans listes à puces interminables. Tu peux utiliser **gras** avec parcimonie.
+Ta personnalité : chaleureuse, précise et concise, sans jargon de luxe. Tu vouvoies ${user.firstName}. Tu réponds en français, en 2 à 4 phrases courtes autour des cartes, sans listes à puces interminables. Tu peux utiliser **gras** avec parcimonie.
 
 Règles impératives :
 - Avant de proposer une tenue, consulte le dressing (get_wardrobe) et, si une date ou un événement est en jeu, l'agenda (get_calendar) et la météo (get_weather).
@@ -42,11 +44,11 @@ Règles impératives :
 - N'invente jamais d'article, de prix, de taille ni d'événement.`;
 
 const tools: Anthropic.Tool[] = [
-  { name: "get_wardrobe", description: "Liste les articles du dressing de l'utilisateur (id, nom, marque, catégorie, couleur, taille, formalité 1-5, statut disponible/au linge/au pressing, nombre de ports, dernier port).", eager_input_streaming: true, input_schema: { type: "object", properties: { category: { type: "string", enum: ["hauts", "chemises", "maille", "pantalons", "vestes", "costumes", "chaussures", "accessoires", "sport"] }, availableOnly: { type: "boolean" } } } },
+  { name: "get_wardrobe", description: "Liste les articles du dressing de l'utilisateur (id, nom, marque, catégorie, couleur, taille, formalité 1-5, statut disponible/au linge/au pressing, nombre de ports, dernier port).", eager_input_streaming: true, input_schema: { type: "object", properties: { category: { type: "string", enum: ["hauts", "chemises", "maille", "pantalons", "vestes", "costumes", "robes", "jupes", "chaussures", "accessoires", "sport"] }, availableOnly: { type: "boolean" } } } },
   { name: "get_wear_history", description: "Journal des tenues portées sur les derniers jours (30 max).", eager_input_streaming: true, input_schema: { type: "object", properties: { days: { type: "integer", minimum: 1, maximum: 30 } } } },
   { name: "get_calendar", description: "Agenda des prochains jours et événements à venir, avec le dress code de chacun.", eager_input_streaming: true, input_schema: { type: "object", properties: {} } },
   { name: "get_weather", description: "Météo à Paris sur 7 jours, plus des prévisions saisonnières (Lyon en décembre, juin en Île-de-France).", eager_input_streaming: true, input_schema: { type: "object", properties: {} } },
-  { name: "search_catalog", description: "Cherche des produits dans les catalogues des marques partenaires (prix, matières, tailles en stock). Préférer connectedOnly=true.", eager_input_streaming: true, input_schema: { type: "object", properties: { query: { type: "string", description: "mots-clés en français, ex. « costume lin été »" }, category: { type: "string", enum: ["hauts", "chemises", "maille", "pantalons", "vestes", "costumes", "chaussures", "accessoires", "sport"] }, color: { type: "string" }, maxPrice: { type: "number" }, connectedOnly: { type: "boolean" } } } },
+  { name: "search_catalog", description: "Cherche des produits dans les catalogues des marques partenaires (prix, matières, tailles en stock), pour le genre du profil par défaut. Préférer connectedOnly=true.", eager_input_streaming: true, input_schema: { type: "object", properties: { query: { type: "string", description: "mots-clés en français, ex. « robe cérémonie été »" }, category: { type: "string", enum: ["hauts", "chemises", "maille", "pantalons", "vestes", "costumes", "robes", "jupes", "chaussures", "accessoires", "sport"] }, color: { type: "string" }, maxPrice: { type: "number" }, connectedOnly: { type: "boolean" } } } },
   { name: "recommend_size", description: "Calcule la taille recommandée pour un produit, d'après le guide des tailles de la marque, les tailles habituelles de l'utilisateur et son historique d'achats et de retours. Renvoie la taille, une justification et un indice de confiance.", eager_input_streaming: true, input_schema: { type: "object", properties: { productId: { type: "string" } }, required: ["productId"] } },
   {
     name: "show_cards", eager_input_streaming: true,
@@ -70,7 +72,7 @@ const InputSchemas: Record<string, z.ZodTypeAny> = {
   get_wear_history: z.object({ days: z.number().int().optional() }),
   get_calendar: z.object({}).passthrough(),
   get_weather: z.object({}).passthrough(),
-  search_catalog: z.object({ query: z.string().optional(), category: z.string().optional(), color: z.string().optional(), maxPrice: z.number().optional(), connectedOnly: z.boolean().optional() }),
+  search_catalog: z.object({ query: z.string().optional(), category: z.string().optional(), color: z.string().optional(), maxPrice: z.number().optional(), connectedOnly: z.boolean().optional(), gender: z.enum(["homme", "femme", "tous"]).optional() }),
   recommend_size: z.object({ productId: z.string() }),
   show_cards: ShowCardsInput,
 };
@@ -116,7 +118,7 @@ async function* live(messages: { role: "user" | "assistant"; text: string }[], c
     const params = {
       model: ASSISTANT_MODEL,
       max_tokens: 16000,
-      system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
+      system: [{ type: "text", text: systemFor(ctx.user), cache_control: { type: "ephemeral" } }],
       tools: tools as Anthropic.Beta.BetaTool[],
       messages: history,
       output_config: { effort: "low" },
@@ -195,8 +197,9 @@ export async function POST(req: Request) {
   if (!parsed.success) return new Response("Requête invalide", { status: 400 });
   const { messages, state, today, budget, forceSecours } = parsed.data;
   const day = new Date(today);
-  const items = deriveWardrobe(state as WardrobeState, day);
-  const ctx: ToolContext = { items, today: day, connected: state.connected as ToolContext["connected"], budget: budget ?? user.monthlyBudget };
+  const profile = personaOf(state.persona);
+  const items = deriveWardrobe({ ...state, persona: profile.id } as WardrobeState, day);
+  const ctx: ToolContext = { items, today: day, connected: state.connected as ToolContext["connected"], budget: budget ?? profile.monthlyBudget, user: profile };
   const last = messages[messages.length - 1].text;
   const useLive = !!process.env.ANTHROPIC_API_KEY && !forceSecours;
 

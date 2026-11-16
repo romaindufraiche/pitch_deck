@@ -53,7 +53,7 @@ export default function Dressing() {
         <div className="flex items-end justify-between">
           <div>
             <p className="eyebrow">{stats.count} pièces · {stats.brandsCount} marques</p>
-            <h1 className="mt-1 font-display text-[38px] font-medium leading-none">Mon dressing</h1>
+            <h1 className="mt-1 font-display text-[28px] leading-tight">Mon dressing</h1>
           </div>
           <Link href="/dressing/ajout" aria-label="Ajouter un article" className="tap flex size-11 items-center justify-center rounded-full bg-ink text-paper"><Camera className="size-[18px]" strokeWidth={1.6} /></Link>
         </div>
@@ -128,7 +128,7 @@ export default function Dressing() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-2xl bg-white px-3 py-2.5">
-      <p className="font-display text-[22px] leading-none tabular-nums">{value}</p>
+      <p className="font-display text-[16px] leading-tight tabular-nums">{value}</p>
       <p className="mt-1 text-[10.5px] text-mute">{label}</p>
     </div>
   );

@@ -32,7 +32,7 @@ function FlatLay({ pieces }: { pieces: Resolved[] }) {
   const tilt = [-2.5, 2, -1.5, 3, -3, 1.5, -1];
   const cols = [pieces.filter((_, k) => k % 2 === 0), pieces.filter((_, k) => k % 2 === 1)];
   return (
-    <div className="grid grid-cols-2 gap-2.5 bg-[#ebe6dd] p-3.5">
+    <div className="grid grid-cols-2 gap-2.5 bg-paper-2 p-3.5">
       {cols.map((col, c) => (
         <div key={c} className={cn("space-y-2.5", c === 1 && "pt-7")}>
           {col.map((p, k) => (
@@ -61,10 +61,10 @@ export function OutfitView({ card, items }: { card: OutfitCard; items: DerivedIt
     addToCart({ productId: b.buy!.productId, size: "erreur" in rec ? productById[b.buy!.productId].sizes[0].size : rec.size });
   });
   return (
-    <div className="overflow-hidden rounded-[22px] bg-white">
+    <div className="overflow-hidden rounded-2xl bg-white">
       <div className="flex items-start gap-3 px-4 pb-3 pt-3.5">
         <div className="min-w-0 flex-1">
-          <p className="font-display text-[22px] leading-tight">{card.title}</p>
+          <p className="font-display text-[16px] leading-tight">{card.title}</p>
           {card.subtitle && <p className="mt-0.5 text-[11.5px] text-mute">{card.subtitle}</p>}
         </div>
         {buys.length > 0 && <span className="shrink-0 rounded-full bg-rust-soft px-2.5 py-1 text-[12px] font-semibold text-rust">{formatPrice(total)}</span>}
@@ -111,14 +111,14 @@ export function LaundryView({ card, items }: { card: LaundryCard; items: Derived
   const a = items.find((i) => i.id === card.unavailableId);
   const b = items.find((i) => i.id === card.replacementId);
   return (
-    <div className="flex items-center gap-3 rounded-[22px] bg-[#e7edf3] p-3">
+    <div className="flex items-center gap-3 rounded-2xl bg-paper-2 p-3">
       <div className="relative shrink-0">
         {a && <img src={a.image} alt="" className="size-14 rounded-2xl object-cover opacity-60 grayscale" />}
-        <span className="absolute -bottom-1 -right-1 flex size-6 items-center justify-center rounded-full bg-[#2c4a6b] text-paper"><WashingMachine className="size-3.5" /></span>
+        <span className="absolute -bottom-1 -right-1 flex size-6 items-center justify-center rounded-full bg-ink text-paper"><WashingMachine className="size-3.5" /></span>
       </div>
-      <ArrowRight className="size-4 shrink-0 text-[#2c4a6b]" />
+      <ArrowRight className="size-4 shrink-0 text-ink" />
       {b && <img src={b.image} alt="" className="size-14 shrink-0 rounded-2xl object-cover" />}
-      <p className="text-[12.5px] leading-snug text-[#1f3550]">{card.message}</p>
+      <p className="text-[12.5px] leading-snug text-ink">{card.message}</p>
     </div>
   );
 }
@@ -133,14 +133,14 @@ export function PurchaseView({ card }: { card: PurchaseCard }) {
   const inCart = cart.some((c) => c.productId === p.id);
   const conf = Math.round((card.confidence ?? 0.9) * 100);
   return (
-    <div className="overflow-hidden rounded-[22px] bg-white">
+    <div className="overflow-hidden rounded-2xl bg-white">
       <div className="flex gap-3.5 p-3.5">
         <img src={p.image} alt={p.name} className="h-[132px] w-[106px] shrink-0 rounded-2xl object-cover" />
         <div className="min-w-0 flex-1">
           <BrandLogo brand={brand} size={11} />
           <p className="mt-1.5 text-[14.5px] font-medium leading-snug">{p.name}</p>
           <p className="mt-0.5 text-[11.5px] text-mute">{p.color.name} · {p.material.split(",")[0]}</p>
-          <p className="mt-2 font-display text-[24px] leading-none">{formatPrice(p.price)}</p>
+          <p className="mt-2 font-display text-[18px] leading-tight">{formatPrice(p.price)}</p>
           <p className="mt-1 text-[11px] text-mute">{p.rating.toString().replace(".", ",")}/5 · {p.reviews} avis</p>
           <Link href={`/site/${p.id}`} className="mt-1.5 inline-flex items-center gap-1 text-[11.5px] font-medium underline underline-offset-2">Voir sur le site <ExternalLink className="size-3" /></Link>
         </div>
@@ -150,7 +150,7 @@ export function PurchaseView({ card }: { card: PurchaseCard }) {
         <div className="mx-3.5 mt-3 rounded-2xl bg-paper p-3.5">
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-1.5 text-[10.5px] uppercase tracking-[0.14em] text-mute"><Ruler className="size-3.5" /> Taille recommandée</span>
-            <span className="font-display text-[30px] leading-none">{formatSize(card.size)}</span>
+            <span className="font-display text-[22px] leading-tight">{formatSize(card.size)}</span>
           </div>
           <p className="mt-2 text-[13px] font-medium leading-snug">{card.sizeHeadline}</p>
           {card.sizeReasons && card.sizeReasons.length > 1 && (
@@ -178,10 +178,10 @@ export function PackingView({ card, items }: { card: PackingCard; items: Derived
   const [checked, setChecked] = useState<string[]>([]);
   const all = card.groups.flatMap((g, gi) => g.entries.map((e, ei) => `${gi}-${ei}`));
   return (
-    <div className="overflow-hidden rounded-[22px] bg-white">
+    <div className="overflow-hidden rounded-2xl bg-white">
       <div className="flex items-center gap-3 bg-ink px-4 py-3.5 text-paper">
         <Luggage className="size-5" strokeWidth={1.5} />
-        <div className="flex-1"><p className="font-display text-[21px] leading-tight">{card.title}</p>{card.subtitle && <p className="text-[11.5px] text-paper/60">{card.subtitle}</p>}</div>
+        <div className="flex-1"><p className="font-display text-[16px] leading-tight">{card.title}</p>{card.subtitle && <p className="text-[11.5px] text-paper/60">{card.subtitle}</p>}</div>
         <span className="text-[12px] tabular-nums text-paper/70">{checked.length}/{all.length}</span>
       </div>
       <div className="h-1 bg-line"><motion.div className="h-full bg-ok" animate={{ width: `${(checked.length / Math.max(all.length, 1)) * 100}%` }} /></div>

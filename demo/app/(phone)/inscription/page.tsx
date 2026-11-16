@@ -8,15 +8,24 @@ import { Logo } from "@/components/logo";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { useStore } from "@/lib/store";
-import { user } from "@/lib/data";
+import { personas } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
-const QUIZ = [
-  "lk-smart-casual", "lk-navy-blazer", "lk-camel-street",
-  "lk-linen-rooftop", "lk-beige-blazer", "lk-grey-blazer",
-  "lk-leather-chino", "lk-denim-couch", "os-corduroy-camel",
-];
+/** quiz de style : 9 tenues réparties sur les 5 styles (corporate, costume/tailleur, streetwear, casual, sport) */
+const QUIZ_BY_GENDER: Record<"homme" | "femme", [string, string][]> = {
+  homme: [
+    ["lk-navy-blazer", "Corporate"], ["su-navy-full", "Costume"], ["lk-street-skate", "Streetwear"],
+    ["lk-smart-casual", "Casual"], ["lk-camel-street", "Casual chic"], ["lk-street-cargo", "Streetwear"],
+    ["lk-beige-blazer", "Corporate"], ["lk-denim-couch", "Casual"], ["sp-run-hoodie-navy", "Sport"],
+  ],
+  femme: [
+    ["lkf-white-blazer", "Corporate"], ["lkf-beige-suit", "Tailleur"], ["lkf-street-cargo", "Streetwear"],
+    ["lkf-casual-tee", "Casual"], ["lkf-trench", "Casual chic"], ["lkf-street-zip", "Streetwear"],
+    ["lkf-blazer-brown", "Corporate"], ["lkf-wrap-dress", "Casual"], ["lkf-run", "Sport"],
+  ],
+};
 const COLORS = [
+  { name: "Kaki", hex: "#6E6A50" },
   { name: "Marine", hex: "#1F2A44" }, { name: "Gris", hex: "#9A9DA1" }, { name: "Blanc", hex: "#F7F6F2" }, { name: "Beige", hex: "#C8B48F" },
   { name: "Vert olive", hex: "#5E6440" }, { name: "Noir", hex: "#141414" }, { name: "Camel", hex: "#B08355" }, { name: "Bleu ciel", hex: "#AFC8E0" },
   { name: "Bordeaux", hex: "#6E1F2E" }, { name: "Marron", hex: "#6B4428" }, { name: "Écru", hex: "#EFE8DA" }, { name: "Terracotta", hex: "#B5552D" },
@@ -28,14 +37,14 @@ export default function Inscription() {
   const st = useStore();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState<string | null>(null);
-  const total = 6;
+  const total = 7;
 
   const next = () => setStep((s) => s + 1);
   const signIn = (m: "apple" | "google" | "email") => {
     setLoading(m);
     setTimeout(() => {
+      st.choosePersona(st.persona);
       st.set({ account: m });
-      st.setProfile({ firstName: user.firstName, age: user.age, heightCm: user.heightCm, weightKg: user.weightKg, build: "Normale" });
       setLoading(null);
       next();
     }, 900);
@@ -57,7 +66,7 @@ export default function Inscription() {
         <motion.div key={step} className="flex min-h-0 flex-1 flex-col" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.28 }}>
           {step === 0 && (
             <div className="flex flex-1 flex-col">
-              <div className="relative mx-4 mt-2 flex-1 overflow-hidden rounded-[28px]">
+              <div className="relative mx-4 mt-2 flex-1 overflow-hidden rounded-3xl">
                 <img src="/images/px/hero-flatlay.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 text-paper"><Logo size={34} /><p className="mt-2 text-[14px] text-paper/85">Créez votre compte pour commencer.</p></div>
@@ -72,7 +81,25 @@ export default function Inscription() {
           )}
 
           {step === 1 && (
-            <StepLayout title={`Enchanté, ${st.profile.firstName || "…"}.`} text="Quelques mesures pour que vos tailles soient justes dès le premier achat." onNext={next}>
+            <StepLayout title="Vous êtes" text="Pour vous proposer les bonnes coupes, les bonnes tailles et les bons catalogues. Vous pourrez voir tous les rayons." onNext={next}>
+              <div className="grid grid-cols-2 gap-3">
+                {(["lea", "thomas"] as const).map((id) => {
+                  const p = personas[id];
+                  const on = st.persona === id;
+                  return (
+                    <button key={id} onClick={() => st.choosePersona(id)} className={cn("tap overflow-hidden rounded-2xl border-2 text-left transition", on ? "border-ink" : "border-transparent")}>
+                      <img src={id === "lea" ? "/images/px/lkf-white-blazer.jpg" : "/images/px/lk-smart-casual.jpg"} alt="" className="aspect-[4/5] w-full object-cover" />
+                      <p className="flex items-center justify-between bg-white px-3 py-2.5 text-[14px] font-medium">{p.gender === "femme" ? "Une femme" : "Un homme"}{on && <Check className="size-4" />}</p>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="mt-4 text-[12px] text-mute">Démo : le profil femme est celui de Léa, 26 ans ; le profil homme celui de Thomas, 28 ans.</p>
+            </StepLayout>
+          )}
+
+          {step === 2 && (
+            <StepLayout title={`Enchanté${st.persona === "lea" ? "e" : ""}, ${st.profile.firstName || "…"}.`} text="Quelques mesures pour que vos tailles soient justes dès le premier achat." onNext={next}>
               <div className="space-y-6">
                 <Field label="Prénom"><input value={st.profile.firstName} onChange={(e) => st.setProfile({ firstName: e.target.value })} className="w-full border-b border-line bg-transparent py-2 text-[17px] outline-none focus:border-ink" /></Field>
                 <Field label="Âge" value={`${st.profile.age} ans`}><Slider min={16} max={75} value={[st.profile.age]} onValueChange={(v) => st.setProfile({ age: Array.isArray(v) ? v[0] : v })} /></Field>
@@ -89,14 +116,15 @@ export default function Inscription() {
             </StepLayout>
           )}
 
-          {step === 2 && (
+          {step === 3 && (
             <StepLayout title="Votre style" text="Choisissez les 3 tenues qui vous ressemblent le plus." onNext={next} disabled={st.quiz.length < 3} cta={st.quiz.length < 3 ? `Encore ${3 - st.quiz.length}` : "Continuer"}>
               <div className="grid grid-cols-3 gap-1.5">
-                {QUIZ.map((q) => {
+                {QUIZ_BY_GENDER[personas[st.persona].gender].map(([q, label]) => {
                   const on = st.quiz.includes(q);
                   return (
                     <button key={q} onClick={() => st.set({ quiz: on ? st.quiz.filter((x) => x !== q) : st.quiz.length < 3 ? [...st.quiz, q] : st.quiz })} className="tap relative aspect-[4/5] overflow-hidden rounded-xl">
                       <img src={`/images/px/${q}.jpg`} alt="" className={cn("h-full w-full object-cover transition", on ? "scale-[0.94] rounded-xl" : "")} />
+                      <span className="absolute bottom-1.5 left-1.5 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium">{label}</span>
                       {on && <span className="absolute right-1.5 top-1.5 flex size-6 items-center justify-center rounded-full bg-ink text-paper"><Check className="size-3.5" /></span>}
                     </button>
                   );
@@ -105,7 +133,7 @@ export default function Inscription() {
             </StepLayout>
           )}
 
-          {step === 3 && (
+          {step === 4 && (
             <StepLayout title="Vos couleurs" text="Celles que vous portez le plus volontiers. Votre styliste s'en servira en priorité." onNext={next} disabled={!st.colors.length}>
               <div className="grid grid-cols-4 gap-x-2 gap-y-4">
                 {COLORS.map((c) => {
@@ -123,11 +151,11 @@ export default function Inscription() {
             </StepLayout>
           )}
 
-          {step === 4 && (
+          {step === 5 && (
             <StepLayout title="Votre budget" text="Votre styliste ne vous proposera un achat que s'il manque vraiment une pièce, et dans ce budget." onNext={next}>
-              <div className="rounded-3xl bg-white p-6 text-center">
+              <div className="rounded-2xl bg-white p-6 text-center">
                 <p className="eyebrow">Budget mensuel moyen</p>
-                <p className="mt-2 font-display text-[64px] leading-none">{st.budget} €</p>
+                <p className="mt-2 font-display text-[47px] leading-tight">{st.budget} €</p>
                 <p className="mt-1 text-[13px] text-mute">par mois, soit {st.budget * 12} € par an</p>
                 <div className="mt-7"><Slider min={30} max={400} step={10} value={[st.budget]} onValueChange={(v) => st.set({ budget: Array.isArray(v) ? v[0] : v })} /></div>
                 <div className="mt-6 flex justify-center gap-2">
@@ -139,7 +167,7 @@ export default function Inscription() {
             </StepLayout>
           )}
 
-          {step === 5 && (
+          {step === 6 && (
             <StepLayout title="Vos données, vos choix" text="Chaque autorisation est indépendante. Vous pouvez les modifier à tout moment dans votre profil." onNext={finish} cta="Valider mes choix">
               <div className="space-y-2.5">
                 <Consent title="Données de garde-robe" desc="Photos, descriptions et historique de port de vos vêtements. Nécessaire pour que le styliste fonctionne." checked={st.consents.wardrobe} onChange={(v) => st.setConsents({ wardrobe: v })} tag="Recommandé" />
@@ -171,7 +199,7 @@ function StepLayout({ title, text, children, onNext, disabled, cta = "Continuer"
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-4 no-scrollbar">
-        <h1 className="mt-4 font-display text-[34px] font-medium leading-[1.05]">{title}</h1>
+        <h1 className="mt-4 font-display text-[25px] leading-tight">{title}</h1>
         <p className="mb-6 mt-2 text-[14px] leading-relaxed text-mute">{text}</p>
         {children}
       </div>

@@ -17,20 +17,27 @@ const PROMPTS: Prompt[] = [
 ];
 
 /** Enrichissement progressif : une question à la fois, réponse en deux taps. */
+const PROMPTS_LEA: Prompt[] = [
+  { key: "lea-brand-tshirts", item: "T-shirts blancs", question: (i) => `Vos ${i.quantity} t-shirts blancs, vous les avez portés ${i.timesWorn} fois. De quelle marque sont-ils ?`, options: [{ label: "Ligne Bastide", brandId: "bastide" }, { label: "Bitume Club", brandId: "bitume" }, { label: "Je ne sais plus", brandName: "Marque inconnue" }] },
+  { key: "lea-size-blazer-jaune", item: "Blazer jaune", question: () => "Quelle taille fait votre blazer jaune ?", options: [{ label: "34", size: "34" }, { label: "36", size: "36" }, { label: "38", size: "38" }, { label: "Je ne sais pas" }] },
+  { key: "lea-brand-escarpins", item: "Escarpins noirs", question: () => "Vos escarpins noirs viennent-ils d'Atelier Ferrand ?", options: [{ label: "Oui", brandId: "ferrand" }, { label: "Non, autre marque", brandName: "Autre marque" }] },
+];
+
 export function EnrichCard({ items }: { items: DerivedItem[] }) {
   const answered = useStore((s) => s.answeredPrompts);
   const answer = useStore((s) => s.answerPrompt);
   const override = useStore((s) => s.override);
   const [done, setDone] = useState<string | null>(null);
-  const p = PROMPTS.find((x) => !answered.includes(x.key) && items.some((i) => i.name === x.item));
+  const persona = useStore((s) => s.persona);
+  const p = (persona === "lea" ? PROMPTS_LEA : PROMPTS).find((x) => !answered.includes(x.key) && items.some((i) => i.name === x.item));
   const item = p && items.find((i) => i.name === p.item);
 
   return (
     <AnimatePresence mode="wait">
       {done ? (
-        <motion.div key="done" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2 rounded-3xl bg-ok/10 p-4 text-[13px] text-ok"><Check className="size-4" /> {done}</motion.div>
+        <motion.div key="done" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex items-center gap-2 rounded-2xl bg-ok/10 p-4 text-[13px] text-ok"><Check className="size-4" /> {done}</motion.div>
       ) : p && item ? (
-        <motion.div key={p.key} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="flex gap-3.5 rounded-3xl bg-white p-3.5">
+        <motion.div key={p.key} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="flex gap-3.5 rounded-2xl bg-white p-3.5">
           <img src={item.image} alt="" className="h-[92px] w-[74px] shrink-0 rounded-2xl object-cover" />
           <div className="min-w-0 flex-1">
             <p className="flex items-center gap-1 text-[10.5px] uppercase tracking-[0.16em] text-rust"><Sparkles className="size-3" /> 1 question · 2 secondes</p>

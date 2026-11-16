@@ -70,6 +70,18 @@ export const HARVEST_QUERIES: [string, string][] = [
   ["chino pants man", ""], ["khaki pants", ""], ["corduroy", "fashion"], ["overshirt", ""], ["man white shirt", ""],
   ["man casual outfit", ""], ["man smart casual", ""], ["folded t-shirts", ""], ["folded clothes", ""],
   ["wool scarf", ""], ["knit beanie", ""], ["suitcase packing", ""], ["man rain umbrella", ""],
+  // troisième passe : version mixte (femmes 18-40 ans, streetwear, sport)
+  ["woman blouse", ""], ["white blouse woman", ""], ["silk blouse", ""], ["women shirt", "fashion"],
+  ["woman blazer", ""], ["women suit", ""], ["woman pantsuit", ""], ["woman business outfit", ""],
+  ["women trousers", ""], ["wide leg pants woman", ""], ["woman jeans", ""], ["mom jeans", ""],
+  ["midi skirt", ""], ["pleated skirt", ""], ["summer dress", "fashion"], ["midi dress", ""], ["wrap dress", ""], ["little black dress", ""],
+  ["woman sweater", ""], ["woman cardigan", ""], ["woman turtleneck", ""], ["woman t-shirt", ""],
+  ["woman trench coat", ""], ["woman coat", "fashion"], ["woman leather jacket", ""], ["woman denim jacket", ""], ["woman puffer jacket", ""],
+  ["women sneakers", ""], ["ankle boots women", ""], ["ballet flats", ""], ["heels shoes", ""], ["loafers women", ""], ["sandals women", ""],
+  ["handbag", "fashion"], ["tote bag", ""], ["crossbody bag", ""],
+  ["leggings", ""], ["woman running", "sports"], ["yoga woman", "sports"], ["sports bra", ""], ["woman hoodie", ""],
+  ["streetwear", ""], ["street style woman", ""], ["street style man", ""], ["cargo pants", ""], ["oversized hoodie", ""], ["bucket hat", ""], ["high top sneakers", ""],
+  ["young woman portrait", "people"], ["woman smiling portrait", "people"],
 ];
 
 export const VIDEO_QUERIES = ["wardrobe", "closet", "clothes hanger", "clothes rack", "clothing store"];
@@ -153,7 +165,7 @@ async function harvest() {
   }
 }
 
-type Pick = { id: number; file: string; crop?: "top" | "center" | "bottom" | "left" | "right" | "attention" };
+type Pick = { id: number; file: string; crop?: "top" | "center" | "bottom" | "left" | "right" | "attention" | "contain" };
 
 async function downloadPicks() {
   const picks: { images: Pick[]; video?: { id: number; file: string }[] } = JSON.parse(
@@ -170,7 +182,7 @@ async function downloadPicks() {
       const tmp = path.join(CACHE, "large", `${c.id}.jpg`);
       if (!fs.existsSync(tmp)) await download(c.largeURL, tmp);
       fs.mkdirSync(path.dirname(out), { recursive: true });
-      await sharp(tmp).resize({ width: 1000, height: 1250, fit: "cover", position: p.crop ?? "attention" }).jpeg({ quality: 80, mozjpeg: true }).toFile(out);
+      await sharp(tmp).resize(p.crop === "contain" ? { width: 1000, height: 1250, fit: "contain", background: "#ffffff" } : { width: 1000, height: 1250, fit: "cover", position: p.crop ?? "attention" }).jpeg({ quality: 80, mozjpeg: true }).toFile(out);
       console.log("✓", p.file);
     }
     credits.push({ file: `/images/${p.file}`, author: c.author, source: c.provider === "pixabay" ? "Pixabay" : "Pexels", url: c.pageURL, license: c.provider === "pixabay" ? "Licence de contenu Pixabay" : "Licence Pexels" });

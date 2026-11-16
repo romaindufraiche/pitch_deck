@@ -5,6 +5,7 @@ import type { WardrobeState } from "./wardrobe";
 import { deriveWardrobe } from "./wardrobe";
 import { buildScenario, chunkText, detectScenario } from "./scenarios";
 import type { BrandId } from "./types";
+import { personaOf } from "./data";
 
 type Params = {
   messages: { role: "user" | "assistant"; text: string }[];
@@ -20,7 +21,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 async function localScripted(p: Params, on: (e: StreamEvent) => void) {
   const items = deriveWardrobe(p.state, p.today);
   const last = p.messages[p.messages.length - 1].text;
-  const s = buildScenario(detectScenario(last), { items, today: p.today, connected: p.state.connected as BrandId[], budget: p.budget }, last);
+  const s = buildScenario(detectScenario(last), { items, today: p.today, connected: p.state.connected as BrandId[], budget: p.budget, user: personaOf(p.state.persona) }, last);
   on({ type: "mode", mode: "secours" });
   for (const label of s.steps) { on({ type: "step", label }); await sleep(380); }
   for (const part of s.parts) {

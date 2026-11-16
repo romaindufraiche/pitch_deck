@@ -8,13 +8,19 @@ import { WeatherIcon } from "@/components/weather-icon";
 import { Screen } from "@/components/screen";
 import { Logo } from "@/components/logo";
 import { EnrichCard } from "@/components/enrich-card";
-import { useToday, useWardrobe } from "@/lib/hooks";
+import { usePersona, useToday, useToolContext, useWardrobe } from "@/lib/hooks";
 import { useStore } from "@/lib/store";
-import { weather, user } from "@/lib/data";
+import { weather } from "@/lib/data";
 import { calendar, cap, longDate, relativeDay, addDays } from "@/lib/time";
 import { wardrobeStats } from "@/lib/wardrobe";
 import { buildScenario } from "@/lib/scenarios";
 
+const LOOKS_LEA = [
+  { img: "/images/px/lkf-street-cargo.jpg", title: "Cargo et crop", text: "Le streetwear du week-end, en neutres." },
+  { img: "/images/px/lkf-beige-suit.jpg", title: "Le tailleur beige", text: "Gilet et pantalon, avec un sac en cuir." },
+  { img: "/images/px/lkf-white-blazer.jpg", title: "Blazer blanc", text: "Sur un jean brut, pour le bureau." },
+  { img: "/images/px/lkf-run.jpg", title: "Course du dimanche", text: "Legging et haut technique." },
+];
 const LOOKS = [
   { img: "/images/px/lk-camel-street.jpg", title: "Le manteau camel", text: "Sur un col roulé marine et un jean brut." },
   { img: "/images/px/lk-navy-blazer.jpg", title: "Bureau, sans cravate", text: "Blazer marine, chemise bleu ciel, pochette." },
@@ -25,9 +31,9 @@ const LOOKS = [
 export default function Accueil() {
   const today = useToday();
   const items = useWardrobe();
+  const user = usePersona();
+  const ctx = useToolContext();
   const firstName = useStore((s) => s.profile.firstName) || user.firstName;
-  const connected = useStore((s) => s.connected);
-  const budget = useStore((s) => s.budget);
   const override = useStore((s) => s.override);
   const [worn, setWorn] = useState(false);
   const events = calendar(today).filter((e) => e.dayOffset >= 0 && e.dayOffset <= 7);
@@ -36,7 +42,7 @@ export default function Accueil() {
   const w1 = weather.days[1];
   const stats = wardrobeStats(items);
   const laundry = items.filter((i) => i.status !== "disponible");
-  const look = useMemo(() => buildScenario("today", { items, today, connected, budget }), [items, today, connected, budget]);
+  const look = useMemo(() => buildScenario("today", ctx), [ctx]);
   const lookCard = look.parts.find((p) => "card" in p && p.card.type === "outfit");
   const lookPieces = lookCard && "card" in lookCard && lookCard.card.type === "outfit" ? lookCard.card.pieces.map((p) => items.find((i) => i.id === p.itemId)).filter(Boolean) : [];
 
@@ -48,7 +54,7 @@ export default function Accueil() {
       </div>
       <div className="px-5 pt-6">
         <p className="eyebrow">{cap(longDate(today))}</p>
-        <h1 className="mt-1.5 font-display text-[40px] font-medium leading-none">Bonjour {firstName}.</h1>
+        <h1 className="mt-1.5 font-display text-[30px] leading-tight">Bonjour {firstName}.</h1>
       </div>
 
       <div className="mt-5 flex gap-2 px-5">
@@ -65,13 +71,13 @@ export default function Accueil() {
 
       {next && (
         <div className="px-5 pt-3">
-          <div className="overflow-hidden rounded-3xl bg-ink text-paper">
+          <div className="overflow-hidden rounded-2xl bg-ink text-paper">
             <div className="p-5">
               <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-paper/60"><CalendarDays className="size-3.5" /> {next.label}{next.time ? ` · ${next.time.replace(":", " h ")}` : ""}</p>
-              <p className="mt-2 font-display text-[25px] leading-tight">{next.title}</p>
+              <p className="mt-2 font-display text-[18px] leading-tight">{next.title}</p>
               <p className="mt-1.5 text-[12.5px] text-paper/65">Dress code : {next.dressCode} · {next.dayOffset === 1 ? `${w1.tempMax} °C, ${w1.condition}` : relativeDay(today, next.date)}</p>
             </div>
-            <Link href={`/assistant?q=${encodeURIComponent("Demain j'ai un rendez-vous chez Orsay Conseil, prépare-moi une tenue.")}`} className="flex items-center justify-between border-t border-paper/10 px-5 py-3.5 text-[13.5px] font-medium">
+            <Link href={`/assistant?q=${encodeURIComponent(user.id === "lea" ? "Demain j'ai une présentation chez Orsay Conseil, prépare-moi une tenue." : "Demain j'ai un rendez-vous chez Orsay Conseil, prépare-moi une tenue.")}`} className="flex items-center justify-between border-t border-paper/10 px-5 py-3.5 text-[13.5px] font-medium">
               Préparer ma tenue <ArrowRight className="size-4" />
             </Link>
           </div>
@@ -91,10 +97,10 @@ export default function Accueil() {
       {lookPieces.length > 0 && (
         <section className="px-5 pt-7">
           <div className="flex items-baseline justify-between">
-            <h2 className="font-display text-[24px]">Tenue du jour</h2>
+            <h2 className="font-display text-[18px]">Tenue du jour</h2>
             <span className="text-[12px] text-mute">{w0.tempMin}–{w0.tempMax} °C</span>
           </div>
-          <div className="mt-3 rounded-3xl bg-white p-3">
+          <div className="mt-3 rounded-2xl bg-white p-3">
             <div className="grid grid-cols-5 gap-1.5">
               {lookPieces.map((i) => (
                 <Link key={i!.id} href={`/dressing/${i!.id}`}><img src={i!.image} alt={i!.name} className="aspect-[4/5] w-full rounded-xl object-cover" /></Link>
@@ -109,19 +115,19 @@ export default function Accueil() {
       )}
 
       <section className="px-5 pt-7">
-        <h2 className="font-display text-[24px]">À compléter</h2>
+        <h2 className="font-display text-[18px]">À compléter</h2>
         <div className="mt-3"><EnrichCard items={items} /></div>
       </section>
 
       <section className="pt-7">
-        <h2 className="px-5 font-display text-[24px]">Inspirations</h2>
+        <h2 className="px-5 font-display text-[18px]">Inspirations</h2>
         <div className="mt-3 flex snap-x gap-3 overflow-x-auto px-5 pb-1 no-scrollbar">
-          {LOOKS.map((l, k) => (
-            <motion.div key={l.img} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: k * 0.08 }} className="relative h-[270px] w-[210px] shrink-0 snap-start overflow-hidden rounded-3xl">
+          {(user.id === "lea" ? LOOKS_LEA : LOOKS).map((l, k) => (
+            <motion.div key={l.img} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: k * 0.08 }} className="relative h-[270px] w-[210px] shrink-0 snap-start overflow-hidden rounded-2xl">
               <img src={l.img} alt="" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-paper">
-                <p className="font-display text-[21px] leading-tight">{l.title}</p>
+                <p className="font-display text-[16px] leading-tight">{l.title}</p>
                 <p className="mt-1 text-[11.5px] text-paper/80">{l.text}</p>
               </div>
             </motion.div>
@@ -130,7 +136,7 @@ export default function Accueil() {
       </section>
 
       <section className="px-5 pt-7">
-        <Link href="/dressing" className="flex items-center gap-4 rounded-3xl bg-white p-4">
+        <Link href="/dressing" className="flex items-center gap-4 rounded-2xl bg-white p-4">
           <span className="flex size-11 items-center justify-center rounded-2xl bg-paper"><Shirt className="size-5" strokeWidth={1.5} /></span>
           <div className="flex-1">
             <p className="text-[14px] font-medium">{stats.count} pièces · {stats.atLaundry} au linge ou au pressing</p>

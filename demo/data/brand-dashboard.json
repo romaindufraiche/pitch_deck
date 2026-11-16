@@ -188,6 +188,11 @@
    "action": "Afficher l'avertissement « taille petit » dès la fiche produit."
   },
   {
+   "value": "41 %",
+   "text": "de vos clientes connectées ont un tailleur mais aucune blouse assortie disponible.",
+   "action": "Proposer la Blouse Opéra dans les tenues générées avec la Veste de tailleur Opéra."
+  },
+  {
    "value": "2 100",
    "text": "clients ont un mariage ou une cérémonie dans leur agenda d'ici juillet.",
    "action": "Lancer la Veste Riviera (lin et laine) en avant-première pour ce segment."

@@ -8,8 +8,8 @@ import { Logo } from "@/components/logo";
 
 const SLIDES = [
   { img: "/images/px/hero-rack.jpg", kicker: "01 — Votre dressing", title: "Tout votre dressing, dans votre poche.", text: "Connectez vos boutiques et filmez votre penderie : en deux minutes, chaque pièce est rangée, photographiée, décrite." },
-  { img: "/images/px/lk-smart-casual.jpg", kicker: "02 — Votre styliste", title: "La bonne tenue, chaque matin.", text: "Votre agenda, la météo, ce qui est au linge : votre styliste compose avec ce que vous avez déjà." },
-  { img: "/images/px/lk-navy-blazer.jpg", kicker: "03 — La bonne taille", title: "Achetez moins, achetez juste.", text: "Uniquement ce qui manque vraiment, chez vos marques, à la bonne taille du premier coup." },
+  { img: "/images/px/lkf-white-blazer.jpg", kicker: "02 — Votre styliste", title: "La bonne tenue, chaque matin.", text: "Votre agenda, la météo, ce qui est au linge : votre styliste compose avec ce que vous avez déjà." },
+  { img: "/images/px/lkf-street-duo.jpg", kicker: "03 — Tous les styles", title: "Corporate, street, sport : votre style.", text: "Uniquement ce qui manque vraiment, chez vos marques, à la bonne taille du premier coup." },
 ];
 
 export default function Bienvenue() {
@@ -30,7 +30,7 @@ export default function Bienvenue() {
         <AnimatePresence mode="wait">
           <motion.div key={i} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }}>
             <p className="text-[11px] uppercase tracking-[0.22em] text-paper/70">{s.kicker}</p>
-            <h1 className="mt-3 font-display text-[40px] font-medium leading-[1.02]">{s.title}</h1>
+            <h1 className="mt-3 font-display text-[30px] leading-tight">{s.title}</h1>
             <p className="mt-4 text-[15px] leading-relaxed text-paper/80">{s.text}</p>
           </motion.div>
         </AnimatePresence>

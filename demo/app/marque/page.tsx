@@ -34,7 +34,7 @@ export default function Marque() {
         <div className="mx-auto flex max-w-[1240px] items-center gap-4 px-6 py-4">
           <Link href="/profil" className="flex items-center gap-1.5 text-[13px] text-mute hover:text-ink"><ArrowLeft className="size-4" /> App</Link>
           <span className="h-5 w-px bg-line" />
-          <span className="font-display text-[22px] font-semibold">{APP_NAME}<span className="text-rust">.</span> <span className="font-sans text-[13px] font-normal text-mute">for Brands</span></span>
+          <span className="font-display text-[16px] font-semibold">{APP_NAME}<span className="text-rust">.</span> <span className="font-sans text-[13px] font-normal text-mute">for Brands</span></span>
           <span className="ml-auto flex items-center gap-3">
             <span className="hidden text-[12px] text-mute sm:inline">{d.period} · données anonymisées et agrégées</span>
             <span className="flex h-9 items-center rounded-full px-4" style={{ background: brand.color }}><BrandLogo brand={brand} size={11} color={brand.ink} /></span>
@@ -46,7 +46,7 @@ export default function Marque() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="eyebrow">Tableau de bord partenaire · {k.subscription.plan}</p>
-            <h1 className="mt-2 font-display text-[44px] font-medium leading-none">Bonjour, {brand.name}.</h1>
+            <h1 className="mt-2 font-display text-[33px] leading-tight">Bonjour, {brand.name}.</h1>
             <p className="mt-2 max-w-[640px] text-[14px] leading-relaxed text-mute">
               Vos clients connectés à {APP_NAME} achètent la bonne taille et des pièces qui complètent ce qu&apos;ils possèdent déjà. Résultat : un taux de retour divisé par {(k.returnRateBrand / k.returnRateApp).toFixed(1).replace(".", ",")}.
             </p>
@@ -62,17 +62,17 @@ export default function Marque() {
         </section>
 
         <section className="mt-3 grid gap-3 lg:grid-cols-3">
-          <div className="rounded-3xl bg-ink p-6 text-paper lg:col-span-2">
+          <div className="rounded-2xl bg-ink p-6 text-paper lg:col-span-2">
             <p className="text-[11px] uppercase tracking-[0.18em] text-paper/60">Retours évités sur 12 mois</p>
             <div className="mt-3 flex flex-wrap items-end gap-x-10 gap-y-4">
-              <div><p className="font-display text-[56px] leading-none">{k.returnsAvoided.toLocaleString("fr-FR")}</p><p className="mt-1 text-[12.5px] text-paper/60">retours évités</p></div>
-              <div><p className="font-display text-[56px] leading-none">{eur(savings)}</p><p className="mt-1 text-[12.5px] text-paper/60">économisés : {eur(costPerReturn)} par retour ({eur(k.costPerReturn)} de logistique + {Math.round(k.markdownRate * 100)} % de démarque)</p></div>
-              <div><p className="flex items-center gap-2 font-display text-[40px] leading-none"><Leaf className="size-6" />{(Math.round((k.returnsAvoided * k.co2PerReturnKg) / 100) / 10).toLocaleString("fr-FR")} t</p><p className="mt-1 text-[12.5px] text-paper/60">de CO₂ évitées</p></div>
+              <div><p className="font-display text-[41px] leading-tight">{k.returnsAvoided.toLocaleString("fr-FR")}</p><p className="mt-1 text-[12.5px] text-paper/60">retours évités</p></div>
+              <div><p className="font-display text-[41px] leading-tight">{eur(savings)}</p><p className="mt-1 text-[12.5px] text-paper/60">économisés : {eur(costPerReturn)} par retour ({eur(k.costPerReturn)} de logistique + {Math.round(k.markdownRate * 100)} % de démarque)</p></div>
+              <div><p className="flex items-center gap-2 font-display text-[30px] leading-tight"><Leaf className="size-6" />{(Math.round((k.returnsAvoided * k.co2PerReturnKg) / 100) / 10).toLocaleString("fr-FR")} t</p><p className="mt-1 text-[12.5px] text-paper/60">de CO₂ évitées</p></div>
             </div>
           </div>
-          <div className="rounded-3xl bg-white p-6">
+          <div className="rounded-2xl bg-white p-6">
             <p className="eyebrow">Votre abonnement</p>
-            <p className="mt-3 font-display text-[34px] leading-none">{eur(k.subscription.monthly)}<span className="font-sans text-[13px] text-mute"> / mois</span></p>
+            <p className="mt-3 font-display text-[25px] leading-tight">{eur(k.subscription.monthly)}<span className="font-sans text-[13px] text-mute"> / mois</span></p>
             <p className="mt-1 text-[12.5px] text-mute">+ {k.subscription.commission} % de commission sur les ventes générées</p>
             <div className="mt-4 border-t border-line pt-4 text-[13px]">
               <div className="flex justify-between"><span className="text-mute">Coût annuel (abonnement + commission)</span><span>{eur(annualCost)}</span></div>
@@ -145,13 +145,13 @@ export default function Marque() {
         </section>
 
         <section className="mt-3 grid gap-3 lg:grid-cols-3">
-          <div className="rounded-3xl bg-white p-6 lg:col-span-2">
-            <h2 className="font-display text-[26px] leading-tight">Insights clients</h2>
+          <div className="rounded-2xl bg-white p-6 lg:col-span-2">
+            <h2 className="font-display text-[19px] leading-tight">Insights clients</h2>
             <p className="text-[12.5px] text-mute">Calculés sur les dressings de vos {k.connectedMembers.toLocaleString("fr-FR")} clients connectés ayant accepté le partage anonymisé.</p>
             <ul className="mt-4 divide-y divide-line">
               {d.insights.map((i) => (
                 <li key={i.text} className="flex gap-5 py-4">
-                  <span className="w-[84px] shrink-0 font-display text-[30px] leading-none">{i.value}</span>
+                  <span className="w-[84px] shrink-0 font-display text-[22px] leading-tight">{i.value}</span>
                   <div>
                     <p className="text-[14px] leading-snug">{i.text}</p>
                     <p className="mt-1 flex items-start gap-1.5 text-[12.5px] text-mute"><Lightbulb className="mt-0.5 size-3.5 shrink-0 text-rust" />{i.action}</p>
@@ -161,8 +161,8 @@ export default function Marque() {
             </ul>
           </div>
           <div className="space-y-3">
-            <div className="rounded-3xl bg-white p-6">
-              <h2 className="font-display text-[22px]">Précision des tailles</h2>
+            <div className="rounded-2xl bg-white p-6">
+              <h2 className="font-display text-[16px]">Précision des tailles</h2>
               <ul className="mt-4 space-y-3">
                 {d.sizeAccuracy.map((s) => (
                   <li key={s.category}>
@@ -173,8 +173,8 @@ export default function Marque() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-3xl bg-white p-6">
-              <h2 className="font-display text-[22px]">Meilleures ventes via l&apos;app</h2>
+            <div className="rounded-2xl bg-white p-6">
+              <h2 className="font-display text-[16px]">Meilleures ventes via l&apos;app</h2>
               <ul className="mt-3 space-y-2.5">
                 {d.topProducts.map((t) => {
                   const p = productById[t.productId];
@@ -191,7 +191,7 @@ export default function Marque() {
           </div>
         </section>
 
-        <details className="mt-3 rounded-3xl bg-white p-6 text-[13px]">
+        <details className="mt-3 rounded-2xl bg-white p-6 text-[13px]">
           <summary className="cursor-pointer font-medium">Voir les données en tableau</summary>
           <table className="mt-4 w-full text-left tabular-nums">
             <thead className="text-[11px] uppercase tracking-wider text-mute"><tr><th className="py-2">Mois</th><th>Clients connectés</th><th>Commandes</th><th>Ventes</th><th>Retour via l&apos;app</th><th>Retour moyen</th></tr></thead>
@@ -206,9 +206,9 @@ export default function Marque() {
 
 function Kpi({ icon, label, value, delta, up, down, good }: { icon: React.ReactNode; label: string; value: string; delta: string; up?: boolean; down?: boolean; good?: boolean }) {
   return (
-    <div className="rounded-3xl bg-white p-5">
+    <div className="rounded-2xl bg-white p-5">
       <p className="flex items-center gap-2 text-[12px] text-mute">{icon}{label}</p>
-      <p className="mt-3 font-display text-[40px] leading-none tabular-nums">{value}</p>
+      <p className="mt-3 font-display text-[30px] leading-tight tabular-nums">{value}</p>
       <p className={`mt-2 flex items-center gap-1 text-[12px] ${up || good ? "text-ok" : "text-mute"}`}>{up && <ArrowUpRight className="size-3.5" />}{down && <ArrowDownRight className="size-3.5" />}{delta}</p>
     </div>
   );
@@ -216,9 +216,9 @@ function Kpi({ icon, label, value, delta, up, down, good }: { icon: React.ReactN
 
 function ChartCard({ title, sub, legend, children }: { title: string; sub: string; legend?: [string, string][]; children: React.ReactNode }) {
   return (
-    <div className="rounded-3xl bg-white p-6">
+    <div className="rounded-2xl bg-white p-6">
       <div className="flex flex-wrap items-start justify-between gap-2">
-        <div><h2 className="font-display text-[22px] leading-tight">{title}</h2><p className="text-[12px] text-mute">{sub}</p></div>
+        <div><h2 className="font-display text-[16px] leading-tight">{title}</h2><p className="text-[12px] text-mute">{sub}</p></div>
         {legend && <div className="flex gap-3 text-[11.5px]">{legend.map(([l, c]) => <span key={l} className="flex items-center gap-1.5"><span className="h-[3px] w-4 rounded-full" style={{ background: c }} />{l}</span>)}</div>}
       </div>
       <div className="mt-4">{children}</div>

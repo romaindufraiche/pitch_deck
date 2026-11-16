@@ -3,7 +3,7 @@
   "id": "verac",
   "name": "Maison Vérac",
   "tagline": "Chemisier-tailleur depuis 1987",
-  "positioning": "Chemises et tailleur premium, coupes ajustées, tissus italiens et portugais.",
+  "positioning": "Chemises, tailleurs et robes premium pour femme et homme, tissus italiens et portugais.",
   "priceRange": [
    95,
    260
@@ -24,11 +24,10 @@
    "offset": 1,
    "shoeOffset": 0,
    "summary": "Taille petit",
-   "advice": "Nos coupes sont ajustées : prenez une taille au-dessus de votre taille habituelle (chemises : un tour de cou au-dessus).",
+   "advice": "Nos coupes sont ajustées : prenez une taille au-dessus de votre taille habituelle (chemises homme : un tour de cou au-dessus ; femme : 38 si vous portez 36).",
    "systems": [
-    "tour de cou (37–45)",
-    "vestes (44–56)",
-    "pantalons (36–48)",
+    "homme : tour de cou (37–45), vestes (44–56), pantalons (36–48)",
+    "femme : 34–46",
     "maille (XS–XXL)"
    ],
    "table": [
@@ -70,7 +69,7 @@
   "id": "bastide",
   "name": "Ligne Bastide",
   "tagline": "Les essentiels, bien faits",
-  "positioning": "Basiques casual en matières durables : t-shirts, sweats, chinos.",
+  "positioning": "Basiques casual mixtes en matières durables : t-shirts, mailles, chinos, robes et jupes.",
   "priceRange": [
    29,
    89
@@ -127,7 +126,7 @@
   "id": "kolm",
   "name": "Kolm Denim",
   "tagline": "Selvedge, coupé à la main",
-  "positioning": "Jeans selvedge japonais et coupes ajustées, ateliers en Europe.",
+  "positioning": "Jeans selvedge japonais pour femme et homme, ateliers en Europe.",
   "priceRange": [
    110,
    180
@@ -184,7 +183,7 @@
   "id": "norrland",
   "name": "Norrland Supply",
   "tagline": "Pour les jours sans soleil",
-  "positioning": "Vestes et manteaux techniques, imperméables et respirants.",
+  "positioning": "Vestes et manteaux techniques mixtes, imperméables et respirants.",
   "priceRange": [
    140,
    390
@@ -230,7 +229,7 @@
   "id": "ferrand",
   "name": "Atelier Ferrand",
   "tagline": "Bottier à Romans-sur-Isère",
-  "positioning": "Chaussures en cuir cousues Goodyear et sneakers en cuir pleine fleur.",
+  "positioning": "Chaussures et maroquinerie en cuir, pour femme et homme.",
   "priceRange": [
    120,
    320
@@ -279,7 +278,7 @@
   "id": "rivage",
   "name": "Studio Rivage",
   "tagline": "Bouger, respirer",
-  "positioning": "Sport et athleisure : running, salle, récupération.",
+  "positioning": "Sport et athleisure mixtes : running, salle, yoga, récupération.",
   "priceRange": [
    35,
    120
@@ -312,6 +311,52 @@
       "S": "90–96 cm",
       "M": "97–103 cm",
       "L": "104–110 cm"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles achetées",
+   "Retours et motifs"
+  ]
+ },
+ {
+  "id": "bitume",
+  "name": "Bitume Club",
+  "tagline": "Fait pour la ville",
+  "positioning": "Streetwear mixte : hoodies épais, cargos, t-shirts lourds, pièces oversize.",
+  "priceRange": [
+   35,
+   120
+  ],
+  "color": "#1A1A1A",
+  "ink": "#D4FF3A",
+  "logo": {
+   "font": "condensed",
+   "weight": 700,
+   "tracking": 0.02,
+   "uppercase": true
+  },
+  "members": 18700,
+  "founded": 2020,
+  "city": "Montreuil",
+  "sizeGuide": {
+   "fit": "normal",
+   "offset": 0,
+   "shoeOffset": 0,
+   "summary": "Coupe oversize, taille normalement",
+   "advice": "Nos coupes sont volontairement amples : prenez votre taille habituelle pour l'effet oversize, une taille en dessous pour un tombé classique.",
+   "systems": [
+    "XS–XXL, mixte"
+   ],
+   "table": [
+    {
+     "label": "Hoodie",
+     "values": {
+      "S": "112 cm de tour",
+      "M": "118 cm",
+      "L": "124 cm"
      }
     }
    ]

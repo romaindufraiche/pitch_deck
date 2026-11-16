@@ -8,7 +8,7 @@ import { Screen } from "@/components/screen";
 import { BrandLogo } from "@/components/brand-logo";
 import { CartButton } from "@/components/checkout";
 import { ProductSheet } from "@/components/product-sheet";
-import { brandById, brands, formatPrice, formatSize, products } from "@/lib/data";
+import { brandById, brands, forGender, formatPrice, formatSize, products } from "@/lib/data";
 import { useStore } from "@/lib/store";
 import { useToolContext } from "@/lib/hooks";
 import { recommendSizeFor } from "@/lib/assistant-tools";
@@ -26,13 +26,17 @@ export default function Catalogue() {
   const [cat, setCat] = useState<string | null>(null);
   const [inBudget, setInBudget] = useState(false);
   const [q, setQ] = useState("");
+  const [rayon, setRayon] = useState<"femme" | "homme" | "tous">(ctx.user.gender);
   const [open, setOpen] = useState<Product | null>(null);
 
   /** une fiche par photo : le catalogue reste lisible */
   const catalog = useMemo(() => {
     const seen = new Set<string>();
-    return products.filter((p) => connected.includes(p.brandId) && !seen.has(p.image) && seen.add(p.image));
-  }, [connected]);
+    // les pièces du rayon choisi d'abord, les pièces mixtes ensuite
+    return products
+      .filter((p) => connected.includes(p.brandId) && forGender(rayon)(p) && !seen.has(p.image) && seen.add(p.image))
+      .sort((a, b) => Number(a.gender === "mixte") - Number(b.gender === "mixte"));
+  }, [connected, rayon]);
   const cats = Object.keys(CATEGORY_LABELS).filter((c) => catalog.some((p) => p.category === c && (!brand || p.brandId === brand)));
   const shown = catalog.filter((p) =>
     (!brand || p.brandId === brand) &&
@@ -41,7 +45,7 @@ export default function Catalogue() {
     (!q || norm(`${p.name} ${p.subcategory} ${p.color.name} ${brandById[p.brandId].name}`).includes(norm(q))),
   );
   const sizeOf = (p: Product) => {
-    if (p.sizes.length < 2) return null;
+    if (p.sizes.length < 2 || (p.gender !== "mixte" && p.gender !== ctx.user.gender)) return null;
     const r = recommendSizeFor(ctx, p.id);
     return "erreur" in r ? null : r.size;
   };
@@ -52,7 +56,7 @@ export default function Catalogue() {
         <div className="flex items-end justify-between gap-3">
           <div>
             <p className="eyebrow">{connected.length} marque{connected.length > 1 ? "s" : ""} connectée{connected.length > 1 ? "s" : ""} · à votre taille</p>
-            <h1 className="mt-1 font-display text-[38px] font-medium leading-none">Catalogue</h1>
+            <h1 className="mt-1 font-display text-[28px] leading-tight">Catalogue</h1>
           </div>
           <div className="flex gap-2">
             <Link href="/boutiques" aria-label="Gérer mes marques" className="tap flex size-10 items-center justify-center rounded-full bg-white"><Settings2 className="size-[18px]" strokeWidth={1.6} /></Link>
@@ -69,14 +73,19 @@ export default function Catalogue() {
       </div>
 
       {connected.length === 0 ? (
-        <div className="mx-5 mt-6 rounded-3xl bg-white p-6 text-center">
-          <p className="font-display text-[24px] leading-tight">Aucune marque connectée</p>
+        <div className="mx-5 mt-6 rounded-2xl bg-white p-6 text-center">
+          <p className="font-display text-[18px] leading-tight">Aucune marque connectée</p>
           <p className="mt-2 text-[13px] text-mute">Connectez vos boutiques pour voir leurs articles, à votre taille.</p>
           <Link href="/boutiques" className="tap mt-4 inline-flex h-11 items-center rounded-full bg-ink px-5 text-[13.5px] font-medium text-paper">Connecter mes boutiques</Link>
         </div>
       ) : (
         <>
-          <div className="mt-3 flex gap-2 overflow-x-auto px-5 pb-1 no-scrollbar">
+          <div className="mx-5 mt-3 grid grid-cols-3 gap-1 rounded-full bg-white p-1 text-[12.5px]">
+            {(["femme", "homme", "tous"] as const).map((r) => (
+              <button key={r} onClick={() => { setRayon(r); setCat(null); }} className={cn("tap rounded-full py-1.5 transition", rayon === r ? "bg-ink text-paper" : "text-mute")}>{r === "femme" ? "Femme" : r === "homme" ? "Homme" : "Tout"}</button>
+            ))}
+          </div>
+          <div className="mt-2 flex gap-2 overflow-x-auto px-5 pb-1 no-scrollbar">
             <button onClick={() => { setBrand(null); setCat(null); }} className={cn("tap flex h-12 shrink-0 items-center rounded-2xl border px-4 text-[12.5px]", !brand ? "border-ink bg-ink text-paper" : "border-line bg-white")}>Toutes</button>
             {connected.map((id) => (
               <button key={id} onClick={() => { setBrand(brand === id ? null : id); setCat(null); }} className={cn("tap flex h-12 shrink-0 items-center rounded-2xl border px-4", brand === id ? "border-ink bg-ink" : "border-line bg-white")}>
@@ -110,7 +119,7 @@ export default function Catalogue() {
           </motion.div>
           {!shown.length && <p className="px-5 py-12 text-center text-[13px] text-mute">Aucun article ne correspond.</p>}
           {brands.length > connected.length && (
-            <Link href="/boutiques" className="mx-5 mt-8 block rounded-3xl border border-dashed border-line p-4 text-center text-[12.5px] text-mute">
+            <Link href="/boutiques" className="mx-5 mt-8 block rounded-2xl border border-dashed border-line p-4 text-center text-[12.5px] text-mute">
               {brands.length - connected.length} autre{brands.length - connected.length > 1 ? "s" : ""} marque{brands.length - connected.length > 1 ? "s" : ""} disponible{brands.length - connected.length > 1 ? "s" : ""} : <span className="font-medium text-ink underline underline-offset-2">connecter</span>
             </Link>
           )}

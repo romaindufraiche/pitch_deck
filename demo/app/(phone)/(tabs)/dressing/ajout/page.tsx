@@ -10,17 +10,24 @@ import { useStatusTone } from "@/lib/tone";
 import type { WardrobeItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-const PHOTO = "/images/px/fo-oxford-olive.jpg";
-const MATCH = productById["ferrand-auguste-olive"];
+/** pièce photographiée pendant la démo, selon le profil */
+const SHOTS = {
+  thomas: { photo: "/images/px/fo-oxford-olive.jpg", match: "ferrand-auguste-olive", guess: "Richelieu en cuir vert olive", sub: "Richelieu", color: { name: "Vert olive", hex: "#5E6440" }, sizes: ["42.5", "43", "43.5"], size: "43", note: "vous chaussez 43 dans vos quatre paires Atelier Ferrand (la marque chausse grand d'une demi-pointure)", fallbackMaterial: "Cuir lisse (estimé)" },
+  lea: { photo: "/images/px/wf-pumps-navy.jpg", match: "ferrand-f-escarpins-marine", guess: "Escarpins à bride marine", sub: "Escarpins", color: { name: "Marine", hex: "#1F2A44" }, sizes: ["37", "37.5", "38"], size: "37.5", note: "vous chaussez 37,5 dans vos trois paires Atelier Ferrand (la marque chausse grand d'une demi-pointure)", fallbackMaterial: "Cuir glacé (estimé)" },
+} as const;
 
 export default function Ajout() {
   const router = useRouter();
   const addItem = useStore((s) => s.addItem);
+  const persona = useStore((s) => s.persona);
+  const shot = SHOTS[persona];
+  const PHOTO = shot.photo;
+  const MATCH = productById[shot.match];
   const [step, setStep] = useState<"camera" | "cutout" | "form">("camera");
   const [flash, setFlash] = useState(false);
   const [useMatch, setUseMatch] = useState(true);
-  const [name, setName] = useState("Richelieu en cuir vert olive");
-  const [size, setSize] = useState("43");
+  const [name, setName] = useState<string>(shot.guess);
+  const [size, setSize] = useState<string>(shot.size);
   useStatusTone(step === "form" ? "dark" : "light");
 
   const shoot = () => {
@@ -32,9 +39,9 @@ export default function Ajout() {
   const save = () => {
     const id = `a${Date.now().toString(36)}`;
     const item: WardrobeItem = {
-      id, source: "photo", category: "chaussures", subcategory: "Richelieu", name: useMatch ? MATCH.name : name,
+      id, persona, source: "photo", category: "chaussures", subcategory: shot.sub, name: useMatch ? MATCH.name : name,
       brandId: useMatch ? "ferrand" : null, brandName: useMatch ? "Atelier Ferrand" : "Marque inconnue",
-      color: { name: "Vert olive", hex: "#5E6440" }, material: useMatch ? MATCH.material : "Cuir lisse", size, fit: useMatch ? MATCH.fit : null,
+      color: shot.color, material: useMatch ? MATCH.material : shot.fallbackMaterial, size, fit: useMatch ? MATCH.fit : null,
       season: "toutes saisons", formality: 4, purchaseDate: null, price: useMatch ? MATCH.price : null, ref: useMatch ? MATCH.ref : null,
       productId: useMatch ? MATCH.id : null, orderId: null, baseWears: 0, baseLastWornDaysAgo: null, status: "disponible", image: PHOTO,
       quantity: 1, missing: ["date d'achat"], notes: "Photographié aujourd'hui",
@@ -80,25 +87,25 @@ export default function Ajout() {
             </div>
             <div className="px-5">
               <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-rust"><Sparkles className="size-3.5" /> Pré-rempli par l&apos;IA · vérifiez</p>
-              <button onClick={() => setUseMatch(!useMatch)} className={cn("tap mt-3 flex w-full items-center gap-3 rounded-3xl p-3 text-left transition", useMatch ? "bg-ink text-paper" : "bg-white")}>
+              <button onClick={() => setUseMatch(!useMatch)} className={cn("tap mt-3 flex w-full items-center gap-3 rounded-2xl p-3 text-left transition", useMatch ? "bg-ink text-paper" : "bg-white")}>
                 <img src={MATCH.image} alt="" className="size-14 rounded-2xl object-cover" />
                 <div className="flex-1">
-                  <p className="text-[13px] font-medium leading-snug">C&apos;est le {MATCH.name} d&apos;Atelier Ferrand ?</p>
+                  <p className="text-[13px] font-medium leading-snug">Est-ce le modèle « {MATCH.name} » d&apos;Atelier Ferrand ?</p>
                   <p className={cn("text-[11.5px]", useMatch ? "text-paper/65" : "text-mute")}>Correspondance visuelle 92 % · fiche produit complète</p>
                 </div>
                 <span className={cn("flex size-6 items-center justify-center rounded-full border", useMatch ? "border-paper bg-paper text-ink" : "border-line")}>{useMatch && <Check className="size-3.5" />}</span>
               </button>
-              <div className="mt-3 divide-y divide-line rounded-3xl bg-white px-4">
+              <div className="mt-3 divide-y divide-line rounded-2xl bg-white px-4">
                 <Row label="Nom">{useMatch ? MATCH.name : <input value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-transparent text-right outline-none" />}</Row>
-                <Row label="Catégorie">Chaussures · Richelieu</Row>
-                <Row label="Couleur"><span className="inline-flex items-center gap-2"><span className="size-3.5 rounded-full" style={{ background: "#5E6440" }} />Vert olive</span></Row>
+                <Row label="Catégorie">Chaussures · {shot.sub}</Row>
+                <Row label="Couleur"><span className="inline-flex items-center gap-2"><span className="size-3.5 rounded-full" style={{ background: shot.color.hex }} />{shot.color.name}</span></Row>
                 <Row label="Matière">{useMatch ? MATCH.material : "Cuir lisse (estimé)"}</Row>
                 <Row label="Pointure">
-                  <span className="inline-flex gap-1">{["42.5", "43", "43.5"].map((s) => <button key={s} onClick={() => setSize(s)} className={cn("rounded-full px-2.5 py-1 text-[12px]", size === s ? "bg-ink text-paper" : "bg-paper")}>{s.replace(".", ",")}</button>)}</span>
+                  <span className="inline-flex gap-1">{shot.sizes.map((s) => <button key={s} onClick={() => setSize(s)} className={cn("rounded-full px-2.5 py-1 text-[12px]", size === s ? "bg-ink text-paper" : "bg-paper")}>{s.replace(".", ",")}</button>)}</span>
                 </Row>
                 <Row label="Formalité">4 / 5 · bureau, cérémonie</Row>
               </div>
-              <p className="mt-2 px-1 text-[11.5px] text-mute">Pointure 43 suggérée : vous chaussez 43 dans vos quatre paires Atelier Ferrand (la marque chausse grand d&apos;une demi-pointure).</p>
+              <p className="mt-2 px-1 text-[11.5px] text-mute">Pointure {shot.size.replace(".", ",")} suggérée : {shot.note}.</p>
               <button onClick={save} className="tap mt-5 h-[52px] w-full rounded-full bg-ink text-[15px] font-medium text-paper">Ajouter à mon dressing</button>
             </div>
           </motion.div>

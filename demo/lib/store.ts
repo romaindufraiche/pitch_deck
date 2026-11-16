@@ -5,7 +5,8 @@ import { persist } from "zustand/middleware";
 import type { BrandId, ItemStatus, WardrobeItem } from "./types";
 import type { ItemOverride, WardrobeState } from "./wardrobe";
 import type { Card } from "./cards";
-import { user } from "./data";
+import { personas } from "./data";
+import type { PersonaId } from "./types";
 
 export type ChatMessage = {
   id: string;
@@ -61,10 +62,13 @@ type Actions = {
   patchMessage: (id: string, fn: (m: ChatMessage) => ChatMessage) => void;
   clearChat: () => void;
   reset: () => void;
-  prefill: () => void;
+  prefill: (persona?: PersonaId) => void;
+  /** choix du profil à l'inscription : remet le dressing à zéro pour ce profil */
+  choosePersona: (persona: PersonaId) => void;
 };
 
 const initial: State = {
+  persona: "thomas",
   connected: [],
   scanned: false,
   prefilled: false,
@@ -85,17 +89,27 @@ const initial: State = {
   lastAssistantMode: null,
 };
 
-export const THOMAS_PREFILL: Partial<State> = {
-  connected: ["verac", "bastide", "kolm", "ferrand"],
-  scanned: true,
-  prefilled: true,
-  onboarded: true,
-  account: "apple",
-  profile: { firstName: user.firstName, age: user.age, heightCm: user.heightCm, weightKg: user.weightKg, build: "Normale" },
-  quiz: ["lk-smart-casual", "lk-navy-blazer", "lk-camel-street"],
-  colors: ["Marine", "Gris", "Blanc", "Beige", "Vert olive"],
-  budget: user.monthlyBudget,
-  consents: { wardrobe: true, purchases: true, anonymized: true },
+export const PREFILLS: Record<PersonaId, Partial<State>> = {
+  thomas: {
+    persona: "thomas",
+    connected: ["verac", "bastide", "kolm", "ferrand"],
+    quiz: ["lk-smart-casual", "lk-navy-blazer", "lk-camel-street"],
+    colors: ["Marine", "Gris", "Blanc", "Beige", "Vert olive"],
+  },
+  lea: {
+    persona: "lea",
+    connected: ["verac", "bastide", "kolm", "ferrand", "bitume"],
+    quiz: ["lkf-street-cargo", "lkf-beige-suit", "lkf-white-blazer"],
+    colors: ["Noir", "Blanc", "Beige", "Vert olive", "Camel"],
+  },
+};
+const prefillFor = (id: PersonaId): Partial<State> => {
+  const u = personas[id];
+  return {
+    ...PREFILLS[id], scanned: true, prefilled: true, onboarded: true, account: "apple",
+    profile: { firstName: u.firstName, age: u.age, heightCm: u.heightCm, weightKg: u.weightKg, build: id === "lea" ? "Fine" : "Normale" },
+    budget: u.monthlyBudget, consents: { wardrobe: true, purchases: true, anonymized: true },
+  };
 };
 
 export const useStore = create<State & Actions>()(
@@ -119,13 +133,18 @@ export const useStore = create<State & Actions>()(
       patchMessage: (id, fn) => set((s) => ({ chat: s.chat.map((m) => (m.id === id ? fn(m) : m)) })),
       clearChat: () => set({ chat: [] }),
       reset: () => set({ ...initial }),
-      prefill: () => set({ ...initial, ...THOMAS_PREFILL }),
+      prefill: (persona = "thomas") => set({ ...initial, ...prefillFor(persona) }),
+      choosePersona: (persona) => {
+        const u = personas[persona];
+        set({ persona, connected: [], scanned: false, prefilled: false, overrides: {}, added: [], merges: {}, answeredPrompts: [], cart: [], chat: [], budget: u.monthlyBudget,
+          profile: { firstName: u.firstName, age: u.age, heightCm: u.heightCm, weightKg: u.weightKg, build: persona === "lea" ? "Fine" : "Normale" }, quiz: [], colors: [] });
+      },
     }),
-    { name: "dressr-demo", version: 1 },
+    { name: "dressr-demo", version: 2, migrate: () => ({ ...initial }) as never },
   ),
 );
 
 /** sélection sérialisable de l'état utile à la garde-robe */
 export const wardrobeStateOf = (s: WardrobeState): WardrobeState => ({
-  connected: s.connected, scanned: s.scanned, prefilled: s.prefilled, overrides: s.overrides, added: s.added,
+  persona: s.persona ?? "thomas", connected: s.connected, scanned: s.scanned, prefilled: s.prefilled, overrides: s.overrides, added: s.added,
 });

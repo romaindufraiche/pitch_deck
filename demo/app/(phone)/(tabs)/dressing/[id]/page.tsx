@@ -36,7 +36,7 @@ export default function ItemPage() {
   const recent = log.filter((d) => d.itemIds.includes(item.id)).slice(0, 3);
   const byId = new Map(items.map((i) => [i.id, i]));
   const brand = item.brandId ? brandById[item.brandId] : null;
-  const ask = item.name === "Chemise Oxford Saint-Germain" ? "Quel pantalon je mets avec ma chemise oxford bleue ?" : `Que porter avec ${item.quantity > 1 ? "mes" : "mon"} ${item.name.toLowerCase()} ?`;
+  const ask = item.name === "Chemise Oxford Saint-Germain" ? "Quel pantalon je mets avec ma chemise oxford bleue ?" : item.name === "Blazer Palais" ? "Quel pantalon je mets avec mon blazer beige ?" : `Que porter avec ${item.quantity > 1 ? "mes" : "mon"} ${item.name.toLowerCase()} ?`;
 
   const rows: [string, React.ReactNode][] = [
     ["Catégorie", `${CATEGORY_LABELS[item.category]} · ${item.subcategory}`],
@@ -63,14 +63,14 @@ export default function ItemPage() {
 
       <div className="px-5 pt-5">
         <p className="eyebrow">{item.brandName}</p>
-        <h1 className="mt-1.5 font-display text-[32px] font-medium leading-[1.05]">{item.name}</h1>
+        <h1 className="mt-1.5 font-display text-[24px] leading-tight">{item.name}</h1>
         <p className="mt-2 text-[13px] text-mute">
           Porté <b className="font-semibold text-ink">{item.timesWorn} fois</b>
           {item.lastWornDaysAgo !== null && <> · dernier port {item.lastWornDaysAgo === 0 ? "aujourd'hui" : relativeDay(today, addDays(today, -item.lastWornDaysAgo))}</>}
           {item.price && item.timesWorn > 0 && <> · {formatPrice(Math.round((item.price / item.timesWorn) * 100) / 100)} par port</>}
         </p>
 
-        <div className="mt-5 rounded-3xl bg-white p-4">
+        <div className="mt-5 rounded-2xl bg-white p-4">
           <div className="flex items-center justify-between">
             <p className="eyebrow">Statut</p>
             <AnimatePresence>
@@ -90,18 +90,18 @@ export default function ItemPage() {
         </div>
 
         {item.missing.length > 0 && (
-          <div className="mt-3 rounded-3xl border border-dashed border-rust/40 bg-rust-soft/50 p-4">
+          <div className="mt-3 rounded-2xl border border-dashed border-rust/40 bg-rust-soft/50 p-4">
             <p className="flex items-center gap-1.5 text-[12.5px] font-medium text-rust"><Sparkles className="size-3.5" /> Fiche à compléter : {item.missing.join(", ")}</p>
             {item.missing.includes("marque") && (
               <div className="mt-3 flex flex-wrap gap-1.5">
-                {brands.slice(0, 4).map((b) => <button key={b.id} onClick={() => override(item.id, { brandId: b.id, brandName: b.name })} className="tap rounded-full bg-white px-3 py-1.5 text-[12px]">{b.name}</button>)}
+                {brands.filter((b) => b.id !== "norrland" && b.id !== "rivage").slice(0, 5).map((b) => <button key={b.id} onClick={() => override(item.id, { brandId: b.id, brandName: b.name })} className="tap rounded-full bg-white px-3 py-1.5 text-[12px]">{b.name}</button>)}
                 <button onClick={() => override(item.id, { brandName: "Autre marque" })} className="tap rounded-full bg-white px-3 py-1.5 text-[12px]">Autre</button>
               </div>
             )}
           </div>
         )}
 
-        <div className="mt-3 rounded-3xl bg-white p-4">
+        <div className="mt-3 rounded-2xl bg-white p-4">
           <div className="flex items-baseline justify-between">
             <p className="eyebrow">Ports sur 30 jours</p>
             <p className="text-[12px] text-mute">{wornDays.size} fois</p>
@@ -127,7 +127,7 @@ export default function ItemPage() {
           )}
         </div>
 
-        <div className="mt-3 divide-y divide-line rounded-3xl bg-white px-4">
+        <div className="mt-3 divide-y divide-line rounded-2xl bg-white px-4">
           {rows.filter(([, v]) => v).map(([k, v]) => (
             <div key={k} className="flex justify-between gap-4 py-3 text-[13px]"><span className="text-mute">{k}</span><span className="text-right">{v}</span></div>
           ))}

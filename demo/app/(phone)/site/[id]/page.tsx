@@ -38,14 +38,14 @@ export default function BrandSite() {
         <p className="px-5 pt-3 text-[11px] text-mute">Accueil / {p.subcategory} / {p.name}</p>
         <img src={p.image} alt={p.name} className="mt-3 aspect-[4/5] w-full object-cover" />
         <div className="px-5 pt-5">
-          <h1 className="text-[22px] font-semibold leading-tight" style={{ fontFamily: brand.logo.font === "serif" ? "var(--font-cormorant)" : undefined, fontSize: brand.logo.font === "serif" ? 30 : 22 }}>{p.name}</h1>
+          <h1 className="text-[22px] font-semibold leading-tight">{p.name}</h1>
           <div className="mt-1.5 flex items-center gap-3">
             <span className="text-[20px] font-semibold">{formatPrice(p.price)}</span>
             <span className="flex items-center gap-1 text-[12.5px] text-mute"><Star className="size-3.5 fill-current" /> {p.rating.toString().replace(".", ",")} ({p.reviews} avis)</span>
           </div>
           <p className="mt-3 text-[13.5px] leading-relaxed text-ink/85">{p.description}</p>
           <p className="mt-2 text-[12px] text-mute">{p.material} · {p.fit} · Réf. {p.ref}</p>
-          <div className="mt-5 rounded-3xl bg-paper p-4">
+          <div className="mt-5 rounded-2xl bg-paper p-4">
             <p className="mb-3 flex items-center gap-1.5 text-[11px] uppercase tracking-[0.14em] text-mute">Connecté avec {APP_NAME} : votre taille est présélectionnée</p>
             <ProductBuy p={p} compact />
           </div>

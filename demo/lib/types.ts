@@ -1,4 +1,7 @@
-export type BrandId = "verac" | "bastide" | "kolm" | "norrland" | "ferrand" | "rivage";
+export type BrandId = "verac" | "bastide" | "kolm" | "norrland" | "ferrand" | "rivage" | "bitume";
+export type PersonaId = "thomas" | "lea";
+export type Gender = "homme" | "femme" | "mixte";
+export type Style = "corporate" | "costume" | "street" | "casual" | "sport";
 
 export type Category =
   | "hauts"
@@ -9,7 +12,9 @@ export type Category =
   | "costumes"
   | "chaussures"
   | "accessoires"
-  | "sport";
+  | "sport"
+  | "robes"
+  | "jupes";
 
 export type Color = { name: string; hex: string };
 
@@ -50,6 +55,8 @@ export type Product = {
   name: string;
   category: Category;
   subcategory: string;
+  gender: Gender;
+  styles: Style[];
   description: string;
   material: string;
   fit: string;
@@ -70,6 +77,7 @@ export type ItemSource = "import" | "video" | "photo";
 
 export type WardrobeItem = {
   id: string;
+  persona: PersonaId;
   source: ItemSource;
   category: Category;
   subcategory: string;
@@ -104,6 +112,7 @@ export type WardrobeItem = {
 
 export type Order = {
   id: string;
+  persona: PersonaId;
   brandId: BrandId;
   date: string;
   items: { productId: string; name: string; size: string; color: string; price: number; qty: number; returned?: { reason: string; date: string } }[];
@@ -113,6 +122,7 @@ export type Order = {
 };
 
 export type WearDay = { daysAgo: number; itemIds: string[]; occasion: string };
+export type WearLog = { days: WearDay[]; pinned: { weekday: number; itemIds: string[]; occasion: string; laundry: string[] } };
 
 export type CalendarTemplate = {
   id: string;
@@ -129,6 +139,9 @@ export type CalendarTemplate = {
 export type WeatherDay = { offset: number; tempMin: number; tempMax: number; condition: "pluie" | "averses" | "nuageux" | "éclaircies" | "soleil" | "couvert"; rainProb: number; wind: number };
 
 export type UserProfile = {
+  id: PersonaId;
+  gender: "homme" | "femme";
+  styles: Style[];
   firstName: string;
   lastName: string;
   age: number;
@@ -141,6 +154,6 @@ export type UserProfile = {
   favoriteColors: Color[];
   dislikes: string[];
   monthlyBudget: number;
-  reference: { top: string; collar: string; waist: string; inseam: string; trousersFr: string; jacket: string; shoe: string; chestCm: number; waistCm: number };
+  reference: { top: string; collar: string; waist: string; inseam: string; trousersFr: string; jacket: string; femme?: string; shoe: string; chestCm: number; waistCm: number };
   avatar: string;
 };

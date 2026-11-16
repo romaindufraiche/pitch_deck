@@ -33,9 +33,9 @@ export function Checkout({ open, onClose }: { open: boolean; onClose: () => void
         {done ? (
           <motion.div key="ok" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} className="px-6 pb-4 pt-8 text-center">
             <motion.span initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", damping: 12 }} className="mx-auto flex size-16 items-center justify-center rounded-full bg-ok text-paper"><Check className="size-8" /></motion.span>
-            <p className="mt-5 font-display text-[30px] leading-tight">Commande confirmée</p>
+            <p className="mt-5 font-display text-[22px] leading-tight">Commande confirmée</p>
             <p className="mt-2 text-[13px] text-mute">N° {done.id} · {formatPrice(done.total)}</p>
-            <div className="mt-6 space-y-2 rounded-3xl bg-white p-4 text-left text-[12.5px]">
+            <div className="mt-6 space-y-2 rounded-2xl bg-white p-4 text-left text-[12.5px]">
               <p className="flex items-center gap-2"><Package className="size-4 shrink-0 text-mute" /> Livraison prévue sous 2 à 3 jours ouvrés, à domicile.</p>
               <p className="flex items-center gap-2"><Ruler className="size-4 shrink-0 text-mute" /> Tailles transmises à {done.brands.join(", ")}.</p>
               <p className="flex items-center gap-2"><CheckCircle2 className="size-4 shrink-0 text-mute" /> Les pièces apparaîtront dans votre dressing à la livraison.</p>

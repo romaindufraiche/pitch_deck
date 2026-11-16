@@ -1,6 +1,6 @@
 # Dressr — démo cliquable
 
-Démo de l'app mobile qui numérise la garde-robe des hommes et leur sert de styliste IA. Les marques partenaires paient un abonnement (B2B) pour y être connectées et recommander la bonne pièce, à la bonne taille.
+Démo de l'app mobile qui numérise la garde-robe des femmes et des hommes de 18 à 40 ans, quel que soit leur style (corporate, costume et tailleur, streetwear, casual, sport), et leur sert de styliste IA. Les marques partenaires paient un abonnement (B2B) pour y être connectées et recommander la bonne pièce, à la bonne taille.
 
 > **Nom de l'app** : « Dressr » est un nom de travail. Il se change en une ligne dans [`lib/config.ts`](lib/config.ts) (`APP_NAME`).
 
@@ -71,9 +71,23 @@ npm run build && npm start
 
 **Variantes si l'on a plus de temps** : l'onglet **Catalogue** (articles des marques connectées, taille recommandée affichée sur chaque photo, filtre « dans mon budget »), la question « Quel pantalon je mets avec ma chemise oxford bleue ? » (alerte « chino au linge » remplacé par le gris anthracite), la valise pour Lyon (liste cochable), la fiche de la **Chelsea Marcel** (vue 360° à faire tourner), l'ajout d'une pièce par photo, ou le tableau « Mes tailles par marque » dans le Profil.
 
-**En cas de pépin** : `Shift + D` → *Préremplir le compte de Thomas* remet un compte complet (4 marques, scan fait, 61 fiches) et permet de sauter directement à n'importe quelle étape.
+**En cas de pépin** : `Shift + D` → *Compte de Léa* ou *Compte de Thomas* remet un compte complet (marques connectées, scan fait) et permet de sauter directement à n'importe quelle étape.
 
 ---
+
+## Deux profils de démo
+
+| | Léa Garnier | Thomas Lefèvre |
+|---|---|---|
+| Profil | 26 ans, chargée de projet marketing, Paris 10e | 28 ans, consultant junior, Paris 11e |
+| Style | Streetwear et corporate | Smart casual et costume |
+| Dressing | 39 fiches (15 importées, 18 détectées en vidéo, 6 par photo) | 61 fiches (22, 29 et 10) |
+| Tailles | S, 36 femme, W27 L30, pointure 38 | M, col 39, W31 L32, pointure 43,5 |
+| Exemple de taille | Maison Vérac : **38** (taille petit) ; Atelier Ferrand : **37,5** | Maison Vérac : **50** en veste ; Atelier Ferrand : **43** |
+
+Le profil se choisit à l'inscription (étape « Vous êtes ») ou dans le menu de présentation. Les deux profils ont leurs propres commandes, retours, journal de port, scénarios d'assistant et questions d'enrichissement. Les catalogues sont mixtes : 7 marques fictives, dont **Bitume Club** (streetwear), 213 produits, avec un sélecteur Femme / Homme / Tout.
+
+Design : interface neutre et épurée (une seule police sans-serif, noir, blanc et gris), pour accueillir tous les styles sans connoter le luxe.
 
 ## Contenu de la démo
 

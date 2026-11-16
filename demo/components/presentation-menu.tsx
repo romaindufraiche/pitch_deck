@@ -28,7 +28,7 @@ const JUMPS: [string, string][] = [
   ["Scan vidéo du dressing", "/scan"],
   ["Accueil", "/accueil"],
   ["Mon dressing", "/dressing"],
-  ["Fiche article (vue 360°)", `/dressing/${chelsea}`],
+  ["Fiche article 360° (Thomas)", `/dressing/${chelsea}`],
   ["Ajout par photo", "/dressing/ajout"],
   ["Catalogue des marques", "/catalogue"],
   ["Assistant IA", "/assistant"],
@@ -66,15 +66,19 @@ export function PresentationMenu() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-1 flex items-center justify-between">
-              <p className="text-[11px] uppercase tracking-[0.2em] text-paper/50">Mode présentation · {APP_NAME}</p>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-paper/50">Mode présentation · {APP_NAME} · profil : {s.persona === "lea" ? "Léa" : "Thomas"}</p>
               <kbd className="rounded bg-paper/10 px-1.5 py-0.5 text-[10px] text-paper/60">Shift + D</kbd>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <button className="rounded-2xl bg-paper px-3 py-3 text-left text-[13px] font-medium text-ink" onClick={() => { s.prefill(); go("/accueil"); }}>
-                Préremplir le compte de Thomas
-                <span className="mt-0.5 block text-[11px] font-normal text-mute">4 marques, scan fait, 61 pièces</span>
+              <button className="rounded-2xl bg-paper px-3 py-3 text-left text-[13px] font-medium text-ink" onClick={() => { s.prefill("thomas"); go("/accueil"); }}>
+                Compte de Thomas
+                <span className="mt-0.5 block text-[11px] font-normal text-mute">28 ans · smart casual · 61 pièces</span>
               </button>
-              <button className="rounded-2xl bg-paper/10 px-3 py-3 text-left text-[13px] font-medium" onClick={() => { s.reset(); go("/"); }}>
+              <button className="rounded-2xl bg-paper px-3 py-3 text-left text-[13px] font-medium text-ink" onClick={() => { s.prefill("lea"); go("/accueil"); }}>
+                Compte de Léa
+                <span className="mt-0.5 block text-[11px] font-normal text-mute">26 ans · street et corporate · 39 pièces</span>
+              </button>
+              <button className="col-span-2 rounded-2xl bg-paper/10 px-3 py-3 text-left text-[13px] font-medium" onClick={() => { s.reset(); go("/"); }}>
                 Réinitialiser la démo
                 <span className="mt-0.5 block text-[11px] font-normal text-paper/50">Repart du splash</span>
               </button>
@@ -83,7 +87,8 @@ export function PresentationMenu() {
             <div className="grid grid-cols-2 gap-1.5">
               {JUMPS.map(([label, href]) => (
                 <button key={href} className="rounded-xl bg-paper/[0.06] px-3 py-2.5 text-left text-[12.5px] hover:bg-paper/10" onClick={() => {
-                  if (!["/", "/bienvenue", "/inscription", "/boutiques?onboarding=1", "/scan"].includes(href) && !s.onboarded) s.prefill();
+                  if (href === `/dressing/${chelsea}` && s.persona !== "thomas") s.prefill("thomas");
+                  else if (!["/", "/bienvenue", "/inscription", "/boutiques?onboarding=1", "/scan"].includes(href) && !s.onboarded) s.prefill(s.persona);
                   go(href);
                 }}>{label}</button>
               ))}

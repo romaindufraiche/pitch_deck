@@ -1,9 +1,11 @@
 import type { BrandId, ItemStatus, WardrobeItem, WearDay } from "./types";
-import { baseWardrobe, brandById, wearLog } from "./data";
+import { baseWardrobe, brandById, wearLogs } from "./data";
+import type { PersonaId } from "./types";
 import { daysSinceLastWeekday } from "./time";
 
 /** État utilisateur nécessaire pour dériver la garde-robe (sérialisable, envoyé à l'API). */
 export type WardrobeState = {
+  persona: PersonaId;
   connected: BrandId[];
   scanned: boolean;
   prefilled: boolean;
@@ -26,15 +28,15 @@ export type DerivedItem = WardrobeItem & {
   wornLastTuesday: boolean;
 };
 
-export function effectiveWearLog(today: Date): WearDay[] {
-  const tue = daysSinceLastWeekday(today, wearLog.pinnedTuesday.weekday);
-  return wearLog.days.map((d) =>
-    d.daysAgo === tue ? { daysAgo: d.daysAgo, itemIds: wearLog.pinnedTuesday.itemIds, occasion: wearLog.pinnedTuesday.occasion } : d,
-  );
+export function effectiveWearLog(today: Date, persona: PersonaId = "thomas"): WearDay[] {
+  const log = wearLogs[persona];
+  const tue = daysSinceLastWeekday(today, log.pinned.weekday);
+  return log.days.map((d) => (d.daysAgo === tue ? { daysAgo: d.daysAgo, itemIds: log.pinned.itemIds, occasion: log.pinned.occasion } : d));
 }
 
-export function visibleBaseItems(s: Pick<WardrobeState, "connected" | "scanned" | "prefilled">) {
+export function visibleBaseItems(s: Pick<WardrobeState, "persona" | "connected" | "scanned" | "prefilled">) {
   return baseWardrobe.filter((i) => {
+    if (i.persona !== (s.persona ?? "thomas")) return false;
     if (i.source === "import") return i.brandId ? s.connected.includes(i.brandId) : false;
     if (i.source === "video") return s.scanned;
     return s.scanned || s.prefilled;
@@ -42,16 +44,18 @@ export function visibleBaseItems(s: Pick<WardrobeState, "connected" | "scanned" 
 }
 
 export function deriveWardrobe(s: WardrobeState, today: Date): DerivedItem[] {
-  const log = effectiveWearLog(today);
-  const tue = daysSinceLastWeekday(today, wearLog.pinnedTuesday.weekday);
+  const persona = s.persona ?? "thomas";
+  const log = effectiveWearLog(today, persona);
+  const pinned = wearLogs[persona].pinned;
+  const tue = daysSinceLastWeekday(today, pinned.weekday);
   const all = [...visibleBaseItems(s), ...s.added];
   return all.map((it) => {
     const o = s.overrides[it.id] ?? {};
     const days = log.filter((d) => d.itemIds.includes(it.id)).map((d) => d.daysAgo);
     const lastLog = days.length ? Math.min(...days) : null;
-    const wornLastTuesday = wearLog.pinnedTuesday.itemIds.includes(it.id);
+    const wornLastTuesday = pinned.itemIds.includes(it.id);
     let status: ItemStatus = it.status;
-    if (wearLog.pinnedTuesday.laundry.includes(it.id) && tue <= 6) status = "au linge";
+    if (pinned.laundry.includes(it.id) && tue <= 6) status = "au linge";
     if (o.status) status = o.status;
     const brandId = o.brandId !== undefined ? o.brandId : it.brandId;
     const brandName = o.brandName ?? (brandId ? brandById[brandId].name : it.brandName);
@@ -74,7 +78,7 @@ export const isAvailable = (i: { status: ItemStatus }) => i.status === "disponib
 
 export const CATEGORY_LABELS: Record<string, string> = {
   hauts: "Hauts", chemises: "Chemises", maille: "Maille", pantalons: "Pantalons", vestes: "Vestes & manteaux",
-  costumes: "Costumes", chaussures: "Chaussures", accessoires: "Accessoires", sport: "Sport",
+  costumes: "Costumes & tailleurs", robes: "Robes", jupes: "Jupes", chaussures: "Chaussures", accessoires: "Sacs & accessoires", sport: "Sport",
 };
 
 export function wardrobeStats(items: DerivedItem[]) {

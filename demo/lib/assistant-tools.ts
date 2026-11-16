@@ -1,12 +1,12 @@
-import type { BrandId, Product } from "./types";
-import { brandById, orders, products, productById, user, weather } from "./data";
+import type { BrandId, Product, UserProfile } from "./types";
+import { brandById, forGender, orders, products, productById, weather } from "./data";
 import { calendar, cap, longDate, relativeDay, addDays } from "./time";
 import { effectiveWearLog, type DerivedItem } from "./wardrobe";
 import { recommendSize, systemFor, type SizeHistory, type SizeRecommendation } from "./sizing";
 import type { Card } from "./cards";
 
 /** Contexte d'exécution des outils : la garde-robe dérivée de l'état client et la date du jour. */
-export type ToolContext = { items: DerivedItem[]; today: Date; connected: BrandId[]; budget: number };
+export type ToolContext = { items: DerivedItem[]; today: Date; connected: BrandId[]; budget: number; user: UserProfile };
 
 const compact = (i: DerivedItem) => ({
   id: i.id, nom: i.name, marque: i.brandName, categorie: i.category, type: i.subcategory, couleur: i.color.name,
@@ -25,7 +25,7 @@ export function getWardrobe(ctx: ToolContext, input: { category?: string; availa
 export function getWearHistory(ctx: ToolContext, input: { days?: number } = {}) {
   const days = Math.min(30, input.days ?? 14);
   const byId = new Map(ctx.items.map((i) => [i.id, i]));
-  return effectiveWearLog(ctx.today)
+  return effectiveWearLog(ctx.today, ctx.user.id)
     .filter((d) => d.daysAgo <= days)
     .map((d) => {
       const date = addDays(ctx.today, -d.daysAgo);
@@ -52,11 +52,12 @@ export function getWeather(ctx: ToolContext) {
   };
 }
 
-export function searchCatalog(ctx: ToolContext, input: { query?: string; category?: string; color?: string; maxPrice?: number; connectedOnly?: boolean }) {
+export function searchCatalog(ctx: ToolContext, input: { query?: string; category?: string; color?: string; maxPrice?: number; connectedOnly?: boolean; gender?: "homme" | "femme" | "tous" }) {
   const q = (input.query ?? "").toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
   const words = q.split(/\s+/).filter((w) => w.length > 2);
   const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
   const scored = products
+    .filter(forGender(input.gender ?? ctx.user.gender))
     .filter((p) => (!input.category || p.category === input.category) && (!input.maxPrice || p.price <= input.maxPrice))
     .filter((p) => !input.color || norm(p.color.name).includes(norm(input.color)))
     .filter((p) => !input.connectedOnly || ctx.connected.includes(p.brandId))
@@ -86,7 +87,7 @@ export function sizeHistory(ctx: ToolContext, product: Product): SizeHistory[] {
     })
     .map((i) => ({ name: i.name, size: i.size!, kept: true, wears: i.timesWorn }));
   const returned = orders
-    .filter((o) => o.brandId === product.brandId && ctx.connected.includes(o.brandId))
+    .filter((o) => o.persona === ctx.user.id && o.brandId === product.brandId && ctx.connected.includes(o.brandId))
     .flatMap((o) => o.items.filter((l) => l.returned).map((l) => ({ l, p: productById[l.productId] })))
     .filter(({ p }) => p && systemFor(p.category, p.sizes.map((s) => s.size)) === sys)
     .map(({ l }) => ({ name: l.name, size: l.size, kept: false, wears: 0, returnReason: l.returned!.reason.toLowerCase() }));
@@ -97,7 +98,7 @@ export function recommendSizeFor(ctx: ToolContext, productId: string): (SizeReco
   const p = productById[productId];
   if (!p) return { erreur: `Produit inconnu : ${productId}` };
   const sizes = p.sizes.map((s) => s.size);
-  const rec = recommendSize(user, brandById[p.brandId], p.category, sizes, sizeHistory(ctx, p), p.fit);
+  const rec = recommendSize(ctx.user, brandById[p.brandId], p.category, sizes, sizeHistory(ctx, p), p.fit);
   return { ...rec, produit: p.name, marque: brandById[p.brandId].name, en_stock: (p.sizes.find((s) => s.size === rec.size)?.stock ?? 0) > 0 };
 }
 

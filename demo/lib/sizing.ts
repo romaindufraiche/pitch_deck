@@ -1,19 +1,24 @@
 import type { Brand, Category, UserProfile } from "./types";
 
-export type SizeSystem = "lettres" | "col" | "veste" | "pantalon" | "WL" | "pointure";
+export type SizeSystem = "lettres" | "col" | "veste" | "pantalon" | "femme" | "WL" | "pointure";
 
 export const LETTERS = ["XS", "S", "M", "L", "XL", "XXL"];
 export const COLLARS = ["37", "38", "39", "40", "41", "42", "43", "44", "45"];
 export const JACKETS = ["44", "46", "48", "50", "52", "54", "56"];
 export const TROUSERS = ["36", "38", "40", "42", "44", "46", "48"];
 export const WAISTS = ["28", "29", "30", "31", "32", "33", "34", "36"];
-export const SHOES = ["39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "46"];
+/** tailles françaises femme (tailleur, pantalons, jupes, robes) : la liste commence toujours à 34 */
+export const FEMME = ["34", "36", "38", "40", "42", "44", "46"];
+export const SHOES = ["35.5", "36", "36.5", "37", "37.5", "38", "38.5", "39", "39.5", "40", "40.5", "41", "41.5", "42", "42.5", "43", "43.5", "44", "44.5", "45", "46"];
+export const SHOES_MEN = SHOES.slice(SHOES.indexOf("39"), SHOES.indexOf("45") + 1);
+export const SHOES_WOMEN = SHOES.slice(SHOES.indexOf("36"), SHOES.indexOf("41") + 1);
 
 export function systemFor(category: Category, sizes: string[]): SizeSystem {
   const s = sizes[0] ?? "";
   if (/^W\d+/.test(s)) return "WL";
   if (category === "chaussures") return "pointure";
   if (/^[A-Z]+$/.test(s)) return "lettres";
+  if (s === "34") return "femme";
   if (category === "chemises") return "col";
   if (s === "36") return "pantalon";
   if (category === "vestes" || category === "costumes") return "veste";
@@ -27,13 +32,14 @@ export function sizesFor(system: SizeSystem): string[] {
     case "col": return COLLARS;
     case "veste": return JACKETS;
     case "pantalon": return TROUSERS;
+    case "femme": return FEMME;
     case "pointure": return SHOES;
-    case "WL": return ["W29 L32", "W30 L32", "W31 L32", "W32 L32", "W33 L32", "W34 L32", "W31 L34", "W32 L34"];
+    case "WL": return [];
   }
 }
 
 const label: Record<SizeSystem, string> = {
-  lettres: "taille", col: "tour de cou", veste: "taille de veste", pantalon: "taille", WL: "taille", pointure: "pointure",
+  lettres: "taille", col: "tour de cou", veste: "taille de veste", pantalon: "taille", femme: "taille", WL: "taille", pointure: "pointure",
 };
 
 function shift(list: string[], value: string, by: number) {
@@ -50,6 +56,7 @@ export function usualSize(user: UserProfile, system: SizeSystem): string {
     case "col": return r.collar;
     case "veste": return r.jacket;
     case "pantalon": return r.trousersFr;
+    case "femme": return r.femme ?? "38";
     case "WL": return `W${r.waist} L${r.inseam}`;
     case "pointure": return r.shoe;
   }
