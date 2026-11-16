@@ -1,0 +1,354 @@
+[
+ {
+  "id": "LB2505-48213",
+  "brandId": "bastide",
+  "date": "2025-05-28",
+  "items": [
+   {
+    "productId": "bastide-essentiel-blanc",
+    "name": "T-shirt Essentiel",
+    "size": "M",
+    "color": "Blanc",
+    "price": 29,
+    "qty": 1
+   },
+   {
+    "productId": "bastide-essentiel-noir",
+    "name": "T-shirt Essentiel noir",
+    "size": "M",
+    "color": "Noir",
+    "price": 29,
+    "qty": 1
+   }
+  ],
+  "total": 58,
+  "shipping": 4.9,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-25-031847",
+  "brandId": "verac",
+  "date": "2025-06-03",
+  "items": [
+   {
+    "productId": "verac-popeline-haussmann",
+    "name": "Chemise Popeline Haussmann",
+    "size": "39",
+    "color": "Blanc",
+    "price": 125,
+    "qty": 1,
+    "returned": {
+     "reason": "Trop petit",
+     "date": "2025-06-09"
+    }
+   }
+  ],
+  "total": 125,
+  "shipping": 0,
+  "status": "remboursée"
+ },
+ {
+  "id": "MV-25-032266",
+  "brandId": "verac",
+  "date": "2025-06-14",
+  "items": [
+   {
+    "productId": "verac-popeline-haussmann",
+    "name": "Chemise Popeline Haussmann",
+    "size": "40",
+    "color": "Blanc",
+    "price": 125,
+    "qty": 1
+   }
+  ],
+  "total": 125,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "KD-104927",
+  "brandId": "kolm",
+  "date": "2025-07-19",
+  "items": [
+   {
+    "productId": "kolm-k1-brut",
+    "name": "Jean K1 Slim selvedge brut",
+    "size": "W32 L32",
+    "color": "Brut",
+    "price": 145,
+    "qty": 1,
+    "returned": {
+     "reason": "Trop large à la taille",
+     "date": "2025-07-24"
+    }
+   }
+  ],
+  "total": 145,
+  "shipping": 0,
+  "status": "remboursée"
+ },
+ {
+  "id": "KD-105311",
+  "brandId": "kolm",
+  "date": "2025-07-30",
+  "items": [
+   {
+    "productId": "kolm-k1-brut",
+    "name": "Jean K1 Slim selvedge brut",
+    "size": "W31 L32",
+    "color": "Brut",
+    "price": 145,
+    "qty": 1
+   }
+  ],
+  "total": 145,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "LB2509-61877",
+  "brandId": "bastide",
+  "date": "2025-09-10",
+  "items": [
+   {
+    "productId": "bastide-chino-beige",
+    "name": "Chino Luberon",
+    "size": "W31 L32",
+    "color": "Beige",
+    "price": 69,
+    "qty": 1
+   },
+   {
+    "productId": "bastide-chino-anthracite",
+    "name": "Chino Luberon anthracite",
+    "size": "W31 L32",
+    "color": "Gris anthracite",
+    "price": 69,
+    "qty": 1
+   },
+   {
+    "productId": "bastide-sorgue-noir",
+    "name": "Polo Sorgue",
+    "size": "M",
+    "color": "Noir",
+    "price": 59,
+    "qty": 1
+   }
+  ],
+  "total": 197,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-25-047120",
+  "brandId": "verac",
+  "date": "2025-10-21",
+  "items": [
+   {
+    "productId": "verac-trocadero-veste",
+    "name": "Veste de costume Trocadéro",
+    "size": "50",
+    "color": "Marine",
+    "price": 245,
+    "qty": 1
+   },
+   {
+    "productId": "verac-trocadero-pantalon",
+    "name": "Pantalon de costume Trocadéro",
+    "size": "42",
+    "color": "Marine",
+    "price": 145,
+    "qty": 1
+   }
+  ],
+  "total": 390,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "AF-2511-0718",
+  "brandId": "ferrand",
+  "date": "2025-11-29",
+  "items": [
+   {
+    "productId": "ferrand-lucien",
+    "name": "Derby Lucien",
+    "size": "43",
+    "color": "Marron",
+    "price": 245,
+    "qty": 1
+   },
+   {
+    "productId": "ferrand-marcel",
+    "name": "Chelsea Marcel",
+    "size": "43",
+    "color": "Cognac",
+    "price": 279,
+    "qty": 1
+   }
+  ],
+  "total": 524,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "LB2601-70452",
+  "brandId": "bastide",
+  "date": "2026-01-15",
+  "items": [
+   {
+    "productId": "bastide-merinos-marine",
+    "name": "Pull col rond Mérinos",
+    "size": "M",
+    "color": "Marine",
+    "price": 79,
+    "qty": 1
+   },
+   {
+    "productId": "bastide-hoodie-ventoux",
+    "name": "Hoodie Ventoux",
+    "size": "L",
+    "color": "Gris chiné",
+    "price": 75,
+    "qty": 1,
+    "returned": {
+     "reason": "Trop grand",
+     "date": "2026-01-21"
+    }
+   },
+   {
+    "productId": "bastide-hoodie-ventoux",
+    "name": "Hoodie Ventoux",
+    "size": "M",
+    "color": "Gris chiné",
+    "price": 75,
+    "qty": 1
+   }
+  ],
+  "total": 229,
+  "shipping": 0,
+  "status": "retournée partiellement"
+ },
+ {
+  "id": "MV-26-012904",
+  "brandId": "verac",
+  "date": "2026-03-12",
+  "items": [
+   {
+    "productId": "verac-oxford-sg",
+    "name": "Chemise Oxford Saint-Germain",
+    "size": "40",
+    "color": "Bleu ciel",
+    "price": 115,
+    "qty": 1
+   },
+   {
+    "productId": "verac-opera-rayee",
+    "name": "Chemise Popeline rayée Opéra",
+    "size": "40",
+    "color": "Bleu ciel",
+    "price": 120,
+    "qty": 1
+   }
+  ],
+  "total": 235,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "KD-109842",
+  "brandId": "kolm",
+  "date": "2026-04-22",
+  "items": [
+   {
+    "productId": "kolm-k1-delave",
+    "name": "Jean K1 Slim délavé",
+    "size": "W31 L32",
+    "color": "Délavé moyen",
+    "price": 135,
+    "qty": 1
+   },
+   {
+    "productId": "kolm-chemise-indigo",
+    "name": "Chemise Kolm en denim indigo",
+    "size": "M",
+    "color": "Indigo",
+    "price": 119,
+    "qty": 1
+   }
+  ],
+  "total": 254,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "AF-2605-0233",
+  "brandId": "ferrand",
+  "date": "2026-05-17",
+  "items": [
+   {
+    "productId": "ferrand-leon",
+    "name": "Sneaker Léon",
+    "size": "43",
+    "color": "Cognac",
+    "price": 189,
+    "qty": 1
+   },
+   {
+    "productId": "ferrand-auguste-noir",
+    "name": "Richelieu Auguste",
+    "size": "43",
+    "color": "Noir",
+    "price": 265,
+    "qty": 1
+   }
+  ],
+  "total": 454,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-26-038511",
+  "brandId": "verac",
+  "date": "2026-09-02",
+  "items": [
+   {
+    "productId": "verac-faubourg",
+    "name": "Blazer Faubourg",
+    "size": "50",
+    "color": "Marine",
+    "price": 249,
+    "qty": 1
+   },
+   {
+    "productId": "verac-cravate-tricot",
+    "name": "Cravate tricot à pois",
+    "size": "TU",
+    "color": "Marine",
+    "price": 95,
+    "qty": 1
+   }
+  ],
+  "total": 344,
+  "shipping": 0,
+  "status": "livrée"
+ },
+ {
+  "id": "MV-26-044379",
+  "brandId": "verac",
+  "date": "2026-10-08",
+  "items": [
+   {
+    "productId": "verac-pinces-flanelle",
+    "name": "Pantalon à pinces Flanelle",
+    "size": "42",
+    "color": "Gris clair",
+    "price": 135,
+    "qty": 1
+   }
+  ],
+  "total": 135,
+  "shipping": 0,
+  "status": "livrée"
+ }
+]

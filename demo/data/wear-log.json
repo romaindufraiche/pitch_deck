@@ -1,0 +1,316 @@
+{
+ "days": [
+  {
+   "daysAgo": 1,
+   "itemIds": [
+    "w001",
+    "w004",
+    "w018",
+    "w056"
+   ],
+   "occasion": "Brunch"
+  },
+  {
+   "daysAgo": 2,
+   "itemIds": [
+    "w034",
+    "w052",
+    "w011",
+    "w055"
+   ],
+   "occasion": "Soirée"
+  },
+  {
+   "daysAgo": 3,
+   "itemIds": [
+    "w014",
+    "w006",
+    "w010",
+    "w012"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 4,
+   "itemIds": [
+    "w017",
+    "w004",
+    "w011",
+    "w054"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 5,
+   "itemIds": [
+    "w014",
+    "w016",
+    "w049",
+    "w018"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 6,
+   "itemIds": [
+    "w042",
+    "w022",
+    "w020",
+    "w010"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 7,
+   "itemIds": [
+    "w044",
+    "w022",
+    "w054",
+    "w011"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 8,
+   "itemIds": [
+    "w013",
+    "w026",
+    "w027"
+   ],
+   "occasion": "Course du dimanche"
+  },
+  {
+   "daysAgo": 9,
+   "itemIds": [
+    "w012",
+    "w053",
+    "w060",
+    "w023"
+   ],
+   "occasion": "Expo + dîner"
+  },
+  {
+   "daysAgo": 10,
+   "itemIds": [
+    "w015",
+    "w009",
+    "w008",
+    "w019",
+    "w021"
+   ],
+   "occasion": "Rendez-vous client"
+  },
+  {
+   "daysAgo": 11,
+   "itemIds": [
+    "w039",
+    "w006",
+    "w020",
+    "w018"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 12,
+   "itemIds": [
+    "w014",
+    "w006",
+    "w010",
+    "w012"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 13,
+   "itemIds": [
+    "w017",
+    "w004",
+    "w011",
+    "w054"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 14,
+   "itemIds": [
+    "w014",
+    "w016",
+    "w049",
+    "w018"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 15,
+   "itemIds": [
+    "w028",
+    "w026",
+    "w027"
+   ],
+   "occasion": "Running"
+  },
+  {
+   "daysAgo": 16,
+   "itemIds": [
+    "w007",
+    "w016",
+    "w018"
+   ],
+   "occasion": "Courses, ciné"
+  },
+  {
+   "daysAgo": 17,
+   "itemIds": [
+    "w042",
+    "w022",
+    "w020",
+    "w010"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 18,
+   "itemIds": [
+    "w044",
+    "w022",
+    "w054",
+    "w011"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 19,
+   "itemIds": [
+    "w015",
+    "w009",
+    "w008",
+    "w019",
+    "w021"
+   ],
+   "occasion": "Rendez-vous client"
+  },
+  {
+   "daysAgo": 20,
+   "itemIds": [
+    "w039",
+    "w006",
+    "w020",
+    "w018"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 21,
+   "itemIds": [
+    "w014",
+    "w006",
+    "w010",
+    "w012"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 22,
+   "itemIds": [
+    "w048",
+    "w004",
+    "w024",
+    "w061"
+   ],
+   "occasion": "Balade"
+  },
+  {
+   "daysAgo": 23,
+   "itemIds": [
+    "w001",
+    "w004",
+    "w018",
+    "w056"
+   ],
+   "occasion": "Brunch"
+  },
+  {
+   "daysAgo": 24,
+   "itemIds": [
+    "w017",
+    "w004",
+    "w011",
+    "w054"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 25,
+   "itemIds": [
+    "w014",
+    "w016",
+    "w049",
+    "w018"
+   ],
+   "occasion": "Bureau (vendredi)"
+  },
+  {
+   "daysAgo": 26,
+   "itemIds": [
+    "w042",
+    "w022",
+    "w020",
+    "w010"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 27,
+   "itemIds": [
+    "w044",
+    "w022",
+    "w054",
+    "w011"
+   ],
+   "occasion": "Bureau"
+  },
+  {
+   "daysAgo": 28,
+   "itemIds": [
+    "w015",
+    "w009",
+    "w008",
+    "w019",
+    "w021"
+   ],
+   "occasion": "Rendez-vous client"
+  },
+  {
+   "daysAgo": 29,
+   "itemIds": [
+    "w034",
+    "w052",
+    "w011",
+    "w055"
+   ],
+   "occasion": "Soirée"
+  },
+  {
+   "daysAgo": 30,
+   "itemIds": [
+    "w013",
+    "w026",
+    "w027"
+   ],
+   "occasion": "Course du dimanche"
+  }
+ ],
+ "pinnedTuesday": {
+  "weekday": 2,
+  "itemIds": [
+   "w014",
+   "w005",
+   "w018",
+   "w012"
+  ],
+  "occasion": "Bureau",
+  "laundry": [
+   "w005"
+  ]
+ }
+}

@@ -1,0 +1,228 @@
+{
+ "brandId": "verac",
+ "period": "12 derniers mois",
+ "kpis": {
+  "connectedMembers": 12400,
+  "connectedGrowth": 18.4,
+  "revenueViaApp": 468813,
+  "ordersViaApp": 2994,
+  "averageBasket": 157,
+  "averageBasketBrand": 131,
+  "returnRateApp": 9.4,
+  "returnRateBrand": 27.4,
+  "sizePrecision": 91.6,
+  "returnsAvoided": 539,
+  "costPerReturn": 21.5,
+  "markdownRate": 0.25,
+  "contributionMargin": 0.35,
+  "co2PerReturnKg": 1.8,
+  "recommendationsShown": 214300,
+  "recommendationCtr": 6.8,
+  "subscription": {
+   "plan": "Partenaire Premium",
+   "monthly": 2900,
+   "commission": 4
+  }
+ },
+ "series": [
+  {
+   "month": "déc.",
+   "members": 3028,
+   "revenue": 17369,
+   "orders": 106,
+   "returnRateApp": 12.2,
+   "returnRateBrand": 27.8
+  },
+  {
+   "month": "janv.",
+   "members": 3399,
+   "revenue": 18034,
+   "orders": 116,
+   "returnRateApp": 11.5,
+   "returnRateBrand": 27.9
+  },
+  {
+   "month": "févr.",
+   "members": 3831,
+   "revenue": 21078,
+   "orders": 133,
+   "returnRateApp": 11.7,
+   "returnRateBrand": 27.6
+  },
+  {
+   "month": "mars",
+   "members": 4345,
+   "revenue": 25220,
+   "orders": 168,
+   "returnRateApp": 11,
+   "returnRateBrand": 27.3
+  },
+  {
+   "month": "avr.",
+   "members": 4909,
+   "revenue": 30298,
+   "orders": 195,
+   "returnRateApp": 10.7,
+   "returnRateBrand": 27.8
+  },
+  {
+   "month": "mai",
+   "members": 5545,
+   "revenue": 33546,
+   "orders": 213,
+   "returnRateApp": 10.9,
+   "returnRateBrand": 27.6
+  },
+  {
+   "month": "juin",
+   "members": 6309,
+   "revenue": 36546,
+   "orders": 235,
+   "returnRateApp": 10.1,
+   "returnRateBrand": 27.2
+  },
+  {
+   "month": "juil.",
+   "members": 7303,
+   "revenue": 41938,
+   "orders": 265,
+   "returnRateApp": 10.1,
+   "returnRateBrand": 26.9
+  },
+  {
+   "month": "août",
+   "members": 8370,
+   "revenue": 54710,
+   "orders": 330,
+   "returnRateApp": 9.7,
+   "returnRateBrand": 27.4
+  },
+  {
+   "month": "sept.",
+   "members": 9409,
+   "revenue": 54522,
+   "orders": 364,
+   "returnRateApp": 9.6,
+   "returnRateBrand": 26.9
+  },
+  {
+   "month": "oct.",
+   "members": 10707,
+   "revenue": 58866,
+   "orders": 376,
+   "returnRateApp": 9.4,
+   "returnRateBrand": 27.3
+  },
+  {
+   "month": "nov.",
+   "members": 12400,
+   "revenue": 76686,
+   "orders": 493,
+   "returnRateApp": 9.7,
+   "returnRateBrand": 27
+  }
+ ],
+ "sizeAccuracy": [
+  {
+   "category": "Chemises",
+   "precision": 94.1,
+   "returnsSize": 3.2
+  },
+  {
+   "category": "Vestes",
+   "precision": 89.7,
+   "returnsSize": 5.8
+  },
+  {
+   "category": "Pantalons",
+   "precision": 90.3,
+   "returnsSize": 4.9
+  },
+  {
+   "category": "Maille",
+   "precision": 92.8,
+   "returnsSize": 2.7
+  }
+ ],
+ "returnReasons": [
+  {
+   "reason": "Taille",
+   "brand": 52,
+   "app": 21
+  },
+  {
+   "reason": "Ne va avec rien",
+   "brand": 14,
+   "app": 4
+  },
+  {
+   "reason": "Rendu différent",
+   "brand": 21,
+   "app": 15
+  },
+  {
+   "reason": "Qualité",
+   "brand": 6,
+   "app": 6
+  },
+  {
+   "reason": "Autre",
+   "brand": 7,
+   "app": 5
+  }
+ ],
+ "insights": [
+  {
+   "value": "38 %",
+   "text": "de vos clients connectés n'ont pas de pantalon habillé gris.",
+   "action": "Mettre en avant le Pantalon à pinces Flanelle dans les tenues « bureau »."
+  },
+  {
+   "value": "62 %",
+   "text": "portent leur chemise Oxford Saint-Germain avec un chino beige ou un jean brut.",
+   "action": "Proposer un lot Oxford + chino avec une marque partenaire."
+  },
+  {
+   "value": "1 sur 4",
+   "text": "de vos clients prend une taille trop petite lors de son premier achat chez vous.",
+   "action": "Afficher l'avertissement « taille petit » dès la fiche produit."
+  },
+  {
+   "value": "2 100",
+   "text": "clients ont un mariage ou une cérémonie dans leur agenda d'ici juillet.",
+   "action": "Lancer la Veste Riviera (lin et laine) en avant-première pour ce segment."
+  },
+  {
+   "value": "27 %",
+   "text": "des blazers marine vendus ne sont portés qu'une fois par mois.",
+   "action": "Suggérer 3 tenues de semaine avec le blazer après l'achat."
+  }
+ ],
+ "topProducts": [
+  {
+   "productId": "verac-oxford-sg",
+   "sales": 612,
+   "viaRecommendation": 41
+  },
+  {
+   "productId": "verac-popeline-haussmann",
+   "sales": 488,
+   "viaRecommendation": 37
+  },
+  {
+   "productId": "verac-faubourg",
+   "sales": 301,
+   "viaRecommendation": 52
+  },
+  {
+   "productId": "verac-trocadero-veste",
+   "sales": 244,
+   "viaRecommendation": 46
+  },
+  {
+   "productId": "verac-montparnasse",
+   "sales": 233,
+   "viaRecommendation": 58
+  }
+ ]
+}

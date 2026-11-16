@@ -1,0 +1,66 @@
+[
+ {
+  "id": "c1",
+  "when": "tomorrow",
+  "time": "10:00",
+  "title": "Rendez-vous client chez Orsay Conseil",
+  "place": "Orsay Conseil, 42 avenue de l'Opéra, Paris 2e",
+  "dressCode": "business formel",
+  "dressCodeNote": "Comité de direction d'un groupe industriel : costume sombre, cravate appréciée."
+ },
+ {
+  "id": "c2",
+  "when": "tomorrow",
+  "time": "13:00",
+  "title": "Déjeuner d'équipe",
+  "place": "Brasserie Le Mermoz, Paris 8e",
+  "dressCode": "smart casual",
+  "dressCodeNote": ""
+ },
+ {
+  "id": "c3",
+  "when": "next:4",
+  "time": "19:00",
+  "title": "Afterwork chez Kiwee",
+  "place": "Kiwee (start-up), rue du Faubourg-Saint-Antoine, Paris 11e",
+  "dressCode": "casual",
+  "dressCodeNote": "Ambiance start-up : jean et sneakers bienvenus."
+ },
+ {
+  "id": "c4",
+  "when": "next:6",
+  "time": "20:30",
+  "title": "Dîner d'anniversaire de Camille",
+  "place": "Le Comptoir des Arts, Paris 3e",
+  "dressCode": "smart casual",
+  "dressCodeNote": "Restaurant élégant, pas de tenue imposée."
+ },
+ {
+  "id": "c5",
+  "when": "next:0",
+  "time": "10:30",
+  "title": "Course au parc de Bercy",
+  "place": "Parc de Bercy",
+  "dressCode": "sport",
+  "dressCodeNote": ""
+ },
+ {
+  "id": "c6",
+  "when": "offset:21",
+  "time": "08:12",
+  "durationDays": 3,
+  "title": "Séminaire d'équipe à Lyon (3 jours)",
+  "place": "Hôtel Le Confluent, Lyon 2e — TGV Paris Gare de Lyon 08 h 12",
+  "dressCode": "smart casual",
+  "dressCodeNote": "Journées en salle (smart casual), soirée de gala le 2e soir (veste exigée), activité en extérieur le 3e jour."
+ },
+ {
+  "id": "c7",
+  "when": "date:06-13",
+  "time": "15:00",
+  "title": "Mariage de Julien et Inès",
+  "place": "Domaine de la Bergerie, Vexin",
+  "dressCode": "habillé",
+  "dressCodeNote": "Cérémonie laïque en extérieur puis dîner. Dress code : « chic d'été »."
+ }
+]
