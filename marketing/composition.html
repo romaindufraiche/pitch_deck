@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Dressr — vidéo de pitch</title>
+<!--
+  Composition en motion design de la vidéo de pitch (1920×1080, 30 i/s).
+  Chaque image est rendue de façon déterministe par window.renderFrame(t) (voir render.js).
+  Ouvrir ce fichier dans un navigateur avec ?play pour la prévisualiser en temps réel.
+-->
+<style>
+  :root { --ink: #0d0d0d; --paper: #f4f4f2; --mute: #8a8a86; --line: #e2e2df; --accent: #d4ff3a; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); }
+  body { font-family: "Inter Display", "Inter", system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .scene { position: absolute; inset: 0; visibility: hidden; overflow: hidden; }
+  .abs { position: absolute; }
+  .h1 { font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; }
+  .h2 { font-weight: 650; letter-spacing: -0.035em; line-height: 1.02; }
+  .body { font-family: "Inter", sans-serif; font-weight: 450; letter-spacing: -0.01em; }
+  .mask { overflow: hidden; display: block; padding-bottom: 0.08em; }
+  .mask > span { display: inline-block; will-change: transform; }
+  .chip { font-family: "Inter", sans-serif; font-weight: 550; font-size: 20px; padding: 10px 20px; border-radius: 999px; display: inline-block; }
+  .num { font-variant-numeric: tabular-nums; }
+  .eyebrow { font-family: "Inter", sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+  .phone { position: absolute; width: 410px; height: 864px; border-radius: 64px; background: #0a0a0a; padding: 10px;
+           box-shadow: 0 0 0 2px #2a2a2a inset, 0 60px 120px -30px rgba(0,0,0,.45), 0 30px 60px -30px rgba(0,0,0,.35); transform-style: preserve-3d; }
+  .phone .screen { position: relative; width: 390px; height: 844px; border-radius: 54px; overflow: hidden; background: #fff; }
+  .phone .screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .phone .island { position: absolute; top: 22px; left: 50%; width: 118px; height: 34px; margin-left: -59px; background: #000; border-radius: 20px; z-index: 3; }
+  .photo { position: absolute; object-fit: cover; border-radius: 22px; box-shadow: 0 30px 60px -25px rgba(0,0,0,.35); }
+  .card { position: absolute; background: #fff; border-radius: 26px; box-shadow: 0 24px 60px -24px rgba(0,0,0,.25); font-family: "Inter", sans-serif; }
+  .grain { position: absolute; inset: -50%; pointer-events: none; opacity: .05; z-index: 50;
+           background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .progress { position: absolute; left: 0; bottom: 0; height: 4px; background: var(--ink); z-index: 60; }
+  .wipe { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+// ───────────────────────── utilitaires d'animation ─────────────────────────
+const FPS = 30;
+const PX = "../demo/public/images/px/";
+const FR = (clip) => `build/frames/${clip}/`;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const E = {
+  out: (k) => 1 - Math.pow(1 - k, 4),
+  inOut: (k) => (k < 0.5 ? 8 * k ** 4 : 1 - Math.pow(-2 * k + 2, 4) / 2),
+  in: (k) => k ** 3,
+  back: (k) => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(k - 1, 3) + c1 * Math.pow(k - 1, 2); },
+  expo: (k) => (k === 1 ? 1 : 1 - Math.pow(2, -10 * k)),
+};
+/** valeur interpolée entre t0 et t1 */
+const tw = (t, t0, t1, a, b, ease = E.out) => a + (b - a) * ease(clamp((t - t0) / (t1 - t0)));
+const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; parent.appendChild(e); return e; };
+const css = (e, o) => { for (const k in o) e.style[k] = o[k]; return e; };
+const stage = document.getElementById("stage");
+
+/** Texte « révélé » ligne par ligne (masque + translation) */
+function lines(parent, arr, cls, style) {
+  const wrap = el("div", "abs " + cls, parent);
+  css(wrap, style);
+  const spans = arr.map((txt) => { const m = el("span", "mask", wrap); return el("span", "", m, txt); });
+  return { wrap, reveal(t, t0, step = 0.09, dur = 0.7) { spans.forEach((s, i) => { const k = tw(t, t0 + i * step, t0 + i * step + dur, 0, 1, E.expo); s.style.transform = `translateY(${(1 - k) * 110}%)`; }); },
+    hide(t, t0, dur = 0.45) { spans.forEach((s, i) => { const k = tw(t, t0 + i * 0.04, t0 + i * 0.04 + dur, 0, 1, E.in); if (k > 0) s.style.transform = `translateY(${-k * 110}%)`; }); } };
+}
+
+/** Téléphone affichant une séquence enregistrée dans l'app (images à 30 i/s) */
+const decodes = [];
+function phone(parent, clip, n) {
+  const p = el("div", "phone", parent);
+  const sc = el("div", "screen", p);
+  el("div", "island", sc);
+  const img = el("img", "", sc);
+  let last = "";
+  return { el: p, frame(ct) {
+    const i = clamp(Math.round(ct * FPS) + 1, 1, n);
+    const src = FR(clip) + String(i).padStart(5, "0") + ".jpg";
+    if (src !== last) { last = src; img.src = src; decodes.push(img.decode().catch(() => {})); }
+  } };
+}
+const CLIPN = { budget: 617, catalogue: 277, connect: 298, dressing: 222, home: 158, item360: 277, onboarding: 244, rdv: 407, scan: 454, wedding: 491, welcome: 192 };
+
+// ───────────────────────── scènes ─────────────────────────
+const scenes = [];
+function scene(start, end, build) {
+  const root = el("div", "scene", stage);
+  const s = { start, end, root, render: build(root) };
+  scenes.push(s);
+  return s;
+}
+
+// 1. Accroche : une armoire pleine… et rien à se mettre.
+scene(0, 7.2, (r) => {
+  css(r, { background: "#0d0d0d", color: "#fff" });
+  const pics = ["lk-camel-street", "lkf-street-cargo", "ch-oxford-blue", "wf-dress-blue-satin", "lk-street-skate", "lkf-beige-suit", "jn-raw-folded", "wf-blazer-yellow", "hero-rack", "lkf-trench", "fo-chelsea-brown", "lkf-run"];
+  const grid = pics.map((p, i) => { const im = el("img", "photo", r); im.src = PX + p + ".jpg"; css(im, { width: "300px", height: "375px", left: `${80 + (i % 6) * 300}px`, top: `${i < 6 ? 60 : 645}px`, borderRadius: "18px" }); return im; });
+  const a = lines(r, ["Une armoire pleine."], "h1", { left: "0", right: "0", top: "395px", textAlign: "center", fontSize: "150px" });
+  const b = lines(r, ["Et rien à se mettre."], "h1", { left: "0", right: "0", top: "395px", textAlign: "center", fontSize: "150px", color: "#d4ff3a" });
+  return (t) => {
+    grid.forEach((im, i) => {
+      const t0 = 0.1 + ((i * 7) % 12) * 0.06;
+      const k = tw(t, t0, t0 + 0.8, 0, 1, E.expo);
+      const dim = tw(t, 1.0, 1.6, 1, 0.22) * tw(t, 3.4, 3.7, 1, 0.7);
+      css(im, { opacity: String(k * dim), transform: `translateY(${(1 - k) * 60 + (i < 6 ? -1 : 1) * t * 8}px) scale(${1.08 - k * 0.08})`, filter: `grayscale(${tw(t, 3.4, 4.2, 0, 1)})` });
+    });
+    a.reveal(t, 0.9); a.hide(t, 3.3);
+    b.reveal(t, 3.7); b.hide(t, 6.6);
+  };
+});
+
+// 2. Problème
+scene(7.2, 15.2, (r) => {
+  css(r, { background: "#f4f4f2" });
+  const eyebrow = lines(r, ["Le problème"], "eyebrow", { left: "140px", top: "150px", color: "#8a8a86" });
+  const items = [
+    ["01", "On achète des pièces", "qui ne vont avec rien."],
+    ["02", "On devine sa taille,", "marque après marque."],
+    ["03", "Et les marques paient", "des retours en masse."],
+  ];
+  const blocks = items.map(([n, l1, l2], i) => {
+    const num = lines(r, [n], "h1 num", { left: `${140 + i * 560}px`, top: "330px", fontSize: "130px", color: "#d9d9d5" });
+    const txt = lines(r, [l1, l2], "h2", { left: `${140 + i * 560}px`, top: "500px", fontSize: "48px", width: "520px" });
+    const bar = el("div", "abs", r); css(bar, { left: `${140 + i * 560}px`, top: "470px", height: "4px", width: "480px", background: "#0d0d0d", transformOrigin: "left" });
+    return { num, txt, bar };
+  });
+  return (t) => {
+    eyebrow.reveal(t, 0.2); eyebrow.hide(t, 7.4);
+    blocks.forEach((b, i) => {
+      const t0 = 0.5 + i * 1.6;
+      b.num.reveal(t, t0); b.txt.reveal(t, t0 + 0.15, 0.1);
+      b.bar.style.transform = `scaleX(${tw(t, t0, t0 + 0.9, 0, 1, E.expo)})`;
+      b.num.hide(t, 7.3); b.txt.hide(t, 7.35);
+      b.bar.style.opacity = String(tw(t, 7.3, 7.7, 1, 0));
+    });
+  };
+});
+
+// 3. Révélation du produit
+scene(15.2, 22, (r) => {
+  css(r, { background: "#0d0d0d", color: "#fff" });
+  const logo = el("div", "abs h1", r, 'Dressr<span style="color:#d4ff3a">.</span>');
+  css(logo, { left: "0", right: "0", top: "330px", textAlign: "center", fontSize: "260px" });
+  const tag = lines(r, ["Votre dressing. Votre styliste."], "h2", { left: "0", right: "0", top: "640px", textAlign: "center", fontSize: "56px", color: "#bdbdb8" });
+  const styles = ["Corporate", "Costume & tailleur", "Streetwear", "Casual", "Sport"];
+  const chips = styles.map((s, i) => { const c = el("div", "chip", r, s); css(c, { position: "absolute", top: "790px", background: "#1d1d1d", color: "#fff", border: "1px solid #333" }); return c; });
+  const imgs = ["lkf-white-blazer", "su-navy-full", "lkf-street-zip", "lk-smart-casual", "lkf-run"];
+  const photos = imgs.map((p) => { const im = el("img", "photo", r); im.src = PX + p + ".jpg"; return im; });
+  let widths = null;
+  return (t) => {
+    const k = tw(t, 0.2, 1.4, 0, 1, E.expo);
+    css(logo, { opacity: String(k), transform: `scale(${1.25 - 0.25 * k})`, letterSpacing: `${-0.045 + (1 - k) * 0.2}em`, filter: `blur(${(1 - k) * 18}px)` });
+    tag.reveal(t, 1.2);
+    if (!widths) widths = chips.map((c) => c.offsetWidth);
+    const total = widths.reduce((a, b) => a + b, 0) + 16 * (chips.length - 1);
+    let x = (1920 - total) / 2;
+    chips.forEach((c, i) => {
+      const kk = tw(t, 2.0 + i * 0.12, 2.6 + i * 0.12, 0, 1, E.back);
+      css(c, { left: `${x}px`, opacity: String(clamp(kk)), transform: `translateY(${(1 - kk) * 30}px)` });
+      x += widths[i] + 16;
+    });
+    photos.forEach((im, i) => {
+      const kk = tw(t, 3.3 + i * 0.1, 4.1 + i * 0.1, 0, 1, E.expo);
+      const out = tw(t, 6.2, 6.8, 0, 1, E.in);
+      css(im, { width: "330px", height: "430px", left: `${90 + i * 360}px`, top: `${1100 - kk * 560 - out * 700}px`, transform: `rotate(${(i - 2) * 2.5}deg)`, zIndex: "2" });
+    });
+    const up = tw(t, 3.3, 4.1, 0, 1, E.expo);
+    css(logo, { top: `${330 - up * 250}px`, fontSize: `${260 - up * 90}px` });
+    tag.wrap.style.top = `${640 - up * 380}px`;
+    chips.forEach((c) => (c.style.top = `${790 - up * 470}px`));
+  };
+});
+
+/** Gabarit de chapitre : texte à gauche, téléphone(s) à droite */
+function chapter(start, end, { n, title, sub, bg = "#f4f4f2", fg = "#0d0d0d", clips, extra }) {
+  return scene(start, end, (r) => {
+    css(r, { background: bg, color: fg });
+    const num = lines(r, [n], "eyebrow", { left: "140px", top: "250px", color: fg === "#fff" ? "#9a9a96" : "#8a8a86" });
+    const tt = lines(r, title, "h1", { left: "140px", top: "310px", fontSize: "96px", width: "900px" });
+    const sb = lines(r, sub, "body", { left: "144px", top: `${330 + title.length * 92}px`, fontSize: "30px", lineHeight: "1.4", color: fg === "#fff" ? "#bdbdb8" : "#5e5e5a", width: "760px" });
+    const phones = clips.map((c) => ({ ...c, p: phone(r, c.clip, CLIPN[c.clip]) }));
+    const ex = extra ? extra(r) : null;
+    const dur = end - start;
+    return (t) => {
+      num.reveal(t, 0.25); tt.reveal(t, 0.35, 0.1); sb.reveal(t, 0.75, 0.08);
+      num.hide(t, dur - 0.55); tt.hide(t, dur - 0.55); sb.hide(t, dur - 0.5);
+      phones.forEach((ph, i) => {
+        const kin = tw(t, 0.15 + i * 0.15, 1.1 + i * 0.15, 0, 1, E.expo);
+        const kout = tw(t, dur - 0.6, dur - 0.05, 0, 1, E.in);
+        const ry = tw(t, 0, dur, ph.ry ?? -16, (ph.ry ?? -16) * 0.25, E.inOut);
+        css(ph.p.el, { left: `${ph.x}px`, top: `${108 + (1 - kin) * 900 - kout * 1000 + (ph.dy ?? 0)}px`, transform: `perspective(2400px) rotateY(${ry}deg) rotateX(${tw(t, 0, dur, 6, 1)}deg) scale(${ph.s ?? 1})` });
+        ph.p.frame(ph.from + Math.max(0, t - (ph.delay ?? 0.3)) * (ph.speed ?? 1));
+      });
+      if (ex) ex(t, dur);
+    };
+  });
+}
+/** Bulle « annotation » qui pointe vers le téléphone */
+function callout(r, html, x, y, w = 360, dark = false) {
+  const c = el("div", "card", r, html);
+  css(c, { left: `${x}px`, top: `${y}px`, width: `${w}px`, padding: "22px 26px", fontSize: "22px", lineHeight: "1.35", background: dark ? "#0d0d0d" : "#fff", color: dark ? "#fff" : "#0d0d0d", zIndex: "5" });
+  return { c, show(t, t0, t1) { const k = tw(t, t0, t0 + 0.6, 0, 1, E.back); const o = tw(t, t1, t1 + 0.35, 1, 0); css(c, { opacity: String(clamp(k) * o), transform: `translateY(${(1 - k) * 30}px) scale(${0.92 + 0.08 * clamp(k)})` }); } };
+}
+const small = (s) => `<div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8a8a86;margin-bottom:8px">${s}</div>`;
+
+// 4. Connexion des boutiques
+chapter(22, 32, { n: "01 · Import", title: ["Connectez vos", "boutiques."], sub: ["Vos achats en ligne arrivent dans le dressing,", "avec la photo, la matière et la taille exacte."],
+  clips: [{ clip: "connect", x: 1180, from: 0.9, speed: 1.0 }],
+  extra: (r) => { const a = callout(r, small("Import automatique") + "<b>5 articles trouvés</b><br/>et 1 retour « trop petit » pris en compte pour vos tailles.", 140, 640, 420); return (t) => a.show(t, 5.6, 9.2); } });
+
+// 5. Scan vidéo
+chapter(32, 42, { n: "02 · Scan", title: ["Filmez votre", "dressing."], sub: ["30 secondes de vidéo : l’IA détecte chaque pièce,", "sa catégorie et sa couleur."],
+  bg: "#0d0d0d", fg: "#fff",
+  clips: [{ clip: "scan", x: 1180, from: 2.1, speed: 1.0 }],
+  extra: (r) => {
+    const big = el("div", "abs h1 num", r); css(big, { left: "140px", top: "690px", fontSize: "150px", color: "#d4ff3a" });
+    const lab = el("div", "abs body", r, "pièces détectées, sans rien saisir"); css(lab, { left: "146px", top: "850px", fontSize: "26px", color: "#bdbdb8" });
+    return (t, dur) => { const k = tw(t, 1.2, 7.2, 0, 46, E.inOut); big.textContent = "~" + Math.round(k); const o = tw(t, 1.0, 1.5, 0, 1) * tw(t, dur - 0.6, dur - 0.2, 1, 0); big.style.opacity = lab.style.opacity = String(o); };
+  } });
+
+// 6. Le dressing toujours à jour (deux téléphones)
+chapter(42, 50, { n: "03 · Dressing", title: ["Tout votre dressing,", "toujours à jour."], sub: ["Linge, pressing, pièces jamais portées,", "vue 360° : tout est suivi."],
+  clips: [{ clip: "dressing", x: 1010, from: 1.6, speed: 1.0, ry: -10, s: 0.92 }, { clip: "item360", x: 1420, from: 2.4, speed: 1.0, ry: -20, s: 0.92, dy: 40, delay: 0.6 }] });
+
+// 7. Styliste IA + budget
+chapter(50, 64.5, { n: "04 · Styliste IA", title: ["« J’ai 80 €,", "fais-moi une tenue. »"], sub: ["L’IA connaît votre dressing, votre agenda et la météo.", "Elle complète avec les catalogues des marques,", "à votre taille, dans votre budget."],
+  clips: [{ clip: "budget", x: 1200, from: 1.9, speed: 1.3 }],
+  extra: (r) => {
+    const a = callout(r, small("Dans votre dressing") + "Le reste de la tenue : <b>déjà à vous</b>", 140, 720, 300);
+    const b = callout(r, small("Catalogue des marques") + "Une pièce à acheter, <b>en stock à votre taille</b>", 465, 720, 300);
+    const c = callout(r, small("Commande") + "<b>Payée dans l’app</b>, ou « voir sur le site »", 790, 720, 300, true);
+    return (t) => { a.show(t, 6.6, 13.6); b.show(t, 7.4, 13.6); c.show(t, 11.6, 13.6); };
+  } });
+
+// 8. La bonne taille
+chapter(64.5, 75, { n: "05 · Taille", title: ["La bonne taille,", "du premier coup."], sub: ["Guide de chaque marque + historique d’achats", "et de retours : fini les tailles devinées."],
+  clips: [{ clip: "wedding", x: 1200, from: 9.6, speed: 0.9 }],
+  extra: (r) => {
+    const box = el("div", "card", r); css(box, { left: "140px", top: "650px", width: "820px", padding: "34px 40px", display: "flex", alignItems: "center", gap: "40px" });
+    const big = el("div", "h1 num", box, "38"); css(big, { fontSize: "150px" });
+    const txt = el("div", "", box, `<div style="font-size:26px;font-weight:600;line-height:1.3">Prenez 38 chez Maison Vérac</div><div style="font-size:22px;color:#6a6a66;margin-top:8px;line-height:1.4">Vous portez 36 ailleurs et la marque taille petit.</div><div style="margin-top:16px;height:8px;border-radius:8px;background:#ececea;overflow:hidden"><div class="cbar" style="height:100%;background:#2f7a4f;width:0"></div></div><div style="font-size:18px;color:#2f7a4f;font-weight:600;margin-top:8px" class="cl">Confiance 97 %</div>`);
+    const bar = txt.querySelector(".cbar");
+    return (t, dur) => { const k = tw(t, 1.6, 2.4, 0, 1, E.back); css(box, { opacity: String(clamp(k) * tw(t, dur - 0.6, dur - 0.2, 1, 0)), transform: `translateY(${(1 - k) * 40}px)` }); bar.style.width = `${tw(t, 2.2, 3.6, 0, 97, E.out)}%`; };
+  } });
+
+// 9. Pour elle, pour lui
+chapter(75, 82.5, { n: "06 · Pour tous", title: ["Pour elle, pour lui.", "Tous les styles."], sub: ["Femmes et hommes de 18 à 40 ans :", "corporate, tailleur, street, casual, sport."],
+  clips: [{ clip: "onboarding", x: 1010, from: 5.7, speed: 1.0, ry: -10, s: 0.92 }, { clip: "home", x: 1420, from: 0.8, speed: 1.0, ry: -20, s: 0.92, dy: 40, delay: 0.5 }] });
+
+// 10. B2B
+scene(82.5, 96, (r) => {
+  css(r, { background: "#0d0d0d", color: "#fff" });
+  const ey = lines(r, ["Pour les marques"], "eyebrow", { left: "140px", top: "130px", color: "#9a9a96" });
+  const tt = lines(r, ["Moins de retours.", "Plus de ventes."], "h1", { left: "140px", top: "190px", fontSize: "110px" });
+  const kpis = [
+    { v: (k) => `${(27.4 - 18 * k).toFixed(1).replace(".", ",")} %`, l: "taux de retour des ventes via l’app", s: "contre 27,4 % en moyenne" },
+    { v: (k) => `${Math.round(131 + 26 * k)} €`, l: "panier moyen via l’app", s: "contre 131 € hors app" },
+    { v: (k) => `${Math.round(12400 * k).toLocaleString("fr-FR")}`, l: "clients connectés en 12 mois", s: "marque partenaire" },
+    { v: (k) => `× ${(1 + 2.7 * k).toFixed(1).replace(".", ",")}`, l: "retour sur investissement", s: "abonnement + commission" },
+  ];
+  const cells = kpis.map((kp, i) => {
+    const c = el("div", "abs", r); css(c, { left: `${140 + i * 420}px`, top: "560px", width: "390px", borderTop: "2px solid #333", paddingTop: "28px" });
+    const v = el("div", "h1 num", c); css(v, { fontSize: "92px", color: i === 0 ? "#d4ff3a" : "#fff" });
+    el("div", "body", c, kp.l).style.cssText = "font-size:24px;margin-top:14px;color:#e7e7e3;line-height:1.3";
+    el("div", "body", c, kp.s).style.cssText = "font-size:19px;margin-top:6px;color:#8a8a86";
+    return { c, v };
+  });
+  const model = lines(r, ["Modèle : abonnement SaaS des marques + commission sur les ventes générées."], "body", { left: "140px", top: "910px", fontSize: "28px", color: "#bdbdb8" });
+  const note = el("div", "abs body", r, "Chiffres de démonstration (marque fictive Maison Vérac)"); css(note, { right: "140px", top: "1010px", fontSize: "16px", color: "#5a5a56" });
+  return (t) => {
+    const dur = 13.5;
+    ey.reveal(t, 0.2); tt.reveal(t, 0.35, 0.12); ey.hide(t, dur - 0.6); tt.hide(t, dur - 0.6);
+    cells.forEach((c, i) => {
+      const t0 = 1.4 + i * 0.5;
+      const k = tw(t, t0, t0 + 0.7, 0, 1, E.expo);
+      css(c.c, { opacity: String(k * tw(t, dur - 0.6, dur - 0.2, 1, 0)), transform: `translateY(${(1 - k) * 50}px)`, borderTopColor: k > 0.5 ? (i === 0 ? "#d4ff3a" : "#555") : "#333" });
+      c.v.textContent = kpis[i].v(tw(t, t0, t0 + 2.2, 0, 1, E.out));
+    });
+    model.reveal(t, 5.2); model.hide(t, dur - 0.6);
+    note.style.opacity = String(tw(t, 5.5, 6, 0, 1) * tw(t, dur - 0.6, dur - 0.2, 1, 0));
+  };
+});
+
+// 11. Fin
+scene(96, 104, (r) => {
+  css(r, { background: "#f4f4f2" });
+  const logo = el("div", "abs h1", r, 'Dressr<span style="color:#0d0d0d;opacity:.35">.</span>'); css(logo, { left: "0", right: "0", top: "330px", textAlign: "center", fontSize: "220px" });
+  const tag = lines(r, ["Achetez moins. Achetez juste."], "h2", { left: "0", right: "0", top: "600px", textAlign: "center", fontSize: "64px" });
+  const url = el("div", "abs body", r, "Démo live · dressr-demo.onrender.com"); css(url, { left: "0", right: "0", top: "760px", textAlign: "center", fontSize: "28px", color: "#6a6a66" });
+  const pill = el("div", "abs", r); css(pill, { left: "50%", top: "830px", width: "120px", height: "6px", marginLeft: "-60px", borderRadius: "6px", background: "#0d0d0d", transformOrigin: "center" });
+  return (t) => {
+    const k = tw(t, 0.2, 1.3, 0, 1, E.expo);
+    css(logo, { opacity: String(k), transform: `translateY(${(1 - k) * 60}px)`, letterSpacing: `${-0.045 + (1 - k) * 0.12}em` });
+    tag.reveal(t, 1.0);
+    url.style.opacity = String(tw(t, 1.8, 2.4, 0, 1));
+    pill.style.transform = `scaleX(${tw(t, 2.0, 3.0, 0, 1, E.expo)})`;
+    const fade = tw(t, 7.0, 8.0, 0, 1);
+    r.style.opacity = String(1 - fade);
+  };
+});
+
+// ───────────────────────── transitions entre scènes ─────────────────────────
+const wipe = el("div", "wipe", stage);
+const WIPES = [7.2, 15.2, 22, 32, 42, 50, 64.5, 75, 82.5, 96];
+const grain = el("div", "grain", stage);
+const bar = el("div", "progress", stage);
+const TOTAL = 104;
+
+window.renderFrame = async (t) => {
+  decodes.length = 0;
+  for (const s of scenes) {
+    // chaque scène reste visible pendant la transition (0,35 s) qui la recouvre
+    const vis = t >= s.start - 0.001 && t < s.end + 0.35;
+    s.root.style.visibility = vis ? "visible" : "hidden";
+    s.root.style.zIndex = String(Math.round(s.start * 10));
+    if (vis) s.render(t - s.start);
+  }
+  // rideau : un panneau qui balaye l'écran à chaque changement de scène
+  let w = null;
+  for (const x of WIPES) if (t > x - 0.45 && t < x + 0.45) w = x;
+  if (w !== null) {
+    const k = (t - (w - 0.45)) / 0.9;
+    const next = scenes.find((s) => s.start === w);
+    const col = getComputedStyle(next.root).backgroundColor;
+    const a = E.inOut(clamp(k * 2)), b = E.inOut(clamp(k * 2 - 1));
+    css(wipe, { display: "block", background: col === "rgb(13, 13, 13)" ? "#d4ff3a" : "#0d0d0d", clipPath: `inset(0 ${100 - a * 100}% 0 ${b * 100}%)` });
+  } else wipe.style.display = "none";
+  grain.style.transform = `translate(${(t * 997) % 80 - 40}px, ${(t * 619) % 80 - 40}px)`;
+  bar.style.width = `${(t / TOTAL) * 100}%`;
+  bar.style.background = scenes.find((s) => t >= s.start && t < s.end)?.root.style.background === "rgb(13, 13, 13)" ? "#d4ff3a" : "#0d0d0d";
+  await Promise.all(decodes);
+  await document.fonts.ready;
+};
+window.TOTAL = TOTAL;
+
+if (location.search.includes("play")) {
+  const t0 = performance.now() - (Number(new URLSearchParams(location.search).get("t")) || 0) * 1000;
+  const loop = async () => { await renderFrame(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); };
+  loop();
+} else renderFrame(Number(new URLSearchParams(location.search).get("t")) || 0);
+</script>
+</body>
+</html>
