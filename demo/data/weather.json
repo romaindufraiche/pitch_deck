@@ -1,0 +1,61 @@
+{
+ "city": "Paris",
+ "days": [
+  {
+   "offset": 0,
+   "tempMin": 7,
+   "tempMax": 11,
+   "condition": "couvert",
+   "rainProb": 30,
+   "wind": 14
+  },
+  {
+   "offset": 1,
+   "tempMin": 6,
+   "tempMax": 9,
+   "condition": "pluie",
+   "rainProb": 90,
+   "wind": 22
+  },
+  {
+   "offset": 2,
+   "tempMin": 5,
+   "tempMax": 10,
+   "condition": "averses",
+   "rainProb": 60,
+   "wind": 18
+  },
+  {
+   "offset": 3,
+   "tempMin": 4,
+   "tempMax": 11,
+   "condition": "éclaircies",
+   "rainProb": 20,
+   "wind": 10
+  },
+  {
+   "offset": 4,
+   "tempMin": 6,
+   "tempMax": 12,
+   "condition": "nuageux",
+   "rainProb": 25,
+   "wind": 12
+  },
+  {
+   "offset": 5,
+   "tempMin": 3,
+   "tempMax": 9,
+   "condition": "soleil",
+   "rainProb": 5,
+   "wind": 8
+  },
+  {
+   "offset": 6,
+   "tempMin": 2,
+   "tempMax": 8,
+   "condition": "soleil",
+   "rainProb": 5,
+   "wind": 9
+  }
+ ]
+}

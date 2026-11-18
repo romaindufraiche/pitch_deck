@@ -1,0 +1,57 @@
+{
+ "connect": {
+  "start": 0.835,
+  "import": 4.774,
+  "end": 9.977
+ },
+ "scan": {
+  "start": 0.936,
+  "analyse": 2.149,
+  "result": 9.151,
+  "end": 14.112
+ },
+ "dressing": {
+  "start": 1.78,
+  "end": 7.415
+ },
+ "item360": {
+  "start": 2.595,
+  "end": 8.402
+ },
+ "budget": {
+  "start": 0.748,
+  "ask": 2.02,
+  "cards": 10.161,
+  "cart": 17.259,
+  "paid": 19.891,
+  "end": 19.891
+ },
+ "wedding": {
+  "start": 0.759,
+  "ask": 1.743,
+  "size": 13.285,
+  "end": 16.499
+ },
+ "rdv": {
+  "start": 0.748,
+  "ask": 1.718,
+  "end": 13.68
+ },
+ "catalogue": {
+  "start": 0.842,
+  "end": 9.307
+ },
+ "home": {
+  "start": 0.795,
+  "end": 5.323
+ },
+ "welcome": {
+  "start": 0.752,
+  "end": 6.475
+ },
+ "onboarding": {
+  "start": 0.661,
+  "quiz": 5.836,
+  "end": 8.183
+ }
+}

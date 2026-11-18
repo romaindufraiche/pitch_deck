@@ -1,0 +1,370 @@
+[
+ {
+  "id": "verac",
+  "name": "Maison Vérac",
+  "tagline": "Chemisier-tailleur depuis 1987",
+  "positioning": "Chemises, tailleurs et robes premium pour femme et homme, tissus italiens et portugais.",
+  "priceRange": [
+   95,
+   260
+  ],
+  "color": "#1F2A44",
+  "ink": "#F4EFE6",
+  "logo": {
+   "font": "serif",
+   "weight": 500,
+   "tracking": 0.18,
+   "uppercase": true
+  },
+  "members": 12400,
+  "founded": 1987,
+  "city": "Lyon",
+  "sizeGuide": {
+   "fit": "petit",
+   "offset": 1,
+   "shoeOffset": 0,
+   "summary": "Taille petit",
+   "advice": "Nos coupes sont ajustées : prenez une taille au-dessus de votre taille habituelle (chemises homme : un tour de cou au-dessus ; femme : 38 si vous portez 36).",
+   "systems": [
+    "homme : tour de cou (37–45), vestes (44–56), pantalons (36–48)",
+    "femme : 34–46",
+    "maille (XS–XXL)"
+   ],
+   "table": [
+    {
+     "label": "Tour de cou",
+     "values": {
+      "39": "40",
+      "40": "41",
+      "41": "42",
+      "Taille habituelle 38": "39"
+     }
+    },
+    {
+     "label": "Veste",
+     "values": {
+      "48": "50",
+      "50": "52",
+      "Taille habituelle 46": "48"
+     }
+    },
+    {
+     "label": "Pantalon",
+     "values": {
+      "40": "42",
+      "42": "44",
+      "Taille habituelle 38": "40"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes (36 mois)",
+   "Tailles achetées et gardées",
+   "Retours et motifs",
+   "Fiches produits (photos, matières)"
+  ]
+ },
+ {
+  "id": "bastide",
+  "name": "Ligne Bastide",
+  "tagline": "Les essentiels, bien faits",
+  "positioning": "Basiques casual mixtes en matières durables : t-shirts, mailles, chinos, robes et jupes.",
+  "priceRange": [
+   29,
+   89
+  ],
+  "color": "#C8553D",
+  "ink": "#FFF8F0",
+  "logo": {
+   "font": "sans",
+   "weight": 700,
+   "tracking": -0.02,
+   "uppercase": false
+  },
+  "members": 38900,
+  "founded": 2014,
+  "city": "Marseille",
+  "sizeGuide": {
+   "fit": "normal",
+   "offset": 0,
+   "shoeOffset": 0,
+   "summary": "Taille normalement",
+   "advice": "Prenez votre taille habituelle. Chinos en tour de taille (W) et longueur (L).",
+   "systems": [
+    "XS–XXL",
+    "W28–W36 / L30–L34"
+   ],
+   "table": [
+    {
+     "label": "Haut",
+     "values": {
+      "S": "88–94 cm",
+      "M": "95–101 cm",
+      "L": "102–108 cm",
+      "XL": "109–115 cm"
+     }
+    },
+    {
+     "label": "Chino",
+     "values": {
+      "W30": "76 cm",
+      "W31": "79 cm",
+      "W32": "81 cm",
+      "W33": "84 cm"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles achetées",
+   "Retours et motifs"
+  ]
+ },
+ {
+  "id": "kolm",
+  "name": "Kolm Denim",
+  "tagline": "Selvedge, coupé à la main",
+  "positioning": "Jeans selvedge japonais pour femme et homme, ateliers en Europe.",
+  "priceRange": [
+   110,
+   180
+  ],
+  "color": "#24324F",
+  "ink": "#E9E4D8",
+  "logo": {
+   "font": "condensed",
+   "weight": 800,
+   "tracking": 0.06,
+   "uppercase": true
+  },
+  "members": 9750,
+  "founded": 2016,
+  "city": "Roubaix",
+  "sizeGuide": {
+   "fit": "normal",
+   "offset": 0,
+   "shoeOffset": 0,
+   "summary": "Tailles W/L, coupe étroite",
+   "advice": "Nos jeans se taillent en W (tour de taille) et L (longueur). Coupes étroites : entre deux tailles, prenez celle du dessus. Le brut se détend d'environ 1 cm à la taille.",
+   "systems": [
+    "W28–W36 / L30–L34",
+    "XS–XXL pour les hauts"
+   ],
+   "table": [
+    {
+     "label": "K1 Slim",
+     "values": {
+      "W30": "78 cm",
+      "W31": "80,5 cm",
+      "W32": "83 cm",
+      "W33": "85,5 cm"
+     }
+    },
+    {
+     "label": "K2 Droit",
+     "values": {
+      "W30": "79 cm",
+      "W31": "81,5 cm",
+      "W32": "84 cm",
+      "W33": "86,5 cm"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles W/L gardées",
+   "Retours et échanges"
+  ]
+ },
+ {
+  "id": "norrland",
+  "name": "Norrland Supply",
+  "tagline": "Pour les jours sans soleil",
+  "positioning": "Vestes et manteaux techniques mixtes, imperméables et respirants.",
+  "priceRange": [
+   140,
+   390
+  ],
+  "color": "#2F4A3E",
+  "ink": "#EEF0E8",
+  "logo": {
+   "font": "wide",
+   "weight": 600,
+   "tracking": 0.32,
+   "uppercase": true
+  },
+  "members": 15200,
+  "founded": 2011,
+  "city": "Annecy",
+  "sizeGuide": {
+   "fit": "grand",
+   "offset": -1,
+   "shoeOffset": 0,
+   "summary": "Taille grand",
+   "advice": "Nos vestes sont pensées pour être portées sur plusieurs couches : prenez une taille en dessous de votre taille habituelle.",
+   "systems": [
+    "XS–XXL"
+   ],
+   "table": [
+    {
+     "label": "Veste",
+     "values": {
+      "Taille habituelle M": "S",
+      "L": "M",
+      "XL": "L"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles achetées",
+   "Retours et motifs"
+  ]
+ },
+ {
+  "id": "ferrand",
+  "name": "Atelier Ferrand",
+  "tagline": "Bottier à Romans-sur-Isère",
+  "positioning": "Chaussures et maroquinerie en cuir, pour femme et homme.",
+  "priceRange": [
+   120,
+   320
+  ],
+  "color": "#5A3A22",
+  "ink": "#F6EEE2",
+  "logo": {
+   "font": "serif",
+   "weight": 600,
+   "tracking": 0.04,
+   "uppercase": false,
+   "italic": true
+  },
+  "members": 11300,
+  "founded": 1952,
+  "city": "Romans-sur-Isère",
+  "sizeGuide": {
+   "fit": "grand",
+   "offset": 0,
+   "shoeOffset": -0.5,
+   "summary": "Chausse grand d'une demi-pointure",
+   "advice": "Nos formes chaussent grand : prenez une demi-pointure en dessous de votre pointure habituelle.",
+   "systems": [
+    "Pointures EU 39–46, demi-pointures"
+   ],
+   "table": [
+    {
+     "label": "Pointure",
+     "values": {
+      "43": "42,5",
+      "44": "43,5",
+      "Habituelle 42": "41,5",
+      "42,5": "42",
+      "43,5": "43"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Pointures gardées",
+   "Retours et motifs"
+  ]
+ },
+ {
+  "id": "rivage",
+  "name": "Studio Rivage",
+  "tagline": "Bouger, respirer",
+  "positioning": "Sport et athleisure mixtes : running, salle, yoga, récupération.",
+  "priceRange": [
+   35,
+   120
+  ],
+  "color": "#2C6E8F",
+  "ink": "#F1F7FA",
+  "logo": {
+   "font": "sans",
+   "weight": 300,
+   "tracking": 0.42,
+   "uppercase": true
+  },
+  "members": 21600,
+  "founded": 2019,
+  "city": "Biarritz",
+  "sizeGuide": {
+   "fit": "normal",
+   "offset": 0,
+   "shoeOffset": 0,
+   "summary": "Taille normalement",
+   "advice": "Prenez votre taille habituelle. Coupe près du corps pour les hauts techniques.",
+   "systems": [
+    "XS–XXL",
+    "Pointures EU"
+   ],
+   "table": [
+    {
+     "label": "Haut",
+     "values": {
+      "S": "90–96 cm",
+      "M": "97–103 cm",
+      "L": "104–110 cm"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles achetées",
+   "Retours et motifs"
+  ]
+ },
+ {
+  "id": "bitume",
+  "name": "Bitume Club",
+  "tagline": "Fait pour la ville",
+  "positioning": "Streetwear mixte : hoodies épais, cargos, t-shirts lourds, pièces oversize.",
+  "priceRange": [
+   35,
+   120
+  ],
+  "color": "#1A1A1A",
+  "ink": "#D4FF3A",
+  "logo": {
+   "font": "condensed",
+   "weight": 700,
+   "tracking": 0.02,
+   "uppercase": true
+  },
+  "members": 18700,
+  "founded": 2020,
+  "city": "Montreuil",
+  "sizeGuide": {
+   "fit": "normal",
+   "offset": 0,
+   "shoeOffset": 0,
+   "summary": "Coupe oversize, taille normalement",
+   "advice": "Nos coupes sont volontairement amples : prenez votre taille habituelle pour l'effet oversize, une taille en dessous pour un tombé classique.",
+   "systems": [
+    "XS–XXL, mixte"
+   ],
+   "table": [
+    {
+     "label": "Hoodie",
+     "values": {
+      "S": "112 cm de tour",
+      "M": "118 cm",
+      "L": "124 cm"
+     }
+    }
+   ]
+  },
+  "dataRequested": [
+   "Historique de commandes",
+   "Tailles achetées",
+   "Retours et motifs"
+  ]
+ }
+]

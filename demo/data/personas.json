@@ -1,0 +1,118 @@
+{
+ "thomas": {
+  "id": "thomas",
+  "gender": "homme",
+  "styles": [
+   "casual",
+   "corporate",
+   "costume"
+  ],
+  "firstName": "Thomas",
+  "lastName": "Lefèvre",
+  "age": 28,
+  "job": "Consultant junior, cabinet de conseil en stratégie",
+  "city": "Paris 11e",
+  "heightCm": 180,
+  "weightKg": 74,
+  "build": "Carrure normale",
+  "style": "Smart casual, couleurs neutres, pas de logos visibles",
+  "favoriteColors": [
+   {
+    "name": "Marine",
+    "hex": "#1F2A44"
+   },
+   {
+    "name": "Gris chiné",
+    "hex": "#9A9DA1"
+   },
+   {
+    "name": "Blanc",
+    "hex": "#F7F6F2"
+   },
+   {
+    "name": "Beige",
+    "hex": "#C8B48F"
+   },
+   {
+    "name": "Vert olive",
+    "hex": "#5E6440"
+   }
+  ],
+  "dislikes": [
+   "Logos visibles",
+   "Couleurs vives",
+   "Coupes très amples"
+  ],
+  "monthlyBudget": 120,
+  "reference": {
+   "top": "M",
+   "collar": "39",
+   "waist": "31",
+   "inseam": "32",
+   "trousersFr": "40",
+   "jacket": "48",
+   "shoe": "43.5",
+   "chestCm": 98,
+   "waistCm": 80
+  },
+  "avatar": "/images/px/avatar.jpg"
+ },
+ "lea": {
+  "id": "lea",
+  "gender": "femme",
+  "styles": [
+   "street",
+   "casual",
+   "corporate"
+  ],
+  "firstName": "Léa",
+  "lastName": "Garnier",
+  "age": 26,
+  "job": "Chargée de projet marketing dans une agence",
+  "city": "Paris 10e",
+  "heightCm": 168,
+  "weightKg": 57,
+  "build": "Silhouette fine",
+  "style": "Mélange streetwear et corporate : hoodies et cargos le week-end, blazers et pantalons larges au bureau",
+  "favoriteColors": [
+   {
+    "name": "Noir",
+    "hex": "#141414"
+   },
+   {
+    "name": "Blanc",
+    "hex": "#F7F6F2"
+   },
+   {
+    "name": "Beige",
+    "hex": "#C8B48F"
+   },
+   {
+    "name": "Kaki",
+    "hex": "#6E6A50"
+   },
+   {
+    "name": "Camel",
+    "hex": "#B08355"
+   }
+  ],
+  "dislikes": [
+   "Imprimés trop chargés",
+   "Talons de plus de 8 cm au bureau"
+  ],
+  "monthlyBudget": 100,
+  "reference": {
+   "top": "S",
+   "collar": "-",
+   "waist": "27",
+   "inseam": "30",
+   "trousersFr": "-",
+   "jacket": "-",
+   "femme": "36",
+   "shoe": "38",
+   "chestCm": 84,
+   "waistCm": 66
+  },
+  "avatar": "/images/px/avatar-lea.jpg"
+ }
+}
