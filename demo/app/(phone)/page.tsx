@@ -17,14 +17,15 @@ export default function Splash() {
     return () => clearTimeout(t);
   }, [router, onboarded]);
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white text-ink">
-      <motion.div initial={{ opacity: 0, y: 8, letterSpacing: "0.2em" }} animate={{ opacity: 1, y: 0, letterSpacing: "0em" }} transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
-        <Logo size={52} />
+    <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden bg-paper text-ink">
+      <motion.div aria-hidden className="aura-halo absolute h-[520px] w-[520px]" initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} />
+      <motion.div className="relative" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}>
+        <Logo size={64} />
       </motion.div>
-      <motion.p className="mt-3 text-[13px] tracking-wide text-mute" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}>
+      <motion.p className="relative mt-3 font-display text-[22px] italic text-rust" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}>
         {APP_TAGLINE}
       </motion.p>
-      <motion.div className="absolute bottom-16 h-px w-24 origin-left bg-ink/20" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, ease: "easeInOut" }} />
+      <motion.div className="absolute bottom-16 h-px w-24 origin-left bg-aura" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, ease: "easeInOut" }} />
     </div>
   );
 }

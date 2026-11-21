@@ -45,7 +45,7 @@ function BoutiquesInner() {
               <motion.li key={b.id} layout className="flex items-center gap-3.5 rounded-2xl bg-white p-3.5 pr-4">
                 <BrandMark brand={b} />
                 <button className="min-w-0 flex-1 text-left" onClick={() => setDetail(b)}>
-                  <BrandLogo brand={b} size={14} color="#121212" />
+                  <BrandLogo brand={b} size={14} color="#15112a" />
                   <p className="mt-1.5 truncate text-[12px] text-mute">{b.positioning.split(",")[0].split(" :")[0]}</p>
                   <p className="mt-0.5 text-[11.5px] text-mute">{on ? <span className="font-medium text-ok">Connectée · {importedCount(b)} articles importés</span> : `${fmtMembers(b.members)} · ${b.priceRange[0]}–${b.priceRange[1]} €`}</p>
                 </button>
@@ -145,7 +145,7 @@ function ConnectFlow({ brand, onClose }: { brand: Brand | null; onClose: () => v
         )}
         {step === "import" && (
           <motion.div key="import" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="px-6 pt-8">
-            <BrandLogo brand={brand} size={15} color="#121212" />
+            <BrandLogo brand={brand} size={15} color="#15112a" />
             <h2 className="mt-4 font-display text-[22px] leading-tight">
               {phase === 0 ? `Récupération de ${ords.length} commande${ords.length > 1 ? "s" : ""}…` : items.length ? `${items.length} articles trouvés` : "Aucune commande en ligne"}
             </h2>

@@ -58,10 +58,11 @@ export function PhoneFrame({ children }: { children: React.ReactNode }) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <div className="min-h-dvh w-full bg-[#e8e8e6] md:flex md:items-center md:justify-center md:bg-[#ececea] md:py-6">
+    <div className="relative min-h-dvh w-full bg-paper md:flex md:items-center md:justify-center md:overflow-hidden md:bg-[#f3eff7] md:py-6">
+      <div aria-hidden className="aura-halo pointer-events-none absolute left-1/2 top-1/2 hidden h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2 md:block" />
       <div
         id="phone"
-        className="relative mx-auto h-dvh w-full overflow-hidden bg-paper md:h-[min(860px,calc(100dvh-48px))] md:w-[396px] md:rounded-[56px] md:shadow-[0_0_0_11px_#111,0_0_0_13px_#3a3a3a,0_40px_80px_-20px_rgba(0,0,0,0.45)]"
+        className="relative mx-auto h-dvh w-full overflow-hidden bg-paper md:h-[min(860px,calc(100dvh-48px))] md:w-[396px] md:rounded-[56px] md:shadow-[0_0_0_11px_#15112a,0_0_0_13px_#3b3458,0_40px_80px_-20px_rgba(21,17,42,0.5)]"
       >
         <div className="hidden md:block">
           <div className="status-bg pointer-events-none absolute inset-x-0 top-0 z-[65] h-[50px] bg-gradient-to-b from-paper from-55% to-paper/0" />

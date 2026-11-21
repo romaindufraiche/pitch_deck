@@ -1,8 +1,8 @@
-# Dressr — démo cliquable
+# Aura — démo cliquable
 
 Démo de l'app mobile qui numérise la garde-robe des femmes et des hommes de 18 à 40 ans, quel que soit leur style (corporate, costume et tailleur, streetwear, casual, sport), et leur sert de styliste IA. Les marques partenaires paient un abonnement (B2B) pour y être connectées et recommander la bonne pièce, à la bonne taille.
 
-> **Nom de l'app** : « Dressr » est un nom de travail. Il se change en une ligne dans [`lib/config.ts`](lib/config.ts) (`APP_NAME`).
+> **Nom de l'app** : « Aura » est le nom retenu. Il se change en une ligne dans [`lib/config.ts`](lib/config.ts) (`APP_NAME`).
 
 Next.js (App Router) · TypeScript · Tailwind CSS · shadcn/ui · Framer Motion · Zustand (persistance `localStorage`) · Recharts · API Claude (Sonnet 5.5, avec outils et streaming).
 
@@ -45,7 +45,7 @@ npm run build && npm start
 ## Mode présentation
 
 - **Bouton « Redémarrer la démo »** en haut à gauche, hors du téléphone (grand écran) : remet tout à zéro et revient au splash.
-- **`Shift + D`** (ou **appui long sur le logo « Dressr. »**) ouvre le menu caché : préremplir le compte de Thomas, réinitialiser la démo, sauter à n'importe quelle étape, effacer la conversation, préparer le mode hors ligne.
+- **`Shift + D`** (ou **appui long sur le logo « AURA »**) ouvre le menu caché : préremplir le compte de Thomas, réinitialiser la démo, sauter à n'importe quelle étape, effacer la conversation, préparer le mode hors ligne.
 - **Hors ligne** : en production, un service worker met l'app en cache. Avant la présentation, ouvrez le menu puis cliquez sur **« Préparer le mode hors ligne »** : toutes les pages, photos et la vidéo sont téléchargées. L'assistant bascule alors automatiquement en mode secours.
 - Sur un ordinateur, l'app s'affiche dans un cadre de téléphone ; sur un vrai téléphone, elle occupe tout l'écran. Pour l'installer comme une app : *Partager → Sur l'écran d'accueil*.
 - Le menu indique si la dernière réponse venait de l'**IA en direct** ou du **mode secours** : le jury, lui, ne voit pas la différence.

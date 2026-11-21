@@ -89,7 +89,7 @@ export default function Catalogue() {
             <button onClick={() => { setBrand(null); setCat(null); }} className={cn("tap flex h-12 shrink-0 items-center rounded-2xl border px-4 text-[12.5px]", !brand ? "border-ink bg-ink text-paper" : "border-line bg-white")}>Toutes</button>
             {connected.map((id) => (
               <button key={id} onClick={() => { setBrand(brand === id ? null : id); setCat(null); }} className={cn("tap flex h-12 shrink-0 items-center rounded-2xl border px-4", brand === id ? "border-ink bg-ink" : "border-line bg-white")}>
-                <BrandLogo brand={brandById[id]} size={11} color={brand === id ? "#f5f2ec" : "#121212"} />
+                <BrandLogo brand={brandById[id]} size={11} color={brand === id ? "#fcf9f4" : "#15112a"} />
               </button>
             ))}
           </div>

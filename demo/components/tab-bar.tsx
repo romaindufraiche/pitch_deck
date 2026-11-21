@@ -30,7 +30,7 @@ export function TabBar() {
             <li key={t.href}>
               <Link href={t.href} className="tap flex w-16 flex-col items-center gap-1">
                 {t.main ? (
-                  <span className={cn("-mt-1 flex size-11 items-center justify-center rounded-full transition", active ? "bg-rust text-paper" : "bg-ink text-paper")}>
+                  <span className={cn("-mt-1 flex size-11 items-center justify-center rounded-full transition", active ? "bg-aura text-white shadow-[0_6px_18px_-6px_rgba(138,91,255,0.7)]" : "bg-ink text-paper")}>
                     <Icon className="size-[19px]" strokeWidth={1.6} />
                   </span>
                 ) : (

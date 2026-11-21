@@ -1,5 +1,6 @@
 "use client";
 
+import { Logo } from "@/components/logo";
 import Link from "next/link";
 import { ArrowLeft, ArrowDownRight, ArrowUpRight, Leaf, Lightbulb, Ruler, ShoppingBag, Undo2, Users } from "lucide-react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, LabelList, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
@@ -11,7 +12,7 @@ import { APP_NAME } from "@/lib/config";
 /** Palette validée (scripts dataviz) : app = bleu, moyenne marque = terracotta. */
 const APP = "#3f6fb5";
 const BRAND = "#c0623a";
-const INK = "#121212";
+const INK = "#15112a";
 const MUTED = "#847f76";
 const GRID = "#ebe6dd";
 
@@ -34,7 +35,7 @@ export default function Marque() {
         <div className="mx-auto flex max-w-[1240px] items-center gap-4 px-6 py-4">
           <Link href="/profil" className="flex items-center gap-1.5 text-[13px] text-mute hover:text-ink"><ArrowLeft className="size-4" /> App</Link>
           <span className="h-5 w-px bg-line" />
-          <span className="font-display text-[16px] font-semibold">{APP_NAME}<span className="text-rust">.</span> <span className="font-sans text-[13px] font-normal text-mute">for Brands</span></span>
+          <span className="flex items-center gap-2"><Logo size={20} /><span className="font-sans text-[13px] font-normal text-mute">for Brands</span></span>
           <span className="ml-auto flex items-center gap-3">
             <span className="hidden text-[12px] text-mute sm:inline">{d.period} · données anonymisées et agrégées</span>
             <span className="flex h-9 items-center rounded-full px-4" style={{ background: brand.color }}><BrandLogo brand={brand} size={11} color={brand.ink} /></span>

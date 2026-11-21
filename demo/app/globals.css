@@ -9,17 +9,22 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, monospace;
-  --font-heading: var(--font-inter);
-  --font-display: var(--font-inter);
+  --font-heading: var(--font-serif);
+  --font-display: var(--font-serif);
   --font-condensed: var(--font-oswald);
-  --color-paper: #f5f5f4;
-  --color-paper-2: #ebebea;
-  --color-ink: #111111;
-  --color-mute: #737373;
-  --color-line: #e7e7e5;
-  --color-rust: #111111;
-  --color-rust-soft: #efefee;
+  /* Charte Aura (version claire) */
+  --color-paper: #fcf9f4;      /* crème */
+  --color-paper-2: #f2eef8;    /* lavande très pâle */
+  --color-ink: #15112a;        /* nuit violette */
+  --color-mute: #6b6585;
+  --color-line: #e9e3ee;
+  --color-rust: #6b4eff;       /* accent violet (texte et pastilles) */
+  --color-rust-soft: #efebff;
   --color-ok: #2f7a4f;
+  --color-peach: #f8c9a6;      /* pêche */
+  --color-aura-orange: #ff975c;
+  --color-aura-violet: #8a5bff;
+  --color-aura-indigo: #6964ff;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -59,14 +64,14 @@
 }
 
 :root {
-  --background: #f5f5f4;
-  --foreground: #121212;
+  --background: #fcf9f4;
+  --foreground: #15112a;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #121212;
-  --primary-foreground: #ffffff;
+  --primary: #15112a;
+  --primary-foreground: #fcf9f4;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -74,9 +79,9 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e7e7e5;
-  --input: #e7e7e5;
-  --ring: oklch(0.708 0 0);
+  --border: #e9e3ee;
+  --input: #e9e3ee;
+  --ring: #8a5bff;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -139,7 +144,13 @@
   }
 }
 @layer utilities {
-  .font-display { font-family: var(--font-inter), system-ui, sans-serif; letter-spacing: -0.025em; font-weight: 600; }
+  .font-display { font-family: var(--font-serif), Georgia, serif; letter-spacing: -0.005em; font-weight: 400; }
+  .font-display em, .font-display i { font-style: italic; color: var(--color-rust); }
+  /* Signature Aura : dégradé orange → violet → indigo */
+  .bg-aura { background-image: linear-gradient(135deg, #ff975c 0%, #8a5bff 58%, #6964ff 100%); }
+  .text-aura { background-image: linear-gradient(100deg, #ff975c 0%, #8a5bff 60%, #6964ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .aura-dot { display: inline-block; border-radius: 9999px; background-image: radial-gradient(circle at 35% 35%, #ffb27f 0%, #ff975c 35%, #8a5bff 100%); }
+  .aura-halo { background-image: radial-gradient(closest-side, rgba(255,151,92,0.45), rgba(138,91,255,0.28) 55%, rgba(105,100,255,0) 100%); }
   .font-condensed { font-family: var(--font-oswald), "Arial Narrow", sans-serif; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { scrollbar-width: none; }
